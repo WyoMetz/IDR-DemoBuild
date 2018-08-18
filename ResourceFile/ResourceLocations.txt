@@ -1,0 +1,2 @@
+DatabaseLocation: "D:\SQLite\DocumentRepositoryDatabase\Testdatabase.db"
+BackgroundLocation: "D:\VSDeveloped\IPACDocumentRepository\IDR Demo build\Images\Camo2.jpg"

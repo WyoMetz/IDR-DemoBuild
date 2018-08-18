@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IDR_Demo_build;
 
 namespace IDR_Demo_build.Pages
 {
@@ -24,5 +25,6 @@ namespace IDR_Demo_build.Pages
         {
           
         }
-    }
+
+	}
 }

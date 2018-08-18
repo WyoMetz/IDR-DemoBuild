@@ -21,10 +21,23 @@ namespace IDR_Demo_build
 	/// </summary>
 	public partial class MainWindow : MetroWindow
 	{
+		ConnectionReader connectionReader = new ConnectionReader();
+
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			//Defines and sets the Image block with the Tag BackgroundImage
+			BitmapImage newImage = new BitmapImage(connectionReader.ImageUri);
+			Image outputImage = new Image
+			{
+				Source = newImage
+			};
+			BackgroundImage.Source = newImage;
+
+			//Navigates to the Welcome Page
 			ContentFrame.Navigate(new Uri("Pages/WelcomePage.xaml", UriKind.Relative));
+			HeaderBlock.Text = "Welcome";
 		}
 	}
 }

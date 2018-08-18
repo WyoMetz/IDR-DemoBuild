@@ -17,7 +17,7 @@
 												Title="Document Repository Version Alpha 0.1"
 												Height="600"
 												Width="1080"
-												BorderThickness='0' >
+												BorderThickness='0'>
 		<controls:MetroWindow.RightWindowCommands>
 				<controls:WindowCommands>
 						<Button Content='Report an Error'
@@ -26,8 +26,10 @@
 		</controls:MetroWindow.RightWindowCommands>
 
 		<Grid>
-				<Image Source='D:\VSDeveloped\IPACDocumentRepository\IDR Demo build\Images\Camo2.jpg'
-							 Stretch='UniformToFill' />
+				<Image x:Name='BackgroundImage'
+							 Stretch='UniformToFill'>
+				</Image>
+
 				<materialDesign:DrawerHost x:Name='LeftMenu'
 																	 IsLeftDrawerOpen='{Binding ElementName=MenuOpen, Path=IsChecked}'
 																	 BorderBrush="{DynamicResource MaterialDesignDivider}"
@@ -36,7 +38,7 @@
 								<DockPanel MinWidth="212">
 										<StackPanel DockPanel.Dock='Top'>
 										<StackPanel>
-														<materialDesign:ColorZone Mode='Inverted'
+														<materialDesign:ColorZone Mode='PrimaryDark'
 																											 MinHeight='65'>
 																<Grid>
 																		<Grid.ColumnDefinitions>
@@ -78,23 +80,25 @@
 																			Padding='8'
 																			materialDesign:ShadowAssist.ShadowDepth='Depth4'
 																			DockPanel.Dock='Top'>
-				<Grid DockPanel.Dock='Top'>
-						<TextBlock HorizontalAlignment='Center'
-											 Text='Welcome to the IPAC Document Repository'
-											 TextAlignment='Center'
-											 Margin='5'
-											 FontSize='18'
-											 FontFamily='Perpetua Titling MT' />
-						<StackPanel Orientation='Horizontal'
-												HorizontalAlignment='Left'>
-								<ToggleButton x:Name='MenuOpen'
-															Style='{DynamicResource MaterialDesignHamburgerToggleButton}'
-															IsChecked='False'></ToggleButton>
-						</StackPanel>
-				</Grid>
+								<Grid DockPanel.Dock='Top'>
+										<TextBlock HorizontalAlignment='Center' x:Name='HeaderBlock'
+															 Text='TEXT so I can See'
+															 TextAlignment='Center'
+															 Margin='5'
+															 FontSize='22'
+															 FontFamily='Palatino Linotype'
+															 FontWeight='Bold' />
+
+										<StackPanel Orientation='Horizontal'
+																HorizontalAlignment='Left'>
+												<ToggleButton x:Name='MenuOpen'
+																			Style='{DynamicResource MaterialDesignHamburgerToggleButton}'
+																			IsChecked='False'></ToggleButton>
+										</StackPanel>
+								</Grid>
 						</materialDesign:ColorZone>
 				</DockPanel>
-				<Frame x:Name='ContentFrame'
+				<Frame x:Name='ContentFrame' 
 							 NavigationUIVisibility='Hidden' />
 				
 		</Grid>
