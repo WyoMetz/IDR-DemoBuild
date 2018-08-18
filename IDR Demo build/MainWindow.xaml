@@ -26,36 +26,53 @@
 																	 Panel.ZIndex='5'>
 						<materialDesign:DrawerHost.LeftDrawerContent>
 								<DockPanel MinWidth="212">
-										<Grid DockPanel.Dock='Top'>
-												<Grid.ColumnDefinitions>
-														<ColumnDefinition />
-														<ColumnDefinition />
-														<ColumnDefinition />
-												</Grid.ColumnDefinitions>
-												<TextBlock Background='{StaticResource MaterialDesignPaper}'
-																	 Text='Menu'
-																	 HorizontalAlignment='Stretch'
-																	 VerticalAlignment='Center'
-																	 Grid.ColumnSpan='2'
-																	 FontSize='28'
-																	 Margin='8' />
-												<ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
-																			Grid.Column='2'
-																			HorizontalAlignment="Right"
-																			Margin='16'
-																			IsChecked="{Binding ElementName=MenuOpen, Path=IsChecked, Mode=TwoWay}" />
-										</Grid>
+										<StackPanel>
+										<StackPanel>
+														<materialDesign:ColorZone Mode='Inverted'
+																											 MinHeight='65'>
+																<Grid>
+																		<Grid.ColumnDefinitions>
+																				<ColumnDefinition />
+																				<ColumnDefinition />
+																				<ColumnDefinition />
+																		</Grid.ColumnDefinitions>
+																		<Grid.RowDefinitions>
+																				<RowDefinition />
+																				<RowDefinition />
+																		</Grid.RowDefinitions>
+																<materialDesign:PackIcon Kind="FormatListBulleted"
+																												 MinHeight='34'
+																												 MinWidth='34' Margin='6' />
+																		<TextBlock Grid.Column='1' Grid.ColumnSpan='2' Text='Main Menu'
+																							 FontSize='16' />
+																		<TextBlock Grid.Column='1'
+																							 Grid.Row='1'
+																							 Text='Choose an Item below' />
+																</Grid>
+														</materialDesign:ColorZone>
+										</StackPanel>
+										<Separator Padding='10'
+																	 Margin='0,6' />
+												<ListBox>
+														<StackPanel Orientation='Horizontal'>
+																<materialDesign:PackIcon Kind="FileDocument" MinHeight='26' MinWidth='26'/>
+																<TextBlock Text='Upload Diary'
+																					 FontSize='18'
+																					 Margin='16,0,0,0' />
+														</StackPanel>
+												</ListBox>
+										</StackPanel>
 								</DockPanel>
 						</materialDesign:DrawerHost.LeftDrawerContent>
 				</materialDesign:DrawerHost>
 				<DockPanel>
-						<materialDesign:ColorZone Mode='PrimaryMid'
+						<materialDesign:ColorZone Mode='Dark'
 																			Padding='8'
 																			materialDesign:ShadowAssist.ShadowDepth='Depth4'
 																			DockPanel.Dock='Top'>
 				<Grid DockPanel.Dock='Top'>
 						<TextBlock HorizontalAlignment='Center'
-											 Text='IPAC Document Repository (IDR) Demo Application'
+											 Text='Welcome to the IPAC Document Repository'
 											 TextAlignment='Center'
 											 Margin='5'
 											 FontSize='18'
@@ -69,5 +86,7 @@
 				</Grid>
 						</materialDesign:ColorZone>
 				</DockPanel>
+				<Frame x:Name='ContentFrame'
+							 NavigationUIVisibility='Hidden' />
 		</Grid>
 </controls:MetroWindow>
