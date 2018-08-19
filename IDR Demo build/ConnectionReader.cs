@@ -11,7 +11,7 @@ public class ConnectionReader
 	{
 		string UserName = Environment.UserName.ToString();										//Gets the Computers logged in Username
 
-		string filePath = @"C:\Users\"+UserName+ @"\AppData\Local\IDR\ResourceLocations.txt";	//finds the Resource file
+		string filePath = @"C:\Users\"+UserName+ @"\AppData\Local\IDR\ResourceLocations.txt";	//finds the Resource file TODO: Generate this file and location if not exists.
 		
 		string fileLocation = Path.GetFullPath(filePath);										//Corrects the path to file
 
