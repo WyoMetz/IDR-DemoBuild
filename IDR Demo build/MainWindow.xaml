@@ -50,9 +50,10 @@
 																				<RowDefinition />
 																				<RowDefinition />
 																		</Grid.RowDefinitions>
-																<materialDesign:PackIcon Kind="Home"
+																<materialDesign:PackIcon Kind="Home" x:Name='HomeNav'
 																												 MinHeight='34'
-																												 MinWidth='34' Margin='6' />
+																												 MinWidth='34' Margin='6'
+																														 MouseLeftButtonUp='HomeNav_MouseLeftButtonUp' />
 																		<TextBlock Grid.Column='1' Grid.ColumnSpan='2' Text='Main Menu'
 																							 FontSize='16' />
 																		<TextBlock Grid.Column='1'
@@ -64,7 +65,8 @@
 										<Separator Padding='10'
 																	 Margin='0,6' />
 												<ListBox>
-														<StackPanel Orientation='Horizontal'>
+														<StackPanel x:Name='UploadDiary'  Orientation='Horizontal'
+																				MouseLeftButtonUp='UploadDiary_MouseLeftButtonUp'>
 																<materialDesign:PackIcon Kind="CloudUpload" MinHeight='26' MinWidth='26'/>
 																<TextBlock Text='Upload Diary'
 																					 FontSize='18'

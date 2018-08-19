@@ -23,6 +23,9 @@ namespace IDR_Demo_build
 	{
 		ConnectionReader connectionReader = new ConnectionReader();
 
+		/// <summary>
+		/// Loads the Background image and Stores the Left Menu Navigation Items
+		/// </summary>
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -38,6 +41,20 @@ namespace IDR_Demo_build
 			//Navigates to the Welcome Page
 			ContentFrame.Navigate(new Uri("Pages/WelcomePage.xaml", UriKind.Relative));
 			HeaderBlock.Text = "Welcome";
+		}
+
+		private void UploadDiary_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			ContentFrame.Navigate(new Uri("Pages/DiaryUpload.xaml", UriKind.Relative));
+			HeaderBlock.Text = "Upload a New Diary";
+			LeftMenu.IsLeftDrawerOpen = false;
+		}
+
+		private void HomeNav_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			ContentFrame.Navigate(new Uri("Pages/WelcomePage.xaml", UriKind.Relative));
+			HeaderBlock.Text = "Main Menu";
+			LeftMenu.IsLeftDrawerOpen = false;
 		}
 	}
 }
