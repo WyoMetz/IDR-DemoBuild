@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.IO;
+using System.Windows.Forms;
 
 namespace IDR_Demo_build.Pages
 {
@@ -23,8 +24,20 @@ namespace IDR_Demo_build.Pages
         public DiaryUpload()
         {
             InitializeComponent();
-			FileView.Source = new Uri("C:\\Users\\metzc\\Documents\\Adobe\\Print Release\\PrintReleaseTemplate.pdf", UriKind.Absolute);
+		}
+
+		private void GetDiary_Click(object sender, RoutedEventArgs e)
+		{
+
+			FileOperation fileOperation = new FileOperation();
+
+			string FilePath = fileOperation.ChooseFile();
+			string fullPath = Path.GetFullPath(FilePath);
+
+			DiaryFilePath.Text = Path.GetFileName(FilePath);
+
+			FileView.Source = new Uri(fullPath, UriKind.Absolute);
 
 		}
-    }
+	}
 }
