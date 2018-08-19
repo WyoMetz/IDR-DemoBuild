@@ -23,8 +23,12 @@ namespace IDR_Demo_build.Pages
     {
         public WelcomePage()
         {
-          
+			InitializeComponent();
         }
 
+		private void UploadDiary_Click(object sender, RoutedEventArgs e)
+		{
+			
+		}
 	}
 }

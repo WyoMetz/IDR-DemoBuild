@@ -21,24 +21,6 @@
 				<DockPanel>
 						<StackPanel VerticalAlignment='Center'
 												HorizontalAlignment='Center'>
-								<StackPanel DockPanel.Dock='Top'
-														Orientation='Horizontal'>
-										<Button x:Name='UploadDiary'
-														Margin='18'>
-												<StackPanel Orientation='Horizontal'>
-														<materialDesign:PackIcon Kind='FileDocument' />
-														<TextBlock Text='Upload Diary' />
-												</StackPanel>
-										</Button>
-										<Button x:Name='ViewDiaries'
-														Margin='18'>
-												<StackPanel Orientation='Horizontal'>
-														<materialDesign:PackIcon Kind='FileDocumentBox' />
-														<TextBlock Text='View Diaries' />
-												</StackPanel>
-										</Button>
-								</StackPanel>
-
 								<materialDesign:Card materialDesign:ShadowAssist.ShadowDepth='Depth4'
 																		 Background='{DynamicResource PrimaryHueDarkBrush}'
 																		 UniformCornerRadius='8'>
@@ -50,7 +32,7 @@
 																										 HorizontalAlignment='Center'
 																										 MinHeight='98'
 																										 MinWidth='250' />
-														<TextBlock Text='To get started click an item above or open the menu'
+														<TextBlock Text='To get started open the menu and choose a page.'
 																			 FontSize='16'
 																			 HorizontalAlignment='Center' />
 												</StackPanel>

@@ -9,7 +9,8 @@ public class ConnectionReader
 {
 	public static List<string> BackgroundImage()
 	{
-		string filePath = @"ResourceFiles\ResourceLocations.txt";
+		string UserName = Environment.UserName.ToString();
+		string filePath = @"C:\Users\"+UserName+ @"\AppData\Local\IDR\ResourceLocations.txt";
 		string fileLocation = Path.GetFullPath(filePath);
 		using (var streamReader = new StreamReader(fileLocation))
 		{

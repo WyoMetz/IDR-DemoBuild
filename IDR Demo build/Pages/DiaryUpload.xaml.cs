@@ -23,6 +23,8 @@ namespace IDR_Demo_build.Pages
         public DiaryUpload()
         {
             InitializeComponent();
-        }
+			FileView.Source = new Uri("C:\\Users\\metzc\\Documents\\Adobe\\Print Release\\PrintReleaseTemplate.pdf", UriKind.Absolute);
+
+		}
     }
 }

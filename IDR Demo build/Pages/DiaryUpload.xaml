@@ -21,8 +21,14 @@
 						<ColumnDefinition />
 						<ColumnDefinition />
 						<ColumnDefinition />
+						<ColumnDefinition />
+						<ColumnDefinition />
+						<ColumnDefinition />
+						<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
 						<RowDefinition />
 						<RowDefinition />
 						<RowDefinition />
@@ -33,7 +39,11 @@
 				</Grid.RowDefinitions>
 				<materialDesign:Card UniformCornerRadius='8'
 														 materialDesign:ShadowAssist.ShadowDepth='Depth4'
-														 FontSize='14' Grid.Column='0' Grid.Row='1' Grid.RowSpan='6' Grid.ColumnSpan='2'>
+														 FontSize='14'
+														 Grid.Column='0'
+														 Grid.Row='3'
+														 Grid.RowSpan='9'
+														 Grid.ColumnSpan='2' Margin='8'>
 						<StackPanel Orientation='Vertical'
 												Grid.Column='0'
 												Grid.Row='1'
@@ -79,5 +89,32 @@
 								</StackPanel>
 						</StackPanel>
 				</materialDesign:Card>
+				<GroupBox Header='Diary Preview' Grid.Column='5' Grid.RowSpan='9' Grid.Row='1' Grid.ColumnSpan='4'
+									Style='{DynamicResource MaterialDesignCardGroupBox}'
+									Margin='8' SelectiveScrollingGrid.SelectiveScrollingOrientation='Vertical'>
+						<GroupBox.HeaderTemplate>
+								<DataTemplate>
+										<StackPanel Orientation="Horizontal">
+												<materialDesign:PackIcon Kind="FileDocument"
+																								 Height="32"
+																								 Width="32"
+																								 VerticalAlignment="Center" />
+												<TextBlock Margin="8,0,0,0"
+																	 VerticalAlignment="Center"
+																	 Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+																	 Text="{Binding}" />
+										</StackPanel>
+								</DataTemplate>
+						</GroupBox.HeaderTemplate>
+						<DockPanel>
+								<TextBlock Text='Ensure the Diary you are uploading is correct.'  DockPanel.Dock='Top'/>
+						<Grid>
+								
+
+								<WebBrowser x:Name='FileView'>
+								</WebBrowser>
+						</Grid>
+						</DockPanel>
+				</GroupBox>
 		</Grid>
 </Page>

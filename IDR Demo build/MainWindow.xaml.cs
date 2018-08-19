@@ -38,9 +38,11 @@ namespace IDR_Demo_build
 			};
 			BackgroundImage.Source = newImage;
 
+			string UserName = Environment.UserName.ToString();
+
 			//Navigates to the Welcome Page
 			ContentFrame.Navigate(new Uri("Pages/WelcomePage.xaml", UriKind.Relative));
-			HeaderBlock.Text = "Welcome";
+			HeaderBlock.Text = "Welcome " + UserName;
 		}
 
 		private void UploadDiary_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
