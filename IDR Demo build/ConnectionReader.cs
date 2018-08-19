@@ -7,7 +7,7 @@ using System.Windows.Data;
 
 public class ConnectionReader
 {
-	public static List<string> BackgroundImage()
+	private static List<string> BackgroundImage()
 	{
 		string UserName = Environment.UserName.ToString();
 		string filePath = @"C:\Users\"+UserName+ @"\AppData\Local\IDR\ResourceLocations.txt";
@@ -30,7 +30,9 @@ public class ConnectionReader
 			return outputValues;
 		}
 	}
-	public static string ImageString = BackgroundImage().First();
-
+	private static string ImageString = BackgroundImage().First();
+	/// <summary>
+	/// The URI of the background Image defined by ResourceLocations.txt
+	/// </summary>
 	public Uri ImageUri = new Uri(ImageString, UriKind.RelativeOrAbsolute);
 }
