@@ -7,7 +7,16 @@ using System.Windows.Data;
 
 public class ConnectionReader
 {
-	static string UserName = Environment.UserName.ToString();                                      //Gets the Computers logged in Username
+	static string UserName = Environment.UserName.ToString();											//Gets the Computers logged in Username
+
+	static void IdrAppData()
+	{
+		string AppData = @"C:\Users\" + UserName + @"\AppData\Local\IDR";
+		if (!Directory.Exists(AppData))
+		{
+			Directory.CreateDirectory(AppData);
+		}
+	}
 
 	static string filePath = @"C:\Users\" + UserName + @"\AppData\Local\IDR\ResourceLocations.txt";    //finds the Resource file TODO: Generate this file and location if not exists.
 
