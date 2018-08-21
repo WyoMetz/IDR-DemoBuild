@@ -36,7 +36,7 @@ namespace IDR_Demo_build.Pages
 
 			DiaryFilePath.Text = Path.GetFileName(FilePath);
 
-			FileView.Source = new Uri(fullPath, UriKind.Absolute);
+			PDFViewer.PdfPath = fullPath;
 
 		}
 	}

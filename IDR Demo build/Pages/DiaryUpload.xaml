@@ -12,6 +12,7 @@
 			TextOptions.TextRenderingMode="Auto"
 			FontFamily="{DynamicResource MaterialDesignFont}"
 			xmlns:local="clr-namespace:IDR_Demo_build"
+			xmlns:PDFViewer='clr-namespace:WPF_PDFDocument.Controls'
 			mc:Ignorable="d"
 			Title="Document Repository Version Alpha 0.1">
 		<Grid>
@@ -131,12 +132,8 @@
 						</GroupBox.HeaderTemplate>
 						<DockPanel>
 								<TextBlock Text='Ensure the Diary you are uploading is correct.'  DockPanel.Dock='Top'/>
-						<Grid>
-								
-
-								<WebBrowser x:Name='FileView'>
-								</WebBrowser>
-						</Grid>
+								<PDFViewer:PdfViewer x:Name='PDFViewer'/>
+								<Grid />
 						</DockPanel>
 				</GroupBox>
 		</Grid>
