@@ -103,8 +103,6 @@
 																	 FontSize='18'
 																	 TextWrapping='Wrap' />
 												<Separator></Separator>
-												<ComboBox materialDesign:HintAssist.IsFloating='True'
-																	materialDesign:HintAssist.Hint='Preparer' />
 												<ComboBox  materialDesign:HintAssist.IsFloating='True'
 																	 materialDesign:HintAssist.Hint='Certifier' />
 												<TextBox materialDesign:HintAssist.IsFloating='True'

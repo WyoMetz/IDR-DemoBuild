@@ -39,6 +39,7 @@ namespace IDR_Demo_build
 
 		public void CopyFile(string NewFileName, string filePath)
 		{
+			string Year = DateTime.Now.Year.ToString();
 			string Repository = TargetPath();
 
 			if (!Directory.Exists(Repository))
@@ -48,7 +49,7 @@ namespace IDR_Demo_build
 			if (filePath != null)
 			{
 				string fileName = Path.GetFileName(filePath);
-				string finalPath = Repository + @"\" + NewFileName;
+				string finalPath = Repository + @"\" + Year + @"\" + NewFileName;
 				FileSystem.CopyFile(filePath, finalPath, UIOption.AllDialogs);
 			}
 			return;
