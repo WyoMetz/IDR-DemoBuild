@@ -7,7 +7,7 @@ using System.Windows.Data;
 
 public class ConnectionReader
 {
-	static string UserName = Environment.UserName.ToString();											//Gets the Computers logged in Username
+	static readonly string UserName = Environment.UserName.ToString();											//Gets the Computers logged in Username
 
 	static void IdrAppData()
 	{
@@ -18,9 +18,9 @@ public class ConnectionReader
 		}
 	}
 
-	static string filePath = @"C:\Users\" + UserName + @"\AppData\Local\IDR\ResourceLocations.txt";    //finds the Resource file TODO: Generate this file and location if not exists.
+	static readonly string filePath = @"C:\Users\" + UserName + @"\AppData\Local\IDR\ResourceLocations.txt";    //finds the Resource file TODO: Generate this file and location if not exists.
 
-	static string fileLocation = Path.GetFullPath(filePath);                                       //Corrects the path to file
+	static readonly string fileLocation = Path.GetFullPath(filePath);                                       //Corrects the path to file
 
 
 	private static List<string> BackgroundImage()
@@ -44,7 +44,7 @@ public class ConnectionReader
 			return outputValues;																//returns the String as a List<string> to the calling function
 		}
 	}
-	private static string ImageString = BackgroundImage().First();								// we then define the string statically
+	private static readonly string ImageString = BackgroundImage().First();								// we then define the string statically
 	/// <summary>
 	/// The URI of the background Image defined by ResourceLocations.txt
 	/// </summary>
@@ -70,7 +70,7 @@ public class ConnectionReader
 			return outputValues;                                                                //returns the String as a List<string> to the calling function
 		}
 	}
-	private static string RepositoryLocation = FileRepository().First();
+	private static readonly string RepositoryLocation = FileRepository().First();
 	/// <summary>
 	/// The Location of the File Repository
 	/// </summary>
