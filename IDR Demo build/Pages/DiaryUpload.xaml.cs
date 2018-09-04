@@ -66,6 +66,8 @@ namespace IDR_Demo_build.Pages
 		private async void UploadDiary_Click(object sender, RoutedEventArgs e)
 		{
 			await Repository.UpdateRegularDiaryAsync(DiaryId, SelectionNumber, FilePath);
+			SnackbarThree.MessageQueue.Enqueue("Diary " + SelectionNumber + " has been updated");
+			UploadDiary.IsEnabled = false;
 			SelectedDiary.Clear();
 			SearchBox.Clear();
 			ChosenDiary.Clear();

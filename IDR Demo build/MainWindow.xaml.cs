@@ -52,5 +52,11 @@ namespace IDR_Demo_build
 			LeftMenu.IsLeftDrawerOpen = false;
 		}
 
+		private void ViewDiary_Selected(object sender, System.Windows.RoutedEventArgs e)
+		{
+			ContentFrame.Navigate(new Uri("Pages/DiaryView.xaml", UriKind.Relative));
+			HeaderBlock.Text = "View Uploaded Diaries";
+			LeftMenu.IsLeftDrawerOpen = false;
+		}
 	}
 }

@@ -24,6 +24,12 @@ namespace DocumentRepository.Core
 			return list;
 		}
 
+		public static IList<UnitDiary> Uploaded()
+		{
+			IList<UnitDiary> list = Diaries.Where(Uploaded => !Uploaded.NotUploaded()).ToList();
+			return list;
+		}
+
 		public static DataTable SearchDiaryNumbers(string SearchString)
 		{
 			bool sorter = Int32.TryParse(SearchString, out int sortNumber);
@@ -44,6 +50,15 @@ namespace DocumentRepository.Core
 		{
 			IList<UnitDiary> list = Diaries.Where(o => o.LastName.StartsWith(SearchString)).ToList();
 			return DiaryPager.SetPaging(list, 10);
+		}
+
+		public static void UpdateList(int DiaryID, string UserName, string Date, string FileSaveLocation)
+		{
+			var Diary = Diaries.First(i => i.DiaryID == DiaryID);
+			Diary.Uploaded = "True";
+			Diary.UploadedBy = UserName;
+			Diary.UploadedOn = DateTime.Parse(Date);
+			Diary.UploadLocation = FileSaveLocation;
 		}
 	}
 }

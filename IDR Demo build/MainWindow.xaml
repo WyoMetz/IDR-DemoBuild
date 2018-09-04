@@ -107,9 +107,17 @@
 																</StackPanel>
 														</Expander.Header>
 												<ListView>
-														<ListViewItem>
-
-														</ListViewItem>
+														<ListViewItem x:Name='ViewDiary'
+																							Selected='ViewDiary_Selected'>
+																		<StackPanel Orientation='Horizontal'>
+																				<materialDesign:PackIcon Kind='FileCloud'
+																																 MinHeight='20'
+																																 MinWidth='20' />
+																				<TextBlock Text='View Regular Diaries'
+																									 FontSize='12'
+																									 Margin='16,0,0,0' />
+																		</StackPanel>
+																</ListViewItem>
 												</ListView>
 												</Expander>
 										</StackPanel>

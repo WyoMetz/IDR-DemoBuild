@@ -46,6 +46,7 @@ namespace DocumentRepository.Core
 			string FileSaveLocation = await SaveFile;
 			Task UpdateDatabase = Task.Run(() => DiaryTable.UpdateUnitDiary(CommandModel.DiaryUpdate(UserName, Date, FileSaveLocation, DiaryID)));
 			await UpdateDatabase;
+			DiaryList.UpdateList(DiaryID, UserName, Date, FileSaveLocation);
 			return;
 		}
 
