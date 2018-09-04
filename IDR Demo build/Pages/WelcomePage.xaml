@@ -26,7 +26,7 @@
 																		 UniformCornerRadius='8'>
 										<StackPanel Margin='16'>
 												<StackPanel>
-														<TextBlock Text='Welcome to the IPAC Document Repository Demonstration'
+														<TextBlock Text='Welcome to the IPAC Document Repository'
 																			 FontSize='24' />
 														<materialDesign:PackIcon Kind='ServerSecurity'
 																										 HorizontalAlignment='Center'

@@ -1,43 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DocumentRepository.Core;
+using System;
+using System.Data;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.IO;
-using System.Windows.Forms;
 
 namespace IDR_Demo_build.Pages
 {
-    /// <summary>
-    /// Interaction logic for DiaryUpload.xaml
-    /// </summary>
-    public partial class DiaryUpload : Page
-    {
-        public DiaryUpload()
-        {
-            InitializeComponent();
+	/// <summary>
+	/// Interaction logic for DiaryUpload.xaml
+	/// </summary>
+	public partial class DiaryUpload : Page
+	{
+		string FilePath { get; set; }
+		int DiaryId { get; set; }
+		string SelectionNumber { get; set; }
+
+		public DiaryUpload()
+		{
+			InitializeComponent();
+
+			DiaryGroup.ItemsSource = DiaryPager.SetPaging(DiaryList.NeedUploaded(), 10).DefaultView;
 		}
 
-		private void GetDiary_Click(object sender, RoutedEventArgs e)
+		private void ChooseDiary_Click(object sender, RoutedEventArgs e)
 		{
+			FilePath = Repository.GetFile();
+			if (FilePath != null)
+			{
+				string fullPath = Path.GetFullPath(FilePath);
+				ChosenDiary.Text = Path.GetFileName(FilePath);
+				PdfView.PdfPath = fullPath;
+			}
+		}
 
-			FileOperation fileOperation = new FileOperation();
+		private void ChosenDiary_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			DiaryGroup.ItemsSource = DiaryList.SearchDiaryNumbers(ChosenDiary.Text).DefaultView;
+		}
 
-			string FilePath = fileOperation.ChooseFile();
-			string fullPath = Path.GetFullPath(FilePath);
+		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			DiaryGroup.ItemsSource = DiaryList.SearchDiaryNumbers(SearchBox.Text).DefaultView;
+		}
 
-			DiaryFilePath.Text = Path.GetFileName(FilePath);
+		private void SelectedDiary_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (FilePath != null)
+			{
+				UploadDiary.IsEnabled = true;
+			}
+		}
 
-			PDFViewer.PdfPath = fullPath;
+		private void DiaryGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if (DiaryGroup.SelectedIndex > -1)
+			{
+				DataRowView row = (DataRowView)DiaryGroup.SelectedItems[0];
+				DiaryId = Int32.Parse(row["DiaryID"].ToString());
+				SelectionNumber = row["UDNumber"].ToString();
+				SelectedDiary.Text = SelectionNumber;
+			}
+		}
 
+		private async void UploadDiary_Click(object sender, RoutedEventArgs e)
+		{
+			await Repository.UpdateRegularDiaryAsync(DiaryId, SelectionNumber, FilePath);
+			SelectedDiary.Clear();
+			SearchBox.Clear();
+			ChosenDiary.Clear();
+			DiaryGroup.ItemsSource = DiaryPager.SetPaging(DiaryList.NeedUploaded(), 10).DefaultView;
 		}
 	}
 }

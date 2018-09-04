@@ -14,12 +14,13 @@
 												FontFamily="{DynamicResource MaterialDesignFont}"
 												xmlns:local="clr-namespace:IDR_Demo_build"
 												mc:Ignorable="d"
-												Title="Document Repository Version Alpha 0.1"
+												Title="Document Repository"
 												Height="600"
 												Width="1080"
 												BorderThickness='0'
 												WindowStartupLocation='CenterScreen'
-												WindowState='Maximized'>
+												WindowState='Maximized'
+												SaveWindowPosition='True'>
 		<controls:MetroWindow.RightWindowCommands>
 				<controls:WindowCommands>
 						<Button Content='Report an Error'
@@ -39,9 +40,9 @@
 						<materialDesign:DrawerHost.LeftDrawerContent>
 								<DockPanel MinWidth="212">
 										<StackPanel DockPanel.Dock='Top'>
-										<StackPanel>
+												<StackPanel>
 														<materialDesign:ColorZone Mode='PrimaryDark'
-																											 MinHeight='65'>
+																											MinHeight='65'>
 																<Grid>
 																		<Grid.ColumnDefinitions>
 																				<ColumnDefinition />
@@ -52,29 +53,65 @@
 																				<RowDefinition />
 																				<RowDefinition />
 																		</Grid.RowDefinitions>
-																<materialDesign:PackIcon Kind="Home" x:Name='HomeNav'
-																												 MinHeight='34'
-																												 MinWidth='34' Margin='6'
+																		<materialDesign:PackIcon Kind="Home"
+																														 x:Name='HomeNav'
+																														 MinHeight='34'
+																														 MinWidth='34'
+																														 Margin='6'
 																														 MouseLeftButtonUp='HomeNav_MouseLeftButtonUp' />
-																		<TextBlock Grid.Column='1' Grid.ColumnSpan='2' Text='Main Menu'
+																		<TextBlock Grid.Column='1'
+																							 Grid.ColumnSpan='2'
+																							 Text='Main Menu'
 																							 FontSize='16' />
 																		<TextBlock Grid.Column='1'
 																							 Grid.Row='1'
 																							 Text='Choose an Item below' />
 																</Grid>
 														</materialDesign:ColorZone>
-										</StackPanel>
-										<Separator Padding='10'
-																	 Margin='0,6' />
-												<ListBox>
-														<StackPanel x:Name='UploadDiary'  Orientation='Horizontal'
-																				MouseLeftButtonUp='UploadDiary_MouseLeftButtonUp'>
-																<materialDesign:PackIcon Kind="CloudUpload" MinHeight='26' MinWidth='26'/>
-																<TextBlock Text='Upload Diary'
-																					 FontSize='18'
-																					 Margin='16,0,0,0' />
-														</StackPanel>
-												</ListBox>
+												</StackPanel>
+
+												<Expander>
+														<Expander.Header>
+																<StackPanel Orientation='Horizontal'>
+																		<materialDesign:PackIcon Kind="CloudUpload"
+																														 MinHeight='26'
+																														 MinWidth='26' />
+																		<TextBlock Text='Upload'
+																							 FontSize='18'
+																							 Margin='16,0,0,0' />
+																</StackPanel>
+														</Expander.Header>
+														<ListView>
+																<ListViewItem x:Name='UploadDiary'
+																		Selected='UploadDiary_Selected'>
+																		<StackPanel Orientation='Horizontal'>
+																				<materialDesign:PackIcon Kind='FileMultiple'
+																																 MinHeight='20'
+																																 MinWidth='20' />
+																				<TextBlock Text='Regular Diaries'
+																									 FontSize='12' Margin='16,0,0,0'/>
+																		</StackPanel>
+																</ListViewItem>
+														</ListView>
+												</Expander>
+												<Separator Margin='0,6,0,6' />
+												<Expander>
+														<Expander.Header>
+																<StackPanel Orientation='Horizontal'>
+																		<materialDesign:PackIcon Kind='BookOpenPageVariant'
+																														 MinHeight='26'
+																														 MinWidth='26' />
+																		<TextBlock Text='View and Download'
+																							 FontSize='18'
+																							 Margin='16,0,0,0' />
+																</StackPanel>
+														</Expander.Header>
+												<ListView>
+														<ListViewItem>
+
+														</ListViewItem>
+												</ListView>
+												</Expander>
 										</StackPanel>
 								</DockPanel>
 						</materialDesign:DrawerHost.LeftDrawerContent>
@@ -85,7 +122,8 @@
 																			materialDesign:ShadowAssist.ShadowDepth='Depth4'
 																			DockPanel.Dock='Top'>
 								<Grid DockPanel.Dock='Top'>
-										<TextBlock HorizontalAlignment='Center' x:Name='HeaderBlock'
+										<TextBlock HorizontalAlignment='Center'
+															 x:Name='HeaderBlock'
 															 Text='TEXT so I can See'
 															 TextAlignment='Center'
 															 Margin='5'
@@ -102,8 +140,8 @@
 								</Grid>
 						</materialDesign:ColorZone>
 				</DockPanel>
-				<Frame x:Name='ContentFrame' 
+				<Frame x:Name='ContentFrame'
 							 NavigationUIVisibility='Hidden' />
-				
+
 		</Grid>
 </controls:MetroWindow>
