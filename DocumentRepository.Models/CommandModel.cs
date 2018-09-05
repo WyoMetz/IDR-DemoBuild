@@ -30,5 +30,25 @@
 				"@Rejected, @Total, @Uploaded, @UploadedBy, @UploadedOn, @UploadLocation)", DateContext);
 			return Insert;
 		}
+
+		public static string CreateCertifiedPackageTable()
+		{
+			string Create = string.Format("CREATE TABLE IF NOT EXISTS CertifiedPackages{0} (DiaryKey INTEGER, UDNumber INTEGER," +
+				" MembersEdipi INTEGER, MembersLastName VARCHAR(50), MembersFirstName VARCHAR(50), MembersMI VARCHAR(10))", DateContext);
+			return Create;
+		}
+
+		public static string InsertCertifiedPackage(int DiaryID, int UDNumber, string MembersEdipi, string MembersLastName, string MembersFirstName, string MembersMI)
+		{
+			string Insert = string.Format("INSERT INTO CertifiedPackages{0}(DiaryKey, UDNumber, MembersEdipi, MembersLastName," +
+				" MembersFirstName, MembersMI) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}', '{6}')", DateContext, DiaryID, UDNumber, MembersEdipi, MembersLastName, MembersFirstName, MembersMI);
+			return Insert;
+		}
+
+		public static string ReadCertifiedPackageTable()
+		{
+			string Select = string.Format("SELECT RowID, * FROM CertifiedPackages{0}", DateContext);
+			return Select;
+		}
 	}
 }

@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="CertifiedPackageTable.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DiaryCsvReader.cs" />
     <Compile Include="DiaryTable.cs" />
