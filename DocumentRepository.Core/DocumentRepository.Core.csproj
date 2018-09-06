@@ -45,6 +45,7 @@
     <Compile Include="CreateDataTable.cs" />
     <Compile Include="DiaryList.cs" />
     <Compile Include="DiaryPager.cs" />
+    <Compile Include="DiarySearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
   </ItemGroup>

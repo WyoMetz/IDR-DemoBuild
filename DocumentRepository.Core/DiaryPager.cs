@@ -8,7 +8,7 @@ namespace DocumentRepository.Core
 {
 	public class DiaryPager
 	{
-		private static int PageIndex { get; set; } = 0;
+		public static int PageIndex { get; set; } = 0;
 
 		static DataTable PagedList = new DataTable();
 

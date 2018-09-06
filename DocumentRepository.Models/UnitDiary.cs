@@ -32,7 +32,7 @@ namespace DocumentRepository.Models
 		/// <returns>Unit Diaries</returns>
 		public bool RegularDiaries()
 		{
-			if (UDNumber < 89999 || UDNumber != 88888)
+			if (UDNumber < 89999 && UDNumber != 88888)
 			{
 				return true;
 			}

@@ -70,15 +70,18 @@
 																			 Margin='3'
 																			 VerticalAlignment='Center' />
 														<ComboBox x:Name='Records'
-																			Margin='4' />
+																			Margin='4'
+																			SelectionChanged='Records_SelectionChanged' />
 														<Button x:Name='First'
 																		Content='&lt;&lt;'
 																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2' />
+																		Margin='2'
+																		Click='First_Click' />
 														<Button x:Name='Previous'
 																		Content='&lt;'
 																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2' />
+																		Margin='2'
+																		Click='Previous_Click' />
 														<TextBlock x:Name='NumberDisplay'
 																			 Text='Showing 50 of 14000'
 																			 VerticalAlignment='Center'
@@ -86,11 +89,13 @@
 														<Button x:Name='Next'
 																		Content='&gt;'
 																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2' />
+																		Margin='2'
+																		Click='Next_Click' />
 														<Button x:Name='Last'
 																		Content='&gt;&gt;'
 																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2' />
+																		Margin='2'
+																		Click='Last_Click' />
 
 												</StackPanel>
 										</Viewbox>
@@ -104,17 +109,25 @@
 								<Viewbox Grid.Row='0'>
 								<StackPanel Orientation='Horizontal'>
 										<TextBox materialDesign:HintAssist.Hint='Search by Diary Number'
+														 x:Name='DiaryNumberSearch'
 														 materialDesign:HintAssist.IsFloating='true'
-														 Margin='4' />
+														 Margin='4'
+																 TextChanged='DiaryNumberSearch_TextChanged' />
 										<TextBox materialDesign:HintAssist.Hint='Search by Certifier Edipi'
+														 x:Name='CertEdipiSearch'
 														 materialDesign:HintAssist.IsFloating='True'
-														 Margin='4' />
+														 Margin='4'
+																 TextChanged='CertEdipiSearch_TextChanged' />
 										<TextBox materialDesign:HintAssist.Hint='Search by Certifier Last Name'
+														 x:Name='CertLastNameSearch'
 														 materialDesign:HintAssist.IsFloating='True'
-														 Margin='4' />
+														 Margin='4'
+																 TextChanged='CertLastNameSearch_TextChanged' />
 										<TextBox materialDesign:HintAssist.Hint='Search By Uploader'
+														 x:Name='UploaderNameSearch'
 															 materialDesign:HintAssist.IsFloating='True'
-															 Margin='4'/>
+															 Margin='4'
+																 TextChanged='UploaderNameSearch_TextChanged' />
 								</StackPanel>
 								</Viewbox>
 								<DataGrid x:Name='DiariesGrid'
@@ -125,7 +138,8 @@
 													Grid.RowSpan='4'
 													Margin='6'
 													IsReadOnly='True'
-													SelectionChanged='DiariesGrid_SelectionChanged'>
+													SelectionChanged='DiariesGrid_SelectionChanged'
+													SelectionMode='Single'>
 										<DataGrid.RowDetailsTemplate>
 												<DataTemplate>
 														<Grid>
@@ -185,6 +199,7 @@
 				</GroupBox>
 				<GroupBox Grid.Column='1' Grid.Row='1' Margin='8'>
 						<GroupBox.Header>
+								<Grid>
 								<StackPanel Orientation='Horizontal'>
 								<materialDesign:PackIcon Kind='FilePdfBox'
 																				 MinHeight='22'
@@ -193,6 +208,11 @@
 													 FontSize='16'
 													 VerticalAlignment='Center' />
 								</StackPanel>
+								<StackPanel Orientation='Horizontal'
+														HorizontalAlignment='Right'>
+												<TextBlock Text='Diaries may not appear exactly as they are stored.' VerticalAlignment='Center'/>
+										</StackPanel>
+								</Grid>
 						</GroupBox.Header>
 						<PDFViewer:PdfViewer x:Name='PdfView' />
 				</GroupBox>

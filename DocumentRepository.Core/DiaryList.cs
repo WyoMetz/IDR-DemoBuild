@@ -26,13 +26,19 @@ namespace DocumentRepository.Core
 
 		public static IList<UnitDiary> NeedUploaded()
 		{
-			IList<UnitDiary> list = Diaries.Where(Uploaded => Uploaded.NotUploaded()).ToList();
+			IList<UnitDiary> list = Diaries
+				.Where(Uploaded => Uploaded.NotUploaded())
+				.Where(UDNumber => UDNumber.RegularDiaries())
+				.ToList();
 			return list;
 		}
 
 		public static IList<UnitDiary> Uploaded()
 		{
-			IList<UnitDiary> list = Diaries.Where(Uploaded => !Uploaded.NotUploaded()).ToList();
+			IList<UnitDiary> list = Diaries
+				.Where(UDNumber => UDNumber.RegularDiaries())
+				.Where(Uploaded => !Uploaded.NotUploaded())
+				.ToList();
 			return list;
 		}
 
@@ -40,7 +46,9 @@ namespace DocumentRepository.Core
 		{
 			bool sorter = Int32.TryParse(SearchString, out int sortNumber);
 			if (!sorter) { sortNumber = 0; }
-			IList<UnitDiary> list = Diaries.Where(o => o.UDNumber >= sortNumber).ToList();
+			IList<UnitDiary> list = Diaries
+				.Where(o => o.UDNumber >= sortNumber)
+				.Where(Uploaded => Uploaded.NotUploaded()).ToList();
 			return DiaryPager.SetPaging(list, Records);
 		}
 
@@ -48,7 +56,9 @@ namespace DocumentRepository.Core
 		{
 			bool sorter = Int32.TryParse(SearchString, out int sortNumber);
 			if (!sorter) { sortNumber = 0; }
-			IList<UnitDiary> list = Diaries.Where(o => o.UDNumber >= sortNumber).Where(Uploaded=>Uploaded.NotUploaded()).ToList();
+			IList<UnitDiary> list = Diaries
+				.Where(o => o.UDNumber >= sortNumber)
+				.Where(Uploaded=>Uploaded.NotUploaded()).ToList();
 			return DiaryPager.SetPaging(list, Records);
 		}
 
@@ -56,13 +66,15 @@ namespace DocumentRepository.Core
 		{
 			bool sorter = Int32.TryParse(SearchString, out int sortNumber);
 			if (!sorter) { sortNumber = 0; }
-			IList<UnitDiary> list = Diaries.Where(o => o.CertifierEdipi >= sortNumber).ToList();
+			IList<UnitDiary> list = Diaries
+				.Where(o => o.CertifierEdipi >= sortNumber).ToList();
 			return DiaryPager.SetPaging(list, Records);
 		}
 
 		public static DataTable SearchCertifierLastName(string SearchString)
 		{
-			IList<UnitDiary> list = Diaries.Where(o => o.LastName.StartsWith(SearchString)).ToList();
+			IList<UnitDiary> list = Diaries
+				.Where(o => o.LastName.StartsWith(SearchString)).ToList();
 			return DiaryPager.SetPaging(list, Records);
 		}
 
