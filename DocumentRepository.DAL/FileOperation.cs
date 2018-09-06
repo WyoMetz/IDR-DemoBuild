@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.FileIO;
+﻿using DocumentRepository.Models;
+using Microsoft.VisualBasic.FileIO;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace DocumentRepository.DAL
 
 		public static string CopyFile(string NewFileName, string FileType, string filePath)
 		{
-			string Year = DateTime.Now.Year.ToString();
+			string Year = CommandModel.GetDateContext();
 			string Repository = TargetPath();
 			string finalPath = null;
 

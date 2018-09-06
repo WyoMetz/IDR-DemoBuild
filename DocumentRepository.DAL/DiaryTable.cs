@@ -18,7 +18,7 @@ namespace DocumentRepository.DAL
 		/// <returns>Task Completed</returns>
 		public static async Task<string> InsertBulkDiaryInfoAsync(IList<UnitDiary> InsertStatement)
 		{
-			SQLiteConnection connection = await Database.DbConnect();
+			SQLiteConnection connection = await Database.Connect();
 			try
 			{
 				SQLiteCommand cmd = connection.CreateCommand();
@@ -112,7 +112,7 @@ namespace DocumentRepository.DAL
 		public static async Task<IList<UnitDiary>> ReadDiaryTable(string SQLCommand)
 		{
 			IList<UnitDiary> diaries = new List<UnitDiary>();
-			SQLiteConnection connection = await Database.DbConnect();
+			SQLiteConnection connection = await Database.Connect();
 			try
 			{
 				using (SQLiteCommand cmd = new SQLiteCommand(SQLCommand, connection))
@@ -156,7 +156,7 @@ namespace DocumentRepository.DAL
 
 		public static async Task<string> UpdateUnitDiary(string Command)
 		{
-			SQLiteConnection connection = await Database.DbConnect();
+			SQLiteConnection connection = await Database.Connect();
 			try
 			{
 				SQLiteCommand cmd = connection.CreateCommand();

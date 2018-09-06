@@ -82,13 +82,13 @@
 																</StackPanel>
 														</Expander.Header>
 														<ListView>
-																<ListViewItem x:Name='UploadDiary'
+																<ListViewItem x:Name='UploadDiary' HorizontalAlignment='Center'
 																		Selected='UploadDiary_Selected'>
 																		<StackPanel Orientation='Horizontal'>
 																				<materialDesign:PackIcon Kind='FileMultiple'
 																																 MinHeight='20'
 																																 MinWidth='20' />
-																				<TextBlock Text='Regular Diaries'
+																				<TextBlock Text='Regular Diaries' HorizontalAlignment='Center'
 																									 FontSize='12' Margin='16,0,0,0'/>
 																		</StackPanel>
 																</ListViewItem>
@@ -107,7 +107,7 @@
 																</StackPanel>
 														</Expander.Header>
 												<ListView>
-														<ListViewItem x:Name='ViewDiary'
+														<ListViewItem x:Name='ViewDiary' HorizontalAlignment='Center'
 																							Selected='ViewDiary_Selected'>
 																		<StackPanel Orientation='Horizontal'>
 																				<materialDesign:PackIcon Kind='FileCloud'

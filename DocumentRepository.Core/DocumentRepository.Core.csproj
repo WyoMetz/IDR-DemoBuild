@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CertifiedPackageList.cs" />
+    <Compile Include="CreateDataTable.cs" />
     <Compile Include="DiaryList.cs" />
     <Compile Include="DiaryPager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -13,7 +13,7 @@ namespace DocumentRepository.DAL
 	{
 		public static async Task<string> Insert(string Command)
 		{
-			SQLiteConnection connection = await Database.DbConnect();
+			SQLiteConnection connection = await Database.Connect();
 			try
 			{
 				SQLiteCommand cmd = connection.CreateCommand();
@@ -34,7 +34,7 @@ namespace DocumentRepository.DAL
 		public static async Task<IList<CertifiedPackage>> Read(string Command)
 		{
 			IList<CertifiedPackage> certifiedPackages = new List<CertifiedPackage>();
-			SQLiteConnection connection = await Database.DbConnect();
+			SQLiteConnection connection = await Database.Connect();
 			try
 			{
 				using (SQLiteCommand cmd = new SQLiteCommand(Command, connection))

@@ -8,6 +8,19 @@
 			DateContext = Date;
 		}
 
+		public static string GetDateContext()
+		{
+			return DateContext;
+		}
+
+		public static string CreateDiaryTable()
+		{
+			string Create = string.Format("CREATE TABLE IF NOT EXISTS DiaryTable{0} (UDYear INTEGER, UDNumber INTEGER, UDDate DATE," +
+				" CertifierID VARCHAR(10), CertifierEDIPI INTEGER, LastName VARCHAR(50), CycleDate DATE, CycleNumber INTEGER," +
+				" Accepted INTEGER, Rejected INTEGER, Total INTEGER, Uploaded BOOL, UploadedBy VARCHAR(50), UploadedOn DATE, UploadLocation TEXT);", DateContext);
+			return Create;
+		}
+
 		public static string SelectDiaries()
 		{
 			string Select = string.Format("SELECT RowID, * FROM DiaryTable{0}", DateContext);
@@ -38,14 +51,14 @@
 			return Create;
 		}
 
-		public static string InsertCertifiedPackage(int DiaryID, int UDNumber, string MembersEdipi, string MembersLastName, string MembersFirstName, string MembersMI)
+		public static string InsertCertifiedPackage(int DiaryID, int UDNumber, int MembersEdipi, string MembersLastName, string MembersFirstName, string MembersMI)
 		{
 			string Insert = string.Format("INSERT INTO CertifiedPackages{0}(DiaryKey, UDNumber, MembersEdipi, MembersLastName," +
 				" MembersFirstName, MembersMI) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}', '{6}')", DateContext, DiaryID, UDNumber, MembersEdipi, MembersLastName, MembersFirstName, MembersMI);
 			return Insert;
 		}
 
-		public static string ReadCertifiedPackageTable()
+		public static string SelectCertifiedPackages()
 		{
 			string Select = string.Format("SELECT RowID, * FROM CertifiedPackages{0}", DateContext);
 			return Select;

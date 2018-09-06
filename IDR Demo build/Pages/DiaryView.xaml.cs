@@ -25,7 +25,8 @@ namespace IDR_Demo_build.Pages
 		public DiaryView()
 		{
 			InitializeComponent();
-			DiariesGrid.ItemsSource = DiaryPager.SetPaging(DiaryList.Uploaded(), 10).DefaultView;
+			DiariesGrid.ItemsSource = DiaryPager.SetPaging(DiaryList.Uploaded(), 20).DefaultView;
+			DiaryList.SetRecordsToShow(20);
 		}
 
 		private void DiariesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

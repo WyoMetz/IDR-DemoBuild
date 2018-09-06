@@ -7,7 +7,7 @@ namespace DocumentRepository.DAL
 {
 	class Database
 	{
-		public static async Task<SQLiteConnection> DbConnect()
+		public static async Task<SQLiteConnection> Connect()
 		{
 			string DbLocation = AppSettings.DatabasePath;
 			SQLiteConnection DbConnection = new SQLiteConnection("Data Source=" + DbLocation + ";Version=3;new=False;datetimeformat=CurrentCulture;");
@@ -26,9 +26,9 @@ namespace DocumentRepository.DAL
 		/// Internal Method to Create Tables. Should only be used in Intialization.
 		/// </summary>
 		/// <returns>string statement on Success or Error statement on failure.</returns>
-		public static async Task<string> DiaryTableCreate(string Table)
+		public static async Task<string> CreateTable(string Table)
 		{
-			SQLiteConnection connection = await DbConnect();
+			SQLiteConnection connection = await Connect();
 			try
 			{
 				using (SQLiteCommand cmd = new SQLiteCommand(Table, connection))

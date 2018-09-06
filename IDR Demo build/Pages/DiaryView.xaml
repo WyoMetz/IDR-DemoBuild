@@ -49,6 +49,11 @@
 																<StackPanel Orientation='Horizontal'
 																						Margin='2'>
 																		<TextBlock Text='Initials: ' />
+																		<TextBlock Text='{Binding UDDate}' />
+																</StackPanel>
+																<StackPanel Orientation='Horizontal'
+																						Margin='2'>
+																		<TextBlock Text='Initials: ' />
 																		<TextBlock Text='{Binding CertifierID}' />
 																</StackPanel>
 																<StackPanel Orientation='Horizontal'
@@ -62,7 +67,7 @@
 																		<TextBlock Text='{Binding LastName}' />
 																</StackPanel>
 																<StackPanel Orientation='Horizontal' Margin='2'>
-																		<TextBlock Text='Uploaded By:' />
+																		<TextBlock Text='Uploaded By: ' />
 																		<TextBlock Text='{Binding UploadedBy}' />
 																</StackPanel>
 																<StackPanel Orientation='Horizontal'
@@ -79,8 +84,6 @@
 																				Binding='{Binding UDYear}' />
 										<DataGridTextColumn Header='Diary Number'
 																				Binding='{Binding UDNumber}' />
-										<DataGridTextColumn Header='Dairy Date'
-																				Binding='{Binding UDDate}' />
 										<DataGridTextColumn Header='Cycle Date'
 																				Binding='{Binding CycleDate}' />
 										<DataGridTextColumn Header='Cycle Number'

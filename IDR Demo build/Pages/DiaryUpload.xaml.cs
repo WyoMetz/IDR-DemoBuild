@@ -20,7 +20,8 @@ namespace IDR_Demo_build.Pages
 		{
 			InitializeComponent();
 
-			DiaryGroup.ItemsSource = DiaryPager.SetPaging(DiaryList.NeedUploaded(), 10).DefaultView;
+			DiaryGroup.ItemsSource = DiaryPager.SetPaging(DiaryList.NeedUploaded(), 15).DefaultView;
+			DiaryList.SetRecordsToShow(15);
 		}
 
 		private void ChooseDiary_Click(object sender, RoutedEventArgs e)
@@ -36,12 +37,12 @@ namespace IDR_Demo_build.Pages
 
 		private void ChosenDiary_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			DiaryGroup.ItemsSource = DiaryList.SearchDiaryNumbers(ChosenDiary.Text).DefaultView;
+			DiaryGroup.ItemsSource = DiaryList.SearchNotUploadedDiaryNumber(ChosenDiary.Text).DefaultView;
 		}
 
 		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			DiaryGroup.ItemsSource = DiaryList.SearchDiaryNumbers(SearchBox.Text).DefaultView;
+			DiaryGroup.ItemsSource = DiaryList.SearchNotUploadedDiaryNumber(SearchBox.Text).DefaultView;
 		}
 
 		private void SelectedDiary_TextChanged(object sender, TextChangedEventArgs e)
@@ -61,16 +62,20 @@ namespace IDR_Demo_build.Pages
 				SelectionNumber = row["UDNumber"].ToString();
 				SelectedDiary.Text = SelectionNumber;
 			}
+			if(FilePath != null)
+			{
+				UploadDiary.IsEnabled = true;
+			}
 		}
 
 		private async void UploadDiary_Click(object sender, RoutedEventArgs e)
 		{
 			await Repository.UpdateRegularDiaryAsync(DiaryId, SelectionNumber, FilePath);
 			SnackbarThree.MessageQueue.Enqueue("Diary " + SelectionNumber + " has been updated");
-			UploadDiary.IsEnabled = false;
 			SelectedDiary.Clear();
 			SearchBox.Clear();
 			ChosenDiary.Clear();
+			UploadDiary.IsEnabled = false;
 			DiaryGroup.ItemsSource = DiaryPager.SetPaging(DiaryList.NeedUploaded(), 10).DefaultView;
 		}
 	}
