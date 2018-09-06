@@ -1,0 +1,230 @@
+﻿<Page x:Class="IDR_Demo_build.Pages.CertifiedPackageUpload"
+			xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+			xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+			TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+			TextElement.FontWeight="Regular"
+			TextElement.FontSize="13"
+			TextOptions.TextFormattingMode="Ideal"
+			TextOptions.TextRenderingMode="Auto"
+			FontFamily="{DynamicResource MaterialDesignFont}"
+			xmlns:local="clr-namespace:IDR_Demo_build"
+			xmlns:PDFViewer='clr-namespace:WPF_PDFDocument.Controls'
+			mc:Ignorable="d"
+			Title="Document Repository Version Alpha 0.1"
+			d:DesignWidth='1080'
+			d:DesignHeight='600'>
+		<Grid Margin='86,86,86,22'
+					Background='{DynamicResource MaterialDesignPaper}'>
+				<Grid.Effect>
+						<DropShadowEffect />
+				</Grid.Effect>
+				<Grid.ColumnDefinitions>
+						<ColumnDefinition Width='20*' />
+						<ColumnDefinition Width='20*' />
+						<ColumnDefinition Width='20*' />
+						<ColumnDefinition Width='20*' />
+						<ColumnDefinition Width='20*' />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+						<RowDefinition Height='10*' />
+						<RowDefinition Height='14*' />
+						<RowDefinition Height='18*' />
+						<RowDefinition Height='18*' />
+						<RowDefinition Height='18*' />
+						<RowDefinition Height='18*' />
+						<RowDefinition Height='22*' />
+				</Grid.RowDefinitions>
+				<materialDesign:ColorZone Mode='PrimaryDark'
+																	Grid.ColumnSpan='5'
+																	VerticalAlignment='Stretch'
+																	materialDesign:ShadowAssist.ShadowDepth='Depth2'
+																	CornerRadius='3'>
+						<StackPanel Orientation='Horizontal'
+												VerticalAlignment='Center'
+												Margin='8'>
+								<materialDesign:PackIcon Kind='PlusCircle'
+																				 MinHeight='26'
+																				 MinWidth='30' />
+								<TextBlock Text='Upload a New Certified Package'
+													 FontSize='22'
+													 VerticalAlignment='Center' />
+						</StackPanel>
+				</materialDesign:ColorZone>
+				<Viewbox HorizontalAlignment='Stretch'
+								 Grid.Column='0'
+								 Grid.Row='2'
+								 Grid.RowSpan='5'
+								 VerticalAlignment='Top'
+								 Margin='6'
+								 StretchDirection='DownOnly' MinWidth='170'>
+						<GroupBox>
+								<GroupBox.Header>
+										<StackPanel Orientation='Horizontal'>
+												<materialDesign:PackIcon Kind='FormatListBulleted' />
+												<TextBlock Text='Select a Package to upload' />
+										</StackPanel>
+								</GroupBox.Header>
+								<StackPanel>
+										<TextBox materialDesign:HintAssist.Hint='Search by Diary Number'
+														 materialDesign:HintAssist.IsFloating='True'
+														 x:Name='SearchBox'
+														 TextChanged='SearchBox_TextChanged'
+														 Margin='4' />
+										<TextBox materialDesign:HintAssist.Hint='Search by Certifier EDIPI'
+														 materialDesign:HintAssist.IsFloating='True'
+														 x:Name='EdipiSearch'
+														 Margin='4'
+														 TextChanged='EdipiSearch_TextChanged' />
+										<TextBox materialDesign:HintAssist.Hint='Search by Certifier Last Name'
+														 materialDesign:HintAssist.IsFloating='True'
+														 x:Name='LastNameSearch'
+														 Margin='4'
+														 TextChanged='LastNameSearch_TextChanged' />
+										<DataGrid x:Name='DiaryGroup'
+															AutoGenerateColumns='False'
+															SelectionChanged='DiaryGroup_SelectionChanged'>
+												<DataGrid.RowDetailsTemplate>
+														<DataTemplate>
+																<Grid>
+																		<Grid.ColumnDefinitions>
+																				<ColumnDefinition />
+																				<ColumnDefinition />
+																		</Grid.ColumnDefinitions>
+																		<StackPanel>
+																				<StackPanel Orientation='Horizontal'>
+																						<TextBlock Text='Certifier Last Name: ' />
+																						<TextBlock Text='{Binding LastName}' />
+																				</StackPanel>
+																				<StackPanel Orientation='Horizontal'>
+																						<TextBlock Text='Certifier EDIPI: ' />
+																						<TextBlock Text='{Binding CertifierEdipi}' />
+																				</StackPanel>
+																				<StackPanel Orientation='Horizontal'>
+																						<TextBlock Text='Date of Diary: ' />
+																						<TextBlock Text='{Binding UDDate}' />
+																				</StackPanel>
+																				<StackPanel Orientation='Horizontal'
+																										Grid.Column='1'>
+																						<TextBlock Text='Cycle Number: ' />
+																						<TextBlock Text='{Binding CycleNumber}' />
+																				</StackPanel>
+																				<StackPanel Orientation='Horizontal'
+																										Grid.Column='1'>
+																						<TextBlock Text='Accepted: ' />
+																						<TextBlock Text='{Binding Accepted}' />
+																				</StackPanel>
+																				<StackPanel Orientation='Horizontal'
+																										Grid.Column='1'>
+																						<TextBlock Text='Rejected: ' />
+																						<TextBlock Text='{Binding Rejected}' />
+																				</StackPanel>
+																				<StackPanel Orientation='Horizontal'
+																										Grid.Column='1'>
+																						<TextBlock Text='Total: ' />
+																						<TextBlock Text='{Binding Total}' />
+																				</StackPanel>
+																		</StackPanel>
+																</Grid>
+														</DataTemplate>
+												</DataGrid.RowDetailsTemplate>
+												<DataGrid.Columns>
+														<DataGridTextColumn Header='Diary Year'
+																								Binding='{Binding UDYear}' />
+														<DataGridTextColumn Header='Diary Number'
+																								Binding='{Binding UDNumber}' />
+														<DataGridTextColumn Header='Certifier ID'
+																								Binding='{Binding CertifierID}' />
+												</DataGrid.Columns>
+										</DataGrid>
+								</StackPanel>
+						</GroupBox>
+				</Viewbox>
+				<Viewbox Grid.Column='0'
+								 Grid.Row='1'
+								 Margin='6'>
+						<StackPanel>
+								<TextBlock Text='Select a Document to Upload'
+													 Margin='2' />
+								<Button x:Name='ChooseDiary'
+												Content='Browse'
+												Click='ChooseDiary_Click' />
+								<TextBox x:Name='ChosenDiary'
+												 IsReadOnly='True'
+												 Margin='4' />
+						</StackPanel>
+				</Viewbox>
+				<Viewbox Grid.Column='1'
+								 Grid.Row='2'
+								 Grid.RowSpan='2'
+								 Margin='6'>
+						<StackPanel>
+								<TextBlock Text='Fill in all the following information on the Member' Margin='6'/>
+								<TextBox materialDesign:HintAssist.Hint='Members EDIPI'
+												 x:Name='MembersEDIPI'
+												 materialDesign:HintAssist.IsFloating='True'
+												 TextChanged='MembersEDIPI_TextChanged' />
+								<TextBox materialDesign:HintAssist.Hint='Members Last Name'
+												 x:Name='MembersLastName'
+												 materialDesign:HintAssist.IsFloating='True'
+												 TextChanged='MembersLastName_TextChanged' />
+								<TextBox materialDesign:HintAssist.Hint='Members First Name'
+												 materialDesign:HintAssist.IsFloating='True'
+												 x:Name='MembersFirstName'
+												 TextChanged='MembersFirstName_TextChanged' />
+								<TextBox materialDesign:HintAssist.Hint='Members Middle Initial'
+												 x:Name='MembersMI'
+												 materialDesign:HintAssist.IsFloating='True' />
+						</StackPanel>
+				</Viewbox>
+				<Viewbox Grid.Column='1'
+								 Grid.Row='4'>
+						<StackPanel>
+								<TextBlock Text='Click Upload below to Upload this Package'
+													 Margin='4' />
+								<TextBox x:Name='SelectedDiary'
+												 IsReadOnly='True'
+												 Margin='6'
+												 materialDesign:HintAssist.Hint='Selected Package'
+												 materialDesign:HintAssist.IsFloating='True'
+												 TextChanged='SelectedDiary_TextChanged' />
+								<Button x:Name='UploadDiary'
+												Content='Upload'
+												Click='UploadDiary_Click'
+												IsEnabled='False' />
+								<materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
+																				 x:Name="SnackbarThree" />
+						</StackPanel>
+				</Viewbox>
+				<Viewbox Grid.Column='1'
+								 Grid.Row='1'
+								 Grid.ColumnSpan='4'
+								 Margin='4'>
+						<GroupBox materialDesign:ColorZoneAssist.Mode='Accent'>
+								<GroupBox.Header>
+										<StackPanel Orientation='Horizontal'>
+												<materialDesign:PackIcon Kind='AlertCircle' />
+												<TextBlock Text='Be Sure!' />
+										</StackPanel>
+								</GroupBox.Header>
+								<TextBlock Text='Be Sure the Package you are uploading is a Single Document. If the Package you are trying to upload is in multiple pieces, make sure you combine them into one. If no one in your shop knows how to combine them into one document, contact the Quality Control Branch'
+													 TextWrapping='Wrap' />
+						</GroupBox>
+				</Viewbox>
+				<PDFViewer:PdfViewer x:Name='PdfView'
+														 Grid.Row='2'
+														 Grid.Column='2'
+														 Grid.RowSpan='5'
+														 Grid.ColumnSpan='3'
+														 Margin='8' />
+				<Viewbox Grid.Column='1'
+								 Grid.Row='3'
+								 Margin='6'>
+
+				</Viewbox>
+
+		</Grid>
+</Page>

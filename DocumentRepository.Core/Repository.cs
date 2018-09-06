@@ -70,7 +70,7 @@ namespace DocumentRepository.Core
 		/// <param name="MembersLastName"></param>
 		/// <param name="MembersMI"></param>
 		/// <returns></returns>
-		public static async Task UpdateCertifiedPackageAsync(int DiaryID, int UDNumber, string FilePath, int MembersEdipi, string MembersFirstName, string MembersLastName, string MembersMI)
+		public static async Task UpdateCertifiedPackageAsync(int DiaryID, string UDNumber, string FilePath, int MembersEdipi, string MembersFirstName, string MembersLastName, string MembersMI)
 		{
 			string fileName = UDNumber + '.' + MembersEdipi + ".pdf";
 			Task<string> SaveFile = Task.Run(() => FileOperation.CopyFile(fileName, "Certified Package", FilePath));

@@ -47,7 +47,7 @@ namespace IDR_Demo_build.Pages
 
 		private void SelectedDiary_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (FilePath != null)
+			if (FilePath != null && SelectedDiary.Text != "")
 			{
 				UploadDiary.IsEnabled = true;
 			}
@@ -75,8 +75,9 @@ namespace IDR_Demo_build.Pages
 			SelectedDiary.Clear();
 			SearchBox.Clear();
 			ChosenDiary.Clear();
+			FilePath = null;
 			UploadDiary.IsEnabled = false;
-			DiaryGroup.ItemsSource = DiaryPager.SetPaging(DiaryList.NeedUploaded(), 10).DefaultView;
+			DiaryGroup.ItemsSource = DiaryPager.SetPaging(DiaryList.NeedUploaded(), 15).DefaultView;
 		}
 	}
 }

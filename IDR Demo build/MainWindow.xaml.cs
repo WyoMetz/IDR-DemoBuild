@@ -45,14 +45,21 @@ namespace IDR_Demo_build
 			LeftMenu.IsLeftDrawerOpen = false;
 		}
 
-		private void UploadDiary_Selected(object sender, System.Windows.RoutedEventArgs e)
+		private void UploadPackage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			ContentFrame.Navigate(new Uri("Pages/CertifiedPackageUpload.xaml", UriKind.Relative));
+			HeaderBlock.Text = "Upload a New Certified Package";
+			LeftMenu.IsLeftDrawerOpen = false;
+		}
+
+		private void UploadDiary_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			ContentFrame.Navigate(new Uri("Pages/DiaryUpload.xaml", UriKind.Relative));
 			HeaderBlock.Text = "Upload a New Diary";
 			LeftMenu.IsLeftDrawerOpen = false;
 		}
 
-		private void ViewDiary_Selected(object sender, System.Windows.RoutedEventArgs e)
+		private void ViewDiary_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			ContentFrame.Navigate(new Uri("Pages/DiaryView.xaml", UriKind.Relative));
 			HeaderBlock.Text = "View Uploaded Diaries";

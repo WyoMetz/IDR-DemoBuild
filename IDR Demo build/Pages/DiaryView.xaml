@@ -17,94 +17,180 @@
 			d:DesignHeight="600"
 			d:DesignWidth="1080"
 			Title="DiaryView">
-		<Grid Margin='86,86,86,0'>
+		<Grid Margin='86,86,86,22' Background='{DynamicResource MaterialDesignPaper}'>
+				<Grid.Effect>
+						<DropShadowEffect />
+				</Grid.Effect>
 				<Grid.ColumnDefinitions>
 						<ColumnDefinition />
 						<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<GroupBox Margin='8'>
-						<GroupBox.Header>
-								<StackPanel Orientation='Horizontal'>
-								<materialDesign:PackIcon Kind='ViewList'
+				<Grid.RowDefinitions>
+						<RowDefinition Height='8*'/>
+						<RowDefinition Height='92*'/>
+				</Grid.RowDefinitions>
+				<materialDesign:ColorZone Mode='PrimaryDark'
+																	Grid.ColumnSpan='2'
+																	VerticalAlignment='Stretch'
+																	materialDesign:ShadowAssist.ShadowDepth='Depth2'
+																	CornerRadius='3'>
+						<StackPanel Orientation='Horizontal'
+												VerticalAlignment='Center'
+												Margin='6'>
+								<materialDesign:PackIcon Kind='FileCloud'
 																				 MinHeight='36'
 																				 MinWidth='36' />
-										<TextBlock Text='Uploaded Diary Information'
-															 FontSize='18' VerticalAlignment='Center'/>
-								</StackPanel>
+								<TextBlock Text='Uploaded Diaries'
+													 FontSize='18'
+													 VerticalAlignment='Center' />
+						</StackPanel>
+				</materialDesign:ColorZone>
+				<GroupBox Margin='8'
+									Grid.Row='1'>
+						<GroupBox.Header>
+								<Grid>
+										<Grid.ColumnDefinitions>
+												<ColumnDefinition Width='25*'/>
+												<ColumnDefinition Width='75*'/>
+										</Grid.ColumnDefinitions>
+										<Viewbox VerticalAlignment='Center' Margin='0,0,4,6'>
+										<StackPanel Orientation='Horizontal'
+																VerticalAlignment='Center'>
+												<materialDesign:PackIcon Kind='FormatListBulleted'
+																								 MinHeight='22'
+																								 MinWidth='22' />
+												<TextBlock Text='Uploaded Diaries'
+																	 FontSize='16' VerticalAlignment='Center'/>
+										</StackPanel>
+										</Viewbox>
+										<Viewbox Grid.Column='1' Margin='24,0,0,0'>
+												<StackPanel Orientation='Horizontal'
+																		HorizontalAlignment='Right'>
+														<TextBlock Text='Number of Records Per Page:'
+																			 Margin='3'
+																			 VerticalAlignment='Center' />
+														<ComboBox x:Name='Records'
+																			Margin='4' />
+														<Button x:Name='First'
+																		Content='&lt;&lt;'
+																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																		Margin='2' />
+														<Button x:Name='Previous'
+																		Content='&lt;'
+																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																		Margin='2' />
+														<TextBlock x:Name='NumberDisplay'
+																			 Text='Showing 50 of 14000'
+																			 VerticalAlignment='Center'
+																			 Margin='6' />
+														<Button x:Name='Next'
+																		Content='&gt;'
+																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																		Margin='2' />
+														<Button x:Name='Last'
+																		Content='&gt;&gt;'
+																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																		Margin='2' />
+
+												</StackPanel>
+										</Viewbox>
+								</Grid>
 						</GroupBox.Header>
-						<DataGrid x:Name='DiariesGrid'
-											AutoGenerateColumns='False'
-											Grid.Column='1'
-											Grid.Row='1'
-											Grid.ColumnSpan='4'
-											Grid.RowSpan='4'
-											Margin='6'
-											IsReadOnly='True'
-											SelectionChanged='DiariesGrid_SelectionChanged'>
-								<DataGrid.RowDetailsTemplate>
-										<DataTemplate>
-												<Grid>
-														<StackPanel>
-																<TextBlock Text='Certifier Info:' />
-																<StackPanel Orientation='Horizontal'
-																						Margin='2'>
-																		<TextBlock Text='Initials: ' />
-																		<TextBlock Text='{Binding UDDate}' />
+						<Grid>
+								<Grid.RowDefinitions>
+										<RowDefinition Height='8*' />
+										<RowDefinition Height='92*' />
+								</Grid.RowDefinitions>
+								<Viewbox Grid.Row='0'>
+								<StackPanel Orientation='Horizontal'>
+										<TextBox materialDesign:HintAssist.Hint='Search by Diary Number'
+														 materialDesign:HintAssist.IsFloating='true'
+														 Margin='4' />
+										<TextBox materialDesign:HintAssist.Hint='Search by Certifier Edipi'
+														 materialDesign:HintAssist.IsFloating='True'
+														 Margin='4' />
+										<TextBox materialDesign:HintAssist.Hint='Search by Certifier Last Name'
+														 materialDesign:HintAssist.IsFloating='True'
+														 Margin='4' />
+										<TextBox materialDesign:HintAssist.Hint='Search By Uploader'
+															 materialDesign:HintAssist.IsFloating='True'
+															 Margin='4'/>
+								</StackPanel>
+								</Viewbox>
+								<DataGrid x:Name='DiariesGrid'
+													AutoGenerateColumns='False'
+													Grid.Column='1'
+													Grid.Row='1'
+													Grid.ColumnSpan='4'
+													Grid.RowSpan='4'
+													Margin='6'
+													IsReadOnly='True'
+													SelectionChanged='DiariesGrid_SelectionChanged'>
+										<DataGrid.RowDetailsTemplate>
+												<DataTemplate>
+														<Grid>
+																<StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Margin='2'>
+																				<TextBlock Text='Dairy Date: ' />
+																				<TextBlock Text='{Binding UDDate}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Margin='2'>
+																				<TextBlock Text='Cycle Date: ' />
+																				<TextBlock Text='{Binding CycleDate}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Margin='2'>
+																				<TextBlock Text='Certifier Initial: ' />
+																				<TextBlock Text='{Binding CertifierID}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Margin='2'>
+																				<TextBlock Text='EDIPI: ' />
+																				<TextBlock Text='{Binding CertifierEdipi}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Margin='2'>
+																				<TextBlock Text='Last Name: ' />
+																				<TextBlock Text='{Binding LastName}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Margin='2'>
+																				<TextBlock Text='Uploaded By: ' />
+																				<TextBlock Text='{Binding UploadedBy}' />
+																		</StackPanel>
 																</StackPanel>
-																<StackPanel Orientation='Horizontal'
-																						Margin='2'>
-																		<TextBlock Text='Initials: ' />
-																		<TextBlock Text='{Binding CertifierID}' />
-																</StackPanel>
-																<StackPanel Orientation='Horizontal'
-																						Margin='2'>
-																		<TextBlock Text='EDIPI: ' />
-																		<TextBlock Text='{Binding CertifierEdipi}' />
-																</StackPanel>
-																<StackPanel Orientation='Horizontal'
-																						Margin='2'>
-																		<TextBlock Text='Last Name: ' />
-																		<TextBlock Text='{Binding LastName}' />
-																</StackPanel>
-																<StackPanel Orientation='Horizontal' Margin='2'>
-																		<TextBlock Text='Uploaded By: ' />
-																		<TextBlock Text='{Binding UploadedBy}' />
-																</StackPanel>
-																<StackPanel Orientation='Horizontal'
-																						Margin='2'>
-																		<TextBlock Text='Uploaded On: ' />
-																		<TextBlock Text='{Binding UploadedOn}' />
-																</StackPanel>
-														</StackPanel>
-												</Grid>
-										</DataTemplate>
-								</DataGrid.RowDetailsTemplate>
-								<DataGrid.Columns>
-										<DataGridTextColumn Header='Diary Year'
-																				Binding='{Binding UDYear}' />
-										<DataGridTextColumn Header='Diary Number'
-																				Binding='{Binding UDNumber}' />
-										<DataGridTextColumn Header='Cycle Date'
-																				Binding='{Binding CycleDate}' />
-										<DataGridTextColumn Header='Cycle Number'
-																				Binding='{Binding CycleNumber}' />
-										<DataGridTextColumn Header='Accepted'
-																				Binding='{Binding Accepted}' />
-										<DataGridTextColumn Header='Rejected'
-																				Binding='{Binding Rejected}' />
-										<DataGridTextColumn Header='Total'
-																				Binding='{Binding Total}' />
-								</DataGrid.Columns>
-						</DataGrid>
+														</Grid>
+												</DataTemplate>
+										</DataGrid.RowDetailsTemplate>
+										<DataGrid.Columns>
+												<DataGridTextColumn Header='Diary Year'
+																						Binding='{Binding UDYear}' />
+												<DataGridTextColumn Header='Diary Number'
+																						Binding='{Binding UDNumber}' />
+												<DataGridTextColumn Header='Cycle Number'
+																						Binding='{Binding CycleNumber}' />
+												<DataGridTextColumn Header='Accepted'
+																						Binding='{Binding Accepted}' />
+												<DataGridTextColumn Header='Rejected'
+																						Binding='{Binding Rejected}' />
+												<DataGridTextColumn Header='Total'
+																						Binding='{Binding Total}' />
+												<DataGridTextColumn Header='Uploaded By'
+																						Binding='{Binding UploadedBy}' />
+										</DataGrid.Columns>
+								</DataGrid>
+						</Grid>
 				</GroupBox>
-				<GroupBox Grid.Column='1' Margin='8'>
+				<GroupBox Grid.Column='1' Grid.Row='1' Margin='8'>
 						<GroupBox.Header>
 								<StackPanel Orientation='Horizontal'>
 								<materialDesign:PackIcon Kind='FilePdfBox'
-																				 MinHeight='36'
-																				 MinWidth='36' />
-								<TextBlock Text='View Uploaded Diary'
-													 FontSize='18'
+																				 MinHeight='22'
+																				 MinWidth='22' />
+								<TextBlock Text='Diary View'
+													 FontSize='16'
 													 VerticalAlignment='Center' />
 								</StackPanel>
 						</GroupBox.Header>

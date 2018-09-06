@@ -27,6 +27,13 @@ namespace IDR_Demo_build.Pages
 			InitializeComponent();
 			DiariesGrid.ItemsSource = DiaryPager.SetPaging(DiaryList.Uploaded(), 20).DefaultView;
 			DiaryList.SetRecordsToShow(20);
+			int[] RecordsToDisplay = { 20, 50, 100, 500, 1000 };
+			foreach (int RecordGroup in RecordsToDisplay)
+			{
+				Records.Items.Add(RecordGroup);
+			}
+			Records.SelectedItem = 20;
+			int RecordsDisplay = Convert.ToInt32(Records.SelectedItem);
 		}
 
 		private void DiariesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -37,5 +44,6 @@ namespace IDR_Demo_build.Pages
 				PdfView.PdfPath = row["UploadLocation"].ToString();
 			}
 		}
+
 	}
 }

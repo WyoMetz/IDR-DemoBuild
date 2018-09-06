@@ -17,7 +17,7 @@
 		{
 			string Create = string.Format("CREATE TABLE IF NOT EXISTS DiaryTable{0} (UDYear INTEGER, UDNumber INTEGER, UDDate DATE," +
 				" CertifierID VARCHAR(10), CertifierEDIPI INTEGER, LastName VARCHAR(50), CycleDate DATE, CycleNumber INTEGER," +
-				" Accepted INTEGER, Rejected INTEGER, Total INTEGER, Uploaded BOOL, UploadedBy VARCHAR(50), UploadedOn DATE, UploadLocation TEXT);", DateContext);
+				" Accepted INTEGER, Rejected INTEGER, Total INTEGER, Uploaded BOOL, UploadedBy VARCHAR(50), UploadedOn DATE, UploadLocation TEXT)", DateContext);
 			return Create;
 		}
 
@@ -51,7 +51,7 @@
 			return Create;
 		}
 
-		public static string InsertCertifiedPackage(int DiaryID, int UDNumber, int MembersEdipi, string MembersLastName, string MembersFirstName, string MembersMI)
+		public static string InsertCertifiedPackage(int DiaryID, string UDNumber, int MembersEdipi, string MembersLastName, string MembersFirstName, string MembersMI)
 		{
 			string Insert = string.Format("INSERT INTO CertifiedPackages{0}(DiaryKey, UDNumber, MembersEdipi, MembersLastName," +
 				" MembersFirstName, MembersMI) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}', '{6}')", DateContext, DiaryID, UDNumber, MembersEdipi, MembersLastName, MembersFirstName, MembersMI);
@@ -60,7 +60,7 @@
 
 		public static string SelectCertifiedPackages()
 		{
-			string Select = string.Format("SELECT RowID, * FROM CertifiedPackages{0}", DateContext);
+			string Select = string.Format("SELECT * FROM DiaryTable{0} JOIN CertifiedPackages{0} ON DiaryTable{0}.RowID = CertifiedPackages{0}.DiaryKey", DateContext);
 			return Select;
 		}
 	}

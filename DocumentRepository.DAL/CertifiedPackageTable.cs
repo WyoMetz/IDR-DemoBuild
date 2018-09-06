@@ -1,11 +1,10 @@
-﻿using System;
+﻿using DocumentRepository.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SQLite;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using DocumentRepository.Models;
 
 namespace DocumentRepository.DAL
 {
@@ -45,13 +44,27 @@ namespace DocumentRepository.DAL
 						{
 							certifiedPackages.Add(new CertifiedPackage
 							{
-								PackageID = reader.GetInt32(0),
-								DiaryID = reader.GetInt32(1),
-								UDNumber = reader.GetInt32(2),
-								MembersEdipi = reader.GetInt32(3),
-								MembersLastName = reader.GetString(4),
-								MembersFirstName = reader.GetString(5),
-								MembersMI = reader.GetString(6)
+								DiaryID = 0,
+								UDYear = reader.GetInt32(0),
+								UDNumber = reader.GetInt32(1),
+								UDDate = reader.GetDateTime(2),
+								CertifierID = reader.GetString(3),
+								CertifierEdipi = reader.GetInt32(4),
+								LastName = reader.GetString(5),
+								CycleDate = reader.GetDateTime(6),
+								CycleNumber = reader.GetInt32(7),
+								Accepted = reader.GetInt32(8),
+								Rejected = reader.GetInt32(9),
+								Total = reader.GetInt32(10),
+								Uploaded = reader.GetString(11),
+								UploadedBy = reader.GetString(12),
+								UploadedOn = reader.GetDateTime(13),
+								UploadLocation = reader.GetString(14),
+								PackageID = reader.GetInt32(15),
+								MembersEdipi = reader.GetInt32(16),
+								MembersLastName = reader.GetString(17),
+								MembersFirstName = reader.GetString(18),
+								MembersMI = reader.GetString(19)
 							});
 						}
 						reader.Close();

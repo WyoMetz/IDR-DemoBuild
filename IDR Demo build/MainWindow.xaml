@@ -82,14 +82,28 @@
 																</StackPanel>
 														</Expander.Header>
 														<ListView>
-																<ListViewItem x:Name='UploadDiary' HorizontalAlignment='Center'
-																		Selected='UploadDiary_Selected'>
+																<ListViewItem x:Name='UploadDiary'
+																							MouseLeftButtonUp='UploadDiary_MouseLeftButtonUp'>
 																		<StackPanel Orientation='Horizontal'>
 																				<materialDesign:PackIcon Kind='FileMultiple'
 																																 MinHeight='20'
 																																 MinWidth='20' />
-																				<TextBlock Text='Regular Diaries' HorizontalAlignment='Center'
-																									 FontSize='12' Margin='16,0,0,0'/>
+																				<TextBlock Text='Regular Diaries'
+																									 HorizontalAlignment='Center'
+																									 FontSize='16'
+																									 Margin='16,0,0,0' />
+																		</StackPanel>
+																</ListViewItem>
+																<ListViewItem x:Name='UploadPackage'
+																							MouseLeftButtonUp='UploadPackage_MouseLeftButtonUp'>
+																		<StackPanel Orientation='Horizontal'>
+																				<materialDesign:PackIcon Kind='FileAccount'
+																																 MinHeight='20'
+																																 MinWidth='20' />
+																				<TextBlock Text='Certified Pacakges'
+																									 HorizontalAlignment='Center'
+																									 FontSize='16'
+																									 Margin='16,0,0,0' />
 																		</StackPanel>
 																</ListViewItem>
 														</ListView>
@@ -106,19 +120,19 @@
 																							 Margin='16,0,0,0' />
 																</StackPanel>
 														</Expander.Header>
-												<ListView>
-														<ListViewItem x:Name='ViewDiary' HorizontalAlignment='Center'
-																							Selected='ViewDiary_Selected'>
+														<ListView>
+																<ListViewItem x:Name='ViewDiary'
+																							MouseLeftButtonUp='ViewDiary_MouseLeftButtonUp'>
 																		<StackPanel Orientation='Horizontal'>
 																				<materialDesign:PackIcon Kind='FileCloud'
 																																 MinHeight='20'
 																																 MinWidth='20' />
 																				<TextBlock Text='View Regular Diaries'
-																									 FontSize='12'
+																									 FontSize='16'
 																									 Margin='16,0,0,0' />
 																		</StackPanel>
 																</ListViewItem>
-												</ListView>
+														</ListView>
 												</Expander>
 										</StackPanel>
 								</DockPanel>
