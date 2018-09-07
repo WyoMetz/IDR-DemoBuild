@@ -15,7 +15,6 @@ namespace IDR_Demo_build.Pages
 		{
 			InitializeComponent();
 			DiariesGrid.ItemsSource = DiaryPager.SetPaging(DiaryList.Uploaded(), 20).DefaultView;
-			DiaryList.SetRecordsToShow(20);
 			DiarySearch.SetRecordsToShow(20);
 			int[] RecordsToDisplay = { 20, 50, 100, 500, 1000 };
 			foreach (int RecordGroup in RecordsToDisplay)

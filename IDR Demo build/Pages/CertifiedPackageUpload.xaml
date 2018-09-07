@@ -54,95 +54,121 @@
 													 VerticalAlignment='Center' />
 						</StackPanel>
 				</materialDesign:ColorZone>
-				<Viewbox HorizontalAlignment='Stretch'
-								 Grid.Column='0'
-								 Grid.Row='2'
-								 Grid.RowSpan='5'
-								 VerticalAlignment='Top'
-								 Margin='6'
-								 StretchDirection='DownOnly' MinWidth='170'>
-						<GroupBox>
-								<GroupBox.Header>
-										<StackPanel Orientation='Horizontal'>
-												<materialDesign:PackIcon Kind='FormatListBulleted' />
-												<TextBlock Text='Select a Package to upload' />
-										</StackPanel>
-								</GroupBox.Header>
-								<StackPanel>
-										<TextBox materialDesign:HintAssist.Hint='Search by Diary Number'
+				<GroupBox Grid.Row='2'
+									Grid.RowSpan='5'>
+						<GroupBox.Header>
+								<StackPanel Orientation='Horizontal'>
+										<materialDesign:PackIcon Kind='FormatListBulleted' />
+										<TextBlock Text='Select a Package to upload' />
+								</StackPanel>
+						</GroupBox.Header>
+						<Grid>
+								<Grid.RowDefinitions>
+										<RowDefinition Height='10*' />
+										<RowDefinition Height='90*' />
+								</Grid.RowDefinitions>
+								<Grid>
+										<Grid.ColumnDefinitions>
+												<ColumnDefinition />
+												<ColumnDefinition />
+												<ColumnDefinition />
+										</Grid.ColumnDefinitions>
+										<Grid.RowDefinitions>
+												<RowDefinition Height='25*'/>
+												<RowDefinition Height='75*'/>
+										</Grid.RowDefinitions>
+										<Viewbox Grid.Column='1'
+														 Grid.Row='0'>
+												<TextBlock Text='Search By:' />
+										</Viewbox>
+										<Viewbox Grid.Column='0' Grid.Row='1' VerticalAlignment='Bottom'>
+										<TextBox materialDesign:HintAssist.Hint='Diary Number'
 														 materialDesign:HintAssist.IsFloating='True'
 														 x:Name='SearchBox'
 														 TextChanged='SearchBox_TextChanged'
+														 Grid.Column='0'
 														 Margin='4' />
-										<TextBox materialDesign:HintAssist.Hint='Search by Certifier EDIPI'
+										</Viewbox>
+										<Viewbox Grid.Column='1'
+														 Grid.Row='1'
+														 VerticalAlignment='Bottom'>
+										<TextBox materialDesign:HintAssist.Hint='Certifier EDIPI'
 														 materialDesign:HintAssist.IsFloating='True'
 														 x:Name='EdipiSearch'
 														 Margin='4'
+														 Grid.Column='1'
 														 TextChanged='EdipiSearch_TextChanged' />
-										<TextBox materialDesign:HintAssist.Hint='Search by Certifier Last Name'
+										</Viewbox>
+										<Viewbox Grid.Column='2'
+														 Grid.Row='1'
+														 VerticalAlignment='Bottom'>
+										<TextBox materialDesign:HintAssist.Hint='Certifier Last Name'
 														 materialDesign:HintAssist.IsFloating='True'
 														 x:Name='LastNameSearch'
 														 Margin='4'
+														 Grid.Column='2'
 														 TextChanged='LastNameSearch_TextChanged' />
-										<DataGrid x:Name='DiaryGroup'
-															AutoGenerateColumns='False'
-															SelectionChanged='DiaryGroup_SelectionChanged'>
-												<DataGrid.RowDetailsTemplate>
-														<DataTemplate>
-																<Grid>
-																		<Grid.ColumnDefinitions>
-																				<ColumnDefinition />
-																				<ColumnDefinition />
-																		</Grid.ColumnDefinitions>
-																		<StackPanel>
-																				<StackPanel Orientation='Horizontal'>
-																						<TextBlock Text='Certifier Last Name: ' />
-																						<TextBlock Text='{Binding LastName}' />
-																				</StackPanel>
-																				<StackPanel Orientation='Horizontal'>
-																						<TextBlock Text='Certifier EDIPI: ' />
-																						<TextBlock Text='{Binding CertifierEdipi}' />
-																				</StackPanel>
-																				<StackPanel Orientation='Horizontal'>
-																						<TextBlock Text='Date of Diary: ' />
-																						<TextBlock Text='{Binding UDDate}' />
-																				</StackPanel>
-																				<StackPanel Orientation='Horizontal'
-																										Grid.Column='1'>
-																						<TextBlock Text='Cycle Number: ' />
-																						<TextBlock Text='{Binding CycleNumber}' />
-																				</StackPanel>
-																				<StackPanel Orientation='Horizontal'
-																										Grid.Column='1'>
-																						<TextBlock Text='Accepted: ' />
-																						<TextBlock Text='{Binding Accepted}' />
-																				</StackPanel>
-																				<StackPanel Orientation='Horizontal'
-																										Grid.Column='1'>
-																						<TextBlock Text='Rejected: ' />
-																						<TextBlock Text='{Binding Rejected}' />
-																				</StackPanel>
-																				<StackPanel Orientation='Horizontal'
-																										Grid.Column='1'>
-																						<TextBlock Text='Total: ' />
-																						<TextBlock Text='{Binding Total}' />
-																				</StackPanel>
+										</Viewbox>
+								</Grid>
+								<DataGrid x:Name='DiaryGroup'
+													AutoGenerateColumns='False'
+													Grid.Row='1'
+													SelectionChanged='DiaryGroup_SelectionChanged'>
+										<DataGrid.RowDetailsTemplate>
+												<DataTemplate>
+														<Grid>
+																<Grid.ColumnDefinitions>
+																		<ColumnDefinition />
+																		<ColumnDefinition />
+																</Grid.ColumnDefinitions>
+																<StackPanel>
+																		<StackPanel Orientation='Horizontal'>
+																				<TextBlock Text='Certifier Last Name: ' />
+																				<TextBlock Text='{Binding LastName}' />
 																		</StackPanel>
-																</Grid>
-														</DataTemplate>
-												</DataGrid.RowDetailsTemplate>
-												<DataGrid.Columns>
-														<DataGridTextColumn Header='Diary Year'
-																								Binding='{Binding UDYear}' />
-														<DataGridTextColumn Header='Diary Number'
-																								Binding='{Binding UDNumber}' />
-														<DataGridTextColumn Header='Certifier ID'
-																								Binding='{Binding CertifierID}' />
-												</DataGrid.Columns>
-										</DataGrid>
-								</StackPanel>
-						</GroupBox>
-				</Viewbox>
+																		<StackPanel Orientation='Horizontal'>
+																				<TextBlock Text='Certifier EDIPI: ' />
+																				<TextBlock Text='{Binding CertifierEdipi}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'>
+																				<TextBlock Text='Date of Diary: ' />
+																				<TextBlock Text='{Binding UDDate}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Grid.Column='1'>
+																				<TextBlock Text='Cycle Number: ' />
+																				<TextBlock Text='{Binding CycleNumber}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Grid.Column='1'>
+																				<TextBlock Text='Accepted: ' />
+																				<TextBlock Text='{Binding Accepted}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Grid.Column='1'>
+																				<TextBlock Text='Rejected: ' />
+																				<TextBlock Text='{Binding Rejected}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Grid.Column='1'>
+																				<TextBlock Text='Total: ' />
+																				<TextBlock Text='{Binding Total}' />
+																		</StackPanel>
+																</StackPanel>
+														</Grid>
+												</DataTemplate>
+										</DataGrid.RowDetailsTemplate>
+										<DataGrid.Columns>
+												<DataGridTextColumn Header='Diary Year'
+																						Binding='{Binding UDYear}' />
+												<DataGridTextColumn Header='Diary Number'
+																						Binding='{Binding UDNumber}' />
+												<DataGridTextColumn Header='Certifier ID'
+																						Binding='{Binding CertifierID}' />
+										</DataGrid.Columns>
+								</DataGrid>
+						</Grid>
+				</GroupBox>
 				<Viewbox Grid.Column='0'
 								 Grid.Row='1'
 								 Margin='6'>
@@ -162,7 +188,8 @@
 								 Grid.RowSpan='2'
 								 Margin='6'>
 						<StackPanel>
-								<TextBlock Text='Fill in all the following information on the Member' Margin='6'/>
+								<TextBlock Text='Fill in all the following information on the Member'
+													 Margin='6' />
 								<TextBox materialDesign:HintAssist.Hint='Members EDIPI'
 												 x:Name='MembersEDIPI'
 												 materialDesign:HintAssist.IsFloating='True'

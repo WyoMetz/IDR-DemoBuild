@@ -46,6 +46,8 @@
     <Compile Include="DiaryList.cs" />
     <Compile Include="DiaryPager.cs" />
     <Compile Include="DiarySearch.cs" />
+    <Compile Include="PackagePager.cs" />
+    <Compile Include="PackageSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
   </ItemGroup>

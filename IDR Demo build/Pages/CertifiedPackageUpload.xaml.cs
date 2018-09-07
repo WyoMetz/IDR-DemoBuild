@@ -21,7 +21,7 @@ namespace IDR_Demo_build.Pages
 			InitializeComponent();
 
 			CertifiedPackageList.SetRecordsToShow(15);
-			DiaryGroup.ItemsSource = DiaryPager.SetPaging(CertifiedPackageList.NeedUploaded(), 15).DefaultView;
+			DiaryGroup.ItemsSource = DiaryPager.SetPaging(CertifiedPackageList.NotUploaded(), 15).DefaultView;
 		}
 
 		private void ChooseDiary_Click(object sender, RoutedEventArgs e)
@@ -35,33 +35,33 @@ namespace IDR_Demo_build.Pages
 			}
 		}
 
+		public int Converter(string Text)
+		{
+			bool sorter = Int32.TryParse(Text, out int number);
+			if (!sorter) { number = 0; }
+			return number;
+		}
+
 		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			DiaryGroup.ItemsSource = CertifiedPackageList.SearchNotUploadedUDNumber(SearchBox.Text).DefaultView;
+			DiaryGroup.ItemsSource = PackageSearch.ByNotUploaded(Converter(SearchBox.Text)).DefaultView;
 		}
 
 		private void EdipiSearch_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			if (SearchBox.Text == "")
 			{
-				DiaryGroup.ItemsSource = CertifiedPackageList.SearchNotUploadedCertEdipi(EdipiSearch.Text).DefaultView;
+				DiaryGroup.ItemsSource = PackageSearch.ByNotUploadedCert(Converter(EdipiSearch.Text)).DefaultView;
 			}
 			else
 			{
-				DiaryGroup.ItemsSource = CertifiedPackageList.SearchNotUploadedUDNumber(SearchBox.Text, EdipiSearch.Text).DefaultView;
+				DiaryGroup.ItemsSource = PackageSearch.ByNotUploaded(Converter(SearchBox.Text), Converter(EdipiSearch.Text)).DefaultView;
 			}
 		}
 
 		private void LastNameSearch_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (SearchBox.Text == "")
-			{
-				DiaryGroup.ItemsSource = CertifiedPackageList.SearchNotUploadedCertLastName(LastNameSearch.Text).DefaultView;
-			}
-			else
-			{
-				DiaryGroup.ItemsSource = CertifiedPackageList.SearchNotUploadedCertLastName(LastNameSearch.Text, SearchBox.Text).DefaultView;
-			}
+			DiaryGroup.ItemsSource = PackageSearch.ByNotUploadedCert(LastNameSearch.Text).DefaultView;
 		}
 
 		private void DiaryGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -108,7 +108,7 @@ namespace IDR_Demo_build.Pages
 			MembersLastName.Clear();
 			MembersMI.Clear();
 			UploadDiary.IsEnabled = false;
-			DiaryGroup.ItemsSource = DiaryPager.SetPaging(CertifiedPackageList.NeedUploaded(), 15).DefaultView;
+			DiaryGroup.ItemsSource = DiaryPager.SetPaging(CertifiedPackageList.NotUploaded(), 15).DefaultView;
 		}
 
 		private void MembersEDIPI_TextChanged(object sender, TextChangedEventArgs e)

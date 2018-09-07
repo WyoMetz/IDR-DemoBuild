@@ -24,84 +24,52 @@ namespace DocumentRepository.Core
 			Records = Amount;
 		}
 
-		public static IList<UnitDiary> NeedUploaded()
+		public static IList<UnitDiary> NotUploaded()
 		{
 			IList<UnitDiary> list = DiaryList.Diaries
 				.Where(UDNumber => UDNumber.CertifiedPackages())
+				.Where(Uploaded => Uploaded.NotUploaded())
 				.ToList();
 			return list;
 		}
 
-		public static DataTable SearchNotUploadedUDNumber(string SearchString)
+		public static IList<CertifiedPackage> Uploaded()
 		{
-			bool sorter = Int32.TryParse(SearchString, out int sortNumber);
-			if (!sorter) { sortNumber = 0; }
-			IList<UnitDiary> list = DiaryList.Diaries
-				.Where(o => o.UDNumber >= sortNumber)
-				.Where(UDNumber => UDNumber.CertifiedPackages())
-				.ToList();
-			return DiaryPager.SetPaging(list, Records);
+			IList<CertifiedPackage> list = Packages;
+			return list;
 		}
 
-		public static DataTable SearchNotUploadedUDNumber(string DiaryNumber, string CertEdipi)
+		public static void UpdateList(int DiaryId, string UserName, string Date, string FileSaveLocation, int MembersEdipi, string MembersLastName, string MembersFirstName, string MembersMI)
 		{
-			bool sorter = Int32.TryParse(DiaryNumber, out int sortNumber);
-			if (!sorter) { sortNumber = 0; }
-			bool sorter2 = Int32.TryParse(CertEdipi, out int sortNumber2);
-			if (!sorter2) { sortNumber2 = 0; }
-			IList<UnitDiary> list = DiaryList.Diaries
-				.Where(o => o.UDNumber >= sortNumber)
-				.Where(o => o.CertifierEdipi <= sortNumber2)
-				.Where(UDNumber => UDNumber.CertifiedPackages())
-				.ToList();
-			return DiaryPager.SetPaging(list, Records);
+			var Diary = DiaryList.Diaries.First(i => i.DiaryID == DiaryId);
+			Diary.Uploaded = "True";
+			Diary.UploadedBy = UserName;
+			Diary.UploadedOn = DateTime.Parse(Date);
+			Diary.UploadLocation = FileSaveLocation;
+			Packages.Add(new CertifiedPackage
+			{
+				 DiaryID = Diary.DiaryID,
+				 UDYear = Diary.UDYear,
+				 UDNumber = Diary.UDNumber,
+				 UDDate = Diary.UDDate,
+				 CertifierID = Diary.CertifierID,
+				 CertifierEdipi = Diary.CertifierEdipi,
+				 LastName = Diary.LastName,
+				 CycleDate = Diary.CycleDate,
+				 CycleNumber = Diary.CycleNumber,
+				 Accepted = Diary.Accepted,
+				 Rejected = Diary.Rejected,
+				 Total = Diary.Total,
+				 Uploaded = Diary.Uploaded,
+				 UploadedBy = Diary.UploadedBy,
+				 UploadedOn = Diary.UploadedOn,
+				 UploadLocation = Diary.UploadLocation,
+				 PackageID = DiaryId,
+				 MembersEdipi = MembersEdipi,
+				 MembersLastName = MembersLastName,
+				 MembersFirstName = MembersFirstName,
+				 MembersMI = MembersMI
+			});
 		}
-
-		public static DataTable SearchNotUploadedUDNumber(string DiaryNumber, string CertEdipi, string CertLastName)
-		{
-			bool sorter = Int32.TryParse(DiaryNumber, out int sortNumber);
-			if (!sorter) { sortNumber = 0; }
-			bool sorter2 = Int32.TryParse(CertEdipi, out int sortNumber2);
-			if (!sorter2) { sortNumber2 = 0; }
-			IList<UnitDiary> list = DiaryList.Diaries
-				.Where(o => o.UDNumber >= sortNumber)
-				.Where(o => o.CertifierEdipi <= sortNumber2)
-				.Where(o => o.LastName.Contains(CertLastName.ToUpper()))
-				.ToList();
-			return DiaryPager.SetPaging(list, Records);
-		}
-
-		public static DataTable SearchNotUploadedCertEdipi(string SearchString)
-		{
-			bool sorter = Int32.TryParse(SearchString, out int sortNumber);
-			if (!sorter) { sortNumber = 0; }
-			IList<UnitDiary> list = DiaryList.Diaries
-				.Where(o => o.CertifierEdipi <= sortNumber)
-				.Where(UDNumber => UDNumber.CertifiedPackages())
-				.ToList();
-			return DiaryPager.SetPaging(list, Records);
-		}
-
-		public static DataTable SearchNotUploadedCertLastName(string SearchString)
-		{
-			IList<UnitDiary> list = DiaryList.Diaries
-				.Where(o => o.LastName.Contains(SearchString.ToUpper()))
-				.Where(UDNumber => UDNumber.CertifiedPackages())
-				.ToList();
-			return DiaryPager.SetPaging(list, Records);
-		}
-
-		public static DataTable SearchNotUploadedCertLastName(string CertLastName, string DiaryNumber)
-		{
-			bool sorter = Int32.TryParse(DiaryNumber, out int sortNumber);
-			if (!sorter) { sortNumber = 0; }
-			IList<UnitDiary> list = DiaryList.Diaries
-				.Where(o => o.LastName.Contains(CertLastName.ToUpper()))
-				.Where(o => o.UDNumber >= sortNumber)
-				.Where(UDNumber => UDNumber.CertifiedPackages())
-				.ToList();
-			return DiaryPager.SetPaging(list, Records);
-		}
-		//TODO: Search Methods for the Packages e.g. EDIPI, LastName, Etc.
 	}
 }

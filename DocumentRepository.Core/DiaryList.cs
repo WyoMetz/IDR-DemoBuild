@@ -9,7 +9,6 @@ namespace DocumentRepository.Core
 	public class DiaryList
 	{
 		public static IList<UnitDiary> Diaries { get; set; }
-		private static int Records { get; set; }
 
 		public static async void PrepareList()
 		{
@@ -17,11 +16,6 @@ namespace DocumentRepository.Core
 			{
 				Diaries = await Repository.GetDiariesAsync();
 			}
-		}
-
-		public static void SetRecordsToShow(int Amount)
-		{
-			Records = Amount;
 		}
 
 		public static IList<UnitDiary> NeedUploaded()
@@ -40,42 +34,6 @@ namespace DocumentRepository.Core
 				.Where(Uploaded => !Uploaded.NotUploaded())
 				.ToList();
 			return list;
-		}
-
-		public static DataTable SearchUploadedDiaryNumbers(string SearchString)
-		{
-			bool sorter = Int32.TryParse(SearchString, out int sortNumber);
-			if (!sorter) { sortNumber = 0; }
-			IList<UnitDiary> list = Diaries
-				.Where(o => o.UDNumber >= sortNumber)
-				.Where(Uploaded => Uploaded.NotUploaded()).ToList();
-			return DiaryPager.SetPaging(list, Records);
-		}
-
-		public static DataTable SearchNotUploadedDiaryNumber(string SearchString)
-		{
-			bool sorter = Int32.TryParse(SearchString, out int sortNumber);
-			if (!sorter) { sortNumber = 0; }
-			IList<UnitDiary> list = Diaries
-				.Where(o => o.UDNumber >= sortNumber)
-				.Where(Uploaded=>Uploaded.NotUploaded()).ToList();
-			return DiaryPager.SetPaging(list, Records);
-		}
-
-		public static DataTable SearchCertifierEDIPI(string SearchString)
-		{
-			bool sorter = Int32.TryParse(SearchString, out int sortNumber);
-			if (!sorter) { sortNumber = 0; }
-			IList<UnitDiary> list = Diaries
-				.Where(o => o.CertifierEdipi >= sortNumber).ToList();
-			return DiaryPager.SetPaging(list, Records);
-		}
-
-		public static DataTable SearchCertifierLastName(string SearchString)
-		{
-			IList<UnitDiary> list = Diaries
-				.Where(o => o.LastName.StartsWith(SearchString)).ToList();
-			return DiaryPager.SetPaging(list, Records);
 		}
 
 		public static void UpdateList(int DiaryID, string UserName, string Date, string FileSaveLocation)

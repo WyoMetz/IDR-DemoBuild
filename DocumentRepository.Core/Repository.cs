@@ -79,6 +79,7 @@ namespace DocumentRepository.Core
 			Task InsertCertifiedPackage = Task.Run(() => CertifiedPackageTable.Insert(CommandModel.InsertCertifiedPackage(DiaryID, UDNumber, MembersEdipi, MembersLastName, MembersFirstName, MembersMI)));
 			await UpdateDiaryTable;
 			await InsertCertifiedPackage;
+			CertifiedPackageList.UpdateList(DiaryID, UserName, InsertDate, FileSaveLocation, MembersEdipi, MembersLastName, MembersFirstName, MembersMI);
 			return;
 		}
 

@@ -21,7 +21,7 @@ namespace IDR_Demo_build.Pages
 			InitializeComponent();
 
 			DiaryGroup.ItemsSource = DiaryPager.SetPaging(DiaryList.NeedUploaded(), 15).DefaultView;
-			DiaryList.SetRecordsToShow(15);
+			DiarySearch.SetRecordsToShow(15);
 		}
 
 		private void ChooseDiary_Click(object sender, RoutedEventArgs e)
@@ -37,12 +37,14 @@ namespace IDR_Demo_build.Pages
 
 		private void ChosenDiary_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			DiaryGroup.ItemsSource = DiaryList.SearchNotUploadedDiaryNumber(ChosenDiary.Text).DefaultView;
+		
 		}
 
 		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			DiaryGroup.ItemsSource = DiaryList.SearchNotUploadedDiaryNumber(SearchBox.Text).DefaultView;
+			bool sorter = Int32.TryParse(SearchBox.Text, out int UdNumber);
+			if (!sorter) { UdNumber = 0; }
+			DiaryGroup.ItemsSource = DiarySearch.ByNotUploaded(UdNumber).DefaultView;
 		}
 
 		private void SelectedDiary_TextChanged(object sender, TextChangedEventArgs e)
