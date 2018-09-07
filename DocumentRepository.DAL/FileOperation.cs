@@ -49,5 +49,25 @@ namespace DocumentRepository.DAL
 			}
 			return finalPath;
 		}
+
+		public static void DownloadFile(string StoredFile)
+		{
+			string filePath = Path.GetFullPath(StoredFile);
+			string fileName = Path.GetFileName(StoredFile);
+			string savePath = null;
+
+			FolderBrowserDialog folder = new FolderBrowserDialog()
+			{
+				Description = "Select a Folder to Download Diary",
+				ShowNewFolderButton = true
+			};
+
+			if (folder.ShowDialog() == DialogResult.OK)
+			{
+				savePath = folder.SelectedPath;
+				string finalPath = savePath + "\\" + fileName;
+				FileSystem.CopyFile(filePath, finalPath);
+			}
+		}	
 	}
 }

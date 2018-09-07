@@ -1,4 +1,4 @@
-﻿<Page x:Class="IDR_Demo_build.Pages.DiaryView"
+﻿<Page x:Class="IDR_Demo_build.Pages.CertifiedPackageView"
 			xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,8 +16,9 @@
 			mc:Ignorable="d"
 			d:DesignHeight="600"
 			d:DesignWidth="1080"
-			Title="DiaryView">
-		<Grid Margin='86,86,86,22' Background='{DynamicResource MaterialDesignPaper}'>
+			Title="CertifiedPackages">
+		<Grid Margin='86,86,86,22'
+					Background='{DynamicResource MaterialDesignPaper}'>
 				<Grid.Effect>
 						<DropShadowEffect />
 				</Grid.Effect>
@@ -26,8 +27,8 @@
 						<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
-						<RowDefinition Height='8*'/>
-						<RowDefinition Height='92*'/>
+						<RowDefinition Height='8*' />
+						<RowDefinition Height='92*' />
 				</Grid.RowDefinitions>
 				<materialDesign:ColorZone Mode='PrimaryDark'
 																	Grid.ColumnSpan='2'
@@ -37,10 +38,10 @@
 						<StackPanel Orientation='Horizontal'
 												VerticalAlignment='Center'
 												Margin='6'>
-								<materialDesign:PackIcon Kind='FileCloud'
+								<materialDesign:PackIcon Kind='PackageUp'
 																				 MinHeight='36'
 																				 MinWidth='36' />
-								<TextBlock Text='Uploaded Diaries'
+								<TextBlock Text='Uploaded Packages'
 													 FontSize='18'
 													 VerticalAlignment='Center' />
 						</StackPanel>
@@ -50,20 +51,23 @@
 						<GroupBox.Header>
 								<Grid>
 										<Grid.ColumnDefinitions>
-												<ColumnDefinition Width='25*'/>
-												<ColumnDefinition Width='75*'/>
+												<ColumnDefinition Width='25*' />
+												<ColumnDefinition Width='75*' />
 										</Grid.ColumnDefinitions>
-										<Viewbox VerticalAlignment='Center' Margin='0,0,4,6'>
-										<StackPanel Orientation='Horizontal'
-																VerticalAlignment='Center'>
-												<materialDesign:PackIcon Kind='FormatListBulleted'
-																								 MinHeight='22'
-																								 MinWidth='22' />
-												<TextBlock Text='Uploaded Diaries'
-																	 FontSize='16' VerticalAlignment='Center'/>
-										</StackPanel>
+										<Viewbox VerticalAlignment='Center'
+														 Margin='0,0,4,6'>
+												<StackPanel Orientation='Horizontal'
+																		VerticalAlignment='Center'>
+														<materialDesign:PackIcon Kind='FormatListBulleted'
+																										 MinHeight='22'
+																										 MinWidth='22' />
+														<TextBlock Text='Certified Packages'
+																			 FontSize='16'
+																			 VerticalAlignment='Center' />
+												</StackPanel>
 										</Viewbox>
-										<Viewbox Grid.Column='1' Margin='24,0,0,0'>
+										<Viewbox Grid.Column='1'
+														 Margin='24,0,0,0'>
 												<StackPanel Orientation='Horizontal'
 																		HorizontalAlignment='Right'>
 														<TextBlock Text='Number of Records Per Page:'
@@ -107,28 +111,33 @@
 										<RowDefinition Height='92*' />
 								</Grid.RowDefinitions>
 								<Viewbox Grid.Row='0'>
-								<StackPanel Orientation='Horizontal'>
-										<TextBox materialDesign:HintAssist.Hint='Search by Diary Number'
-														 x:Name='DiaryNumberSearch'
-														 materialDesign:HintAssist.IsFloating='true'
-														 Margin='4'
+										<StackPanel Orientation='Horizontal'>
+												<TextBox materialDesign:HintAssist.Hint='Search by Diary Number'
+																 x:Name='DiaryNumberSearch'
+																 materialDesign:HintAssist.IsFloating='true'
+																 Margin='4'
 																 TextChanged='DiaryNumberSearch_TextChanged' />
-										<TextBox materialDesign:HintAssist.Hint='Search by Certifier Edipi'
-														 x:Name='CertEdipiSearch'
-														 materialDesign:HintAssist.IsFloating='True'
-														 Margin='4'
+												<TextBox materialDesign:HintAssist.Hint='Search by Certifier Edipi'
+																 x:Name='CertEdipiSearch'
+																 materialDesign:HintAssist.IsFloating='True'
+																 Margin='4'
 																 TextChanged='CertEdipiSearch_TextChanged' />
-										<TextBox materialDesign:HintAssist.Hint='Search by Certifier Last Name'
-														 x:Name='CertLastNameSearch'
-														 materialDesign:HintAssist.IsFloating='True'
-														 Margin='4'
+												<TextBox materialDesign:HintAssist.Hint='Search by Certifier Last Name'
+																 x:Name='CertLastNameSearch'
+																 materialDesign:HintAssist.IsFloating='True'
+																 Margin='4'
 																 TextChanged='CertLastNameSearch_TextChanged' />
-										<TextBox materialDesign:HintAssist.Hint='Search By Uploader'
-														 x:Name='UploaderNameSearch'
-															 materialDesign:HintAssist.IsFloating='True'
-															 Margin='4'
-																 TextChanged='UploaderNameSearch_TextChanged' />
-								</StackPanel>
+												<TextBox materialDesign:HintAssist.Hint='Search by Member Last Name'
+																 x:Name='MemberLastNameSearch'
+																 materialDesign:HintAssist.IsFloating='True'
+																 Margin='4'
+																 TextChanged='MemberLastNameSearch_TextChanged' />
+												<TextBox materialDesign:HintAssist.Hint='Search By Members EDIPI'
+																 x:Name='MembersEdipiSearch'
+																 materialDesign:HintAssist.IsFloating='True'
+																 Margin='4'
+																 TextChanged='MembersEdipiSearch_TextChanged' />
+										</StackPanel>
 								</Viewbox>
 								<DataGrid x:Name='DiariesGrid'
 													AutoGenerateColumns='False'
@@ -143,7 +152,11 @@
 										<DataGrid.RowDetailsTemplate>
 												<DataTemplate>
 														<Grid>
-																<StackPanel>
+																<Grid.ColumnDefinitions>
+																		<ColumnDefinition />
+																		<ColumnDefinition />
+																</Grid.ColumnDefinitions>
+																<StackPanel Grid.Column='0'>
 																		<StackPanel Orientation='Horizontal'
 																								Margin='2'>
 																				<TextBlock Text='Dairy Date: ' />
@@ -175,6 +188,23 @@
 																				<TextBlock Text='{Binding UploadedBy}' />
 																		</StackPanel>
 																</StackPanel>
+																<StackPanel Grid.Column='1'>
+																		<StackPanel Orientation='Horizontal'
+																								Margin='2'>
+																				<TextBlock Text='Last Name: ' />
+																				<TextBlock Text='{Binding MembersLastName}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Margin='2'>
+																				<TextBlock Text='First Name: ' />
+																				<TextBlock Text='{Binding MembersFirstName}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Margin='2'>
+																				<TextBlock Text='Middle Initial: ' />
+																				<TextBlock Text='{Binding MembersMI}' />
+																		</StackPanel>
+																</StackPanel>
 														</Grid>
 												</DataTemplate>
 										</DataGrid.RowDetailsTemplate>
@@ -183,6 +213,8 @@
 																						Binding='{Binding UDYear}' />
 												<DataGridTextColumn Header='Diary Number'
 																						Binding='{Binding UDNumber}' />
+												<DataGridTextColumn Header='Members EDIPI'
+																						Binding='{Binding MembersEdipi}' />
 												<DataGridTextColumn Header='Cycle Number'
 																						Binding='{Binding CycleNumber}' />
 												<DataGridTextColumn Header='Accepted'
@@ -197,28 +229,33 @@
 								</DataGrid>
 						</Grid>
 				</GroupBox>
-				<GroupBox Grid.Column='1' Grid.Row='1' Margin='8'>
+				<GroupBox Grid.Column='1'
+									Grid.Row='1'
+									Margin='8'>
 						<GroupBox.Header>
 								<Grid>
 										<StackPanel Orientation='Horizontal'>
 												<materialDesign:PackIcon Kind='FilePdfBox'
 																								 MinHeight='22'
 																								 MinWidth='22' />
-												<TextBlock Text='Diary View'
+												<TextBlock Text='Package View'
 																	 FontSize='16'
 																	 VerticalAlignment='Center' />
 										</StackPanel>
 										<StackPanel Orientation='Horizontal'
 																HorizontalAlignment='Right'>
-												<TextBlock Text='Diaries may not appear exactly as they are stored.'
-																	 VerticalAlignment='Center' Margin='0,0,6,0'/>
+												<TextBlock Text='Packages may not appear exactly as they are stored.'
+																	 VerticalAlignment='Center'
+																	 Margin='0,0,6,0' />
 												<Button Content='Download'
 																x:Name='DownloadButton'
-																Click='DownloadButton_Click' Style='{DynamicResource MaterialDesignRaisedAccentButton}' MaxHeight='26'/>
+																Click='DownloadButton_Click'
+																Style='{DynamicResource MaterialDesignRaisedAccentButton}'
+																MaxHeight='26' />
 										</StackPanel>
 								</Grid>
 						</GroupBox.Header>
 						<PDFViewer:PdfViewer x:Name='PdfView' />
 				</GroupBox>
-    </Grid>
+		</Grid>
 </Page>

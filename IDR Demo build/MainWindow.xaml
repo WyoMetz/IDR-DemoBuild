@@ -100,7 +100,7 @@
 																				<materialDesign:PackIcon Kind='FileAccount'
 																																 MinHeight='20'
 																																 MinWidth='20' />
-																				<TextBlock Text='Certified Pacakges'
+																				<TextBlock Text='Certified Packages'
 																									 HorizontalAlignment='Center'
 																									 FontSize='16'
 																									 Margin='16,0,0,0' />
@@ -128,6 +128,17 @@
 																																 MinHeight='20'
 																																 MinWidth='20' />
 																				<TextBlock Text='View Regular Diaries'
+																									 FontSize='16'
+																									 Margin='16,0,0,0' />
+																		</StackPanel>
+																</ListViewItem>
+																<ListViewItem x:Name='ViewPackages'
+																							MouseLeftButtonUp='ViewPackages_MouseLeftButtonUp'>
+																		<StackPanel Orientation='Horizontal'>
+																				<materialDesign:PackIcon Kind='PackageUp'
+																																 MinHeight='20'
+																																 MinWidth='20' />
+																				<TextBlock Text='View Certified Packages'
 																									 FontSize='16'
 																									 Margin='16,0,0,0' />
 																		</StackPanel>

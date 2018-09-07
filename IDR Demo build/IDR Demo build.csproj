@@ -128,6 +128,9 @@
     <Compile Include="Pages\CertifiedPackageUpload.xaml.cs">
       <DependentUpon>CertifiedPackageUpload.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CertifiedPackageView.xaml.cs">
+      <DependentUpon>CertifiedPackageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DiaryView.xaml.cs">
       <DependentUpon>DiaryView.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\CertifiedPackageUpload.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CertifiedPackageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

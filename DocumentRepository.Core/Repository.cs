@@ -88,5 +88,10 @@ namespace DocumentRepository.Core
 			string FilePath = FileOperation.ChooseFile();
 			return FilePath;
 		}
+
+		public static void DownloadFile(string File)
+		{
+			FileOperation.DownloadFile(File);
+		}
 	}
 }

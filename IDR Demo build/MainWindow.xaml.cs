@@ -32,6 +32,7 @@ namespace IDR_Demo_build
 			string UserName = AppSettings.User;
 			CommandModel.SetDateContext(DateTime.Now.Year.ToString());
 			DiaryList.PrepareList();
+			CertifiedPackageList.PreparePackages();
 
 			//Navigates to the Welcome Page
 			ContentFrame.Navigate(new Uri("Pages/WelcomePage.xaml", UriKind.Relative));
@@ -63,6 +64,13 @@ namespace IDR_Demo_build
 		{
 			ContentFrame.Navigate(new Uri("Pages/DiaryView.xaml", UriKind.Relative));
 			HeaderBlock.Text = "View Uploaded Diaries";
+			LeftMenu.IsLeftDrawerOpen = false;
+		}
+
+		private void ViewPackages_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			ContentFrame.Navigate(new Uri("Pages/CertifiedPackageView.xaml", UriKind.Relative));
+			HeaderBlock.Text = "View Uploaded Packages";
 			LeftMenu.IsLeftDrawerOpen = false;
 		}
 	}

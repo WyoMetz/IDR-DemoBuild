@@ -44,7 +44,7 @@ namespace DocumentRepository.DAL
 						{
 							certifiedPackages.Add(new CertifiedPackage
 							{
-								DiaryID = 0,
+								DiaryID = reader.GetInt32(16),
 								UDYear = reader.GetInt32(0),
 								UDNumber = reader.GetInt32(1),
 								UDDate = reader.GetDateTime(2),
@@ -61,10 +61,10 @@ namespace DocumentRepository.DAL
 								UploadedOn = reader.GetDateTime(13),
 								UploadLocation = reader.GetString(14),
 								PackageID = reader.GetInt32(15),
-								MembersEdipi = reader.GetInt32(16),
-								MembersLastName = reader.GetString(17),
-								MembersFirstName = reader.GetString(18),
-								MembersMI = reader.GetString(19)
+								MembersEdipi = reader.GetInt32(17),
+								MembersLastName = reader.GetString(18),
+								MembersFirstName = reader.GetString(19),
+								MembersMI = reader.GetString(20)
 							});
 						}
 						reader.Close();
