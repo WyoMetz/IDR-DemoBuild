@@ -18,7 +18,7 @@
 					Width="1080"
 					BorderThickness='0'
 					WindowStartupLocation='Manual'
-					WindowState='Maximized'
+					WindowState='Normal'
 					UseLayoutRounding='True'
 					WindowStyle='SingleBorderWindow'
 					ResizeMode='CanResizeWithGrip'>
@@ -148,7 +148,9 @@
 						<materialDesign:ColorZone Mode='Dark'
 																			Padding='8'
 																			materialDesign:ShadowAssist.ShadowDepth='Depth4'
-																			DockPanel.Dock='Top'>
+																			DockPanel.Dock='Top'
+																			x:Name='TopBar'
+																			MouseDown='TopBar_MouseDown'>
 								<Grid DockPanel.Dock='Top'>
 										<TextBlock HorizontalAlignment='Center'
 															 x:Name='HeaderBlock'

@@ -72,5 +72,13 @@ namespace IDR_Demo_build
 			HeaderBlock.Text = "View Uploaded Packages";
 			LeftMenu.IsLeftDrawerOpen = false;
 		}
+
+		private void TopBar_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			if(e.ChangedButton == MouseButton.Left)
+			{
+				this.DragMove();
+			}
+		}
 	}
 }
