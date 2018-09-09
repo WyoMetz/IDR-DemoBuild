@@ -20,7 +20,7 @@
 												WindowStartupLocation='CenterScreen'
 												WindowState='Normal'
 												UseLayoutRounding='True'
-					WindowStyle='SingleBorderWindow'>
+					WindowStyle='SingleBorderWindow' ResizeMode='CanResizeWithGrip'>
 
 		<Grid>
 				<Image x:Name='BackgroundImage'
