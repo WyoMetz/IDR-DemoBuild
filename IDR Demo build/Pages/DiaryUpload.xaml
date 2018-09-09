@@ -134,7 +134,7 @@
 						</StackPanel>
 				</Viewbox>
 				<Viewbox Grid.Column='1'
-								 Grid.Row='2'>
+								 Grid.Row='3'>
 						<StackPanel>
 						<TextBlock Text='Click Upload below to Upload this Diary' Margin='4'/>
 								<TextBox x:Name='SelectedDiary'
@@ -151,10 +151,11 @@
 																				 x:Name="SnackbarThree" />
 						</StackPanel>
 				</Viewbox>
-				<Viewbox Grid.Column='1'
-								 Grid.Row='1'
-								 Grid.ColumnSpan='4'
-								 Margin='4'>
+				<StackPanel Grid.Column='1'
+										Grid.Row='1'
+										Grid.RowSpan='2'
+										Grid.ColumnSpan='1'
+										Margin='4'>
 						<GroupBox materialDesign:ColorZoneAssist.Mode='Accent'>
 								<GroupBox.Header>
 										<StackPanel Orientation='Horizontal'>
@@ -162,14 +163,16 @@
 												<TextBlock Text='Be Sure!' />
 										</StackPanel>
 								</GroupBox.Header>
-								<TextBlock Text='Be Sure the Diary you are uploading is a Single Document. If the Diary you are trying to upload is in multiple pieces, make sure you combine them into one. If no one in your shop knows how to combine them into one document, contact the Quality Control Branch'
-													 TextWrapping='Wrap' />
+								<Grid>
+										<TextBlock Text='Be Sure the Package you are uploading is a Single Document. If the Package you are trying to upload is in multiple pieces, make sure you combine them into one. If no one in your shop knows how to combine them into one document, contact the Quality Control Branch'
+															 TextWrapping='Wrap' />
+								</Grid>
 						</GroupBox>
-				</Viewbox>
+				</StackPanel>
 				<PDFViewer:PdfViewer x:Name='PdfView'
-														 Grid.Row='2'
+														 Grid.Row='1'
 														 Grid.Column='2'
-														 Grid.RowSpan='5'
+														 Grid.RowSpan='6'
 														 Grid.ColumnSpan='3'
 														 Margin='8' />
 				<Viewbox Grid.Column='1'

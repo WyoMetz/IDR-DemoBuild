@@ -49,17 +49,17 @@
 								<materialDesign:PackIcon Kind='PlusCircle'
 																				 MinHeight='26'
 																				 MinWidth='30' />
-								<TextBlock Text='Upload a New Certified Package'
+								<TextBlock Text='Upload a New Automatic Diary'
 													 FontSize='22'
 													 VerticalAlignment='Center' />
 						</StackPanel>
 				</materialDesign:ColorZone>
 				<GroupBox Grid.Row='2'
-									Grid.RowSpan='5'>
+									Grid.RowSpan='5' Margin='5'>
 						<GroupBox.Header>
 								<StackPanel Orientation='Horizontal'>
 										<materialDesign:PackIcon Kind='FormatListBulleted' />
-										<TextBlock Text='Select a Package to upload' />
+										<TextBlock Text='Select a Diary to upload' />
 								</StackPanel>
 						</GroupBox.Header>
 						<Grid>
@@ -91,7 +91,8 @@
 										</Viewbox>
 										<Viewbox Grid.Column='1'
 														 Grid.Row='1'
-														 VerticalAlignment='Bottom'>
+														 VerticalAlignment='Bottom'
+														 Stretch='UniformToFill'>
 										<TextBox materialDesign:HintAssist.Hint='Certifier EDIPI'
 														 materialDesign:HintAssist.IsFloating='True'
 														 x:Name='EdipiSearch'
@@ -226,25 +227,31 @@
 																				 x:Name="SnackbarThree" />
 						</StackPanel>
 				</Viewbox>
-				<Viewbox Grid.Column='1'
-								 Grid.Row='1'
-								 Grid.ColumnSpan='4'
-								 Margin='4'>
-						<GroupBox materialDesign:ColorZoneAssist.Mode='Accent'>
-								<GroupBox.Header>
-										<StackPanel Orientation='Horizontal'>
-												<materialDesign:PackIcon Kind='AlertCircle' />
-												<TextBlock Text='Be Sure!' />
-										</StackPanel>
-								</GroupBox.Header>
-								<TextBlock Text='Be Sure the Package you are uploading is a Single Document. If the Package you are trying to upload is in multiple pieces, make sure you combine them into one. If no one in your shop knows how to combine them into one document, contact the Quality Control Branch'
-													 TextWrapping='Wrap' />
-						</GroupBox>
-				</Viewbox>
+				<StackPanel Grid.Column='1'
+						Grid.Row='1'
+						Grid.RowSpan='2'
+						Grid.ColumnSpan='1'
+						Margin='4'>
+				<GroupBox materialDesign:ColorZoneAssist.Mode='Accent'
+									>
+						<GroupBox.Header>
+								<StackPanel Orientation='Horizontal'>
+										<materialDesign:PackIcon Kind='AlertCircle' />
+										<TextBlock Text='Be Sure!' />
+								</StackPanel>
+						</GroupBox.Header>
+						<Grid>
+						<TextBlock Text='Be Sure the Package you are uploading is a Single Document. If the Package you are trying to upload is in multiple pieces, make sure you combine them into one. If no one in your shop knows how to combine them into one document, contact the Quality Control Branch'
+											 TextWrapping='Wrap'
+											  />
+						</Grid>
+				</GroupBox>
+				</StackPanel>
+
 				<PDFViewer:PdfViewer x:Name='PdfView'
-														 Grid.Row='2'
+														 Grid.Row='1'
 														 Grid.Column='2'
-														 Grid.RowSpan='5'
+														 Grid.RowSpan='6'
 														 Grid.ColumnSpan='3'
 														 Margin='8' />
 				<Viewbox Grid.Column='1'
