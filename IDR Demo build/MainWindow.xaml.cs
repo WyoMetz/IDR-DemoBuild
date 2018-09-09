@@ -1,7 +1,6 @@
 ﻿using DocumentRepository.Core;
 using DocumentRepository.DAL;
 using DocumentRepository.Models;
-using MahApps.Metro.Controls;
 using System;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,7 +11,7 @@ namespace IDR_Demo_build
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : MetroWindow
+	public partial class MainWindow
 	{
 		/// <summary>
 		/// Loads the Background image and Stores the Left Menu Navigation Items
