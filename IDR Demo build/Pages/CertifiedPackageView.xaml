@@ -41,7 +41,7 @@
 								<materialDesign:PackIcon Kind='PackageUp'
 																				 MinHeight='36'
 																				 MinWidth='36' />
-								<TextBlock Text='Uploaded Packages'
+								<TextBlock Text='Uploaded Automatic Diaries'
 													 FontSize='18'
 													 VerticalAlignment='Center' />
 						</StackPanel>
@@ -61,48 +61,46 @@
 														<materialDesign:PackIcon Kind='FormatListBulleted'
 																										 MinHeight='22'
 																										 MinWidth='22' />
-														<TextBlock Text='Certified Packages'
+														<TextBlock Text='Diaries List'
 																			 FontSize='16'
 																			 VerticalAlignment='Center' />
 												</StackPanel>
 										</Viewbox>
-										<Viewbox Grid.Column='1'
-														 Margin='24,0,0,0'>
-												<StackPanel Orientation='Horizontal'
-																		HorizontalAlignment='Right'>
-														<TextBlock Text='Number of Records Per Page:'
-																			 Margin='3'
-																			 VerticalAlignment='Center' />
-														<ComboBox x:Name='Records'
-																			Margin='4'
-																			SelectionChanged='Records_SelectionChanged' />
-														<Button x:Name='First'
-																		Content='&lt;&lt;'
-																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2'
-																		Click='First_Click' />
-														<Button x:Name='Previous'
-																		Content='&lt;'
-																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2'
-																		Click='Previous_Click' />
-														<TextBlock x:Name='NumberDisplay'
-																			 Text='Showing 50 of 14000'
-																			 VerticalAlignment='Center'
-																			 Margin='6' />
-														<Button x:Name='Next'
-																		Content='&gt;'
-																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2'
-																		Click='Next_Click' />
-														<Button x:Name='Last'
-																		Content='&gt;&gt;'
-																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2'
-																		Click='Last_Click' />
+										<StackPanel Orientation='Horizontal'
+																Grid.Column='1'
+																HorizontalAlignment='Right'>
+												<TextBlock Text='Number of Records Per Page:'
+																	 Margin='3'
+																	 VerticalAlignment='Center' />
+												<ComboBox x:Name='Records'
+																	Margin='4'
+																	SelectionChanged='Records_SelectionChanged' />
+												<Button x:Name='First'
+																Content='&lt;&lt;'
+																Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																Margin='2'
+																Click='First_Click' />
+												<Button x:Name='Previous'
+																Content='&lt;'
+																Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																Margin='2'
+																Click='Previous_Click' />
+												<TextBlock x:Name='NumberDisplay'
+																	 Text='Showing 50 of 14000'
+																	 VerticalAlignment='Center'
+																	 Margin='6' />
+												<Button x:Name='Next'
+																Content='&gt;'
+																Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																Margin='2'
+																Click='Next_Click' />
+												<Button x:Name='Last'
+																Content='&gt;&gt;'
+																Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																Margin='2'
+																Click='Last_Click' />
 
-												</StackPanel>
-										</Viewbox>
+										</StackPanel>
 								</Grid>
 						</GroupBox.Header>
 						<Grid>

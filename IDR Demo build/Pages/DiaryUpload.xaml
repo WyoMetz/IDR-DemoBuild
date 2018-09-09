@@ -16,17 +16,19 @@
 			mc:Ignorable="d"
 			Title="Document Repository Version Alpha 0.1"
 			d:DesignWidth='1080'
-			d:DesignHeight='600'>
-		<Grid Margin='86,86,86,22' Background='{DynamicResource MaterialDesignPaper}'>
+			d:DesignHeight='600'
+			UseLayoutRounding='True'>
+		<Grid Margin='86,86,86,22'
+					Background='{DynamicResource MaterialDesignPaper}'>
 				<Grid.Effect>
 						<DropShadowEffect />
 				</Grid.Effect>
 				<Grid.ColumnDefinitions>
-						<ColumnDefinition Width='20*'/>
-						<ColumnDefinition Width='20*'/>
-						<ColumnDefinition Width='20*'/>
-						<ColumnDefinition Width='20*'/>
-						<ColumnDefinition Width='20*'/>
+						<ColumnDefinition Width='20*' />
+						<ColumnDefinition Width='20*' />
+						<ColumnDefinition Width='20*' />
+						<ColumnDefinition Width='20*' />
+						<ColumnDefinition Width='20*' />
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
 						<RowDefinition Height='10*' />
@@ -39,118 +41,129 @@
 				</Grid.RowDefinitions>
 				<materialDesign:ColorZone Mode='PrimaryDark'
 																	Grid.ColumnSpan='5'
-																	VerticalAlignment='Stretch' materialDesign:ShadowAssist.ShadowDepth='Depth2' CornerRadius='3'>
-						<StackPanel Orientation='Horizontal' VerticalAlignment='Center' Margin='8'>
-								<materialDesign:PackIcon Kind='PlusCircle' MinHeight='26' MinWidth='30'/>
-								<TextBlock Text='Upload a New Diary'  FontSize='22' VerticalAlignment='Center'/>
+																	VerticalAlignment='Stretch'
+																	materialDesign:ShadowAssist.ShadowDepth='Depth2'
+																	CornerRadius='3'>
+						<StackPanel Orientation='Horizontal'
+												VerticalAlignment='Center'
+												Margin='8'>
+								<materialDesign:PackIcon Kind='PlusCircle'
+																				 MinHeight='26'
+																				 MinWidth='30' />
+								<TextBlock Text='Upload a New Diary'
+													 FontSize='22'
+													 VerticalAlignment='Center' />
 						</StackPanel>
 				</materialDesign:ColorZone>
-				<Viewbox HorizontalAlignment='Stretch'
-								 Grid.Column='0'
-								 Grid.Row='2'
-								 Grid.RowSpan='5'
-								 VerticalAlignment='Top' Margin='6'
-								 StretchDirection='DownOnly'>
-						<GroupBox>
-								<GroupBox.Header>
-										<StackPanel Orientation='Horizontal'>
-												<materialDesign:PackIcon Kind='FormatListBulleted' />
-												<TextBlock Text='Select a Diary to upload' />
-										</StackPanel>
-								</GroupBox.Header>
-								<StackPanel>
-										<TextBox materialDesign:HintAssist.Hint='Search' materialDesign:HintAssist.IsFloating='True' x:Name='SearchBox' TextChanged='SearchBox_TextChanged'/>
-										<DataGrid x:Name='DiaryGroup'
-											AutoGenerateColumns='False'
-											SelectionChanged='DiaryGroup_SelectionChanged'>
-								<DataGrid.RowDetailsTemplate>
-										<DataTemplate>
-												<Grid>
-														<Grid.ColumnDefinitions>
-																<ColumnDefinition />
-																<ColumnDefinition />
-														</Grid.ColumnDefinitions>
-														<StackPanel>
-																<StackPanel Orientation='Horizontal'>
-																		<TextBlock Text='Certifier Last Name: ' />
-																		<TextBlock Text='{Binding LastName}' />
-																</StackPanel>
-																<StackPanel Orientation='Horizontal'>
-																		<TextBlock Text='Certifier EDIPI: ' />
-																		<TextBlock Text='{Binding CertifierEdipi}' />
-																</StackPanel>
-																<StackPanel Orientation='Horizontal'>
-																		<TextBlock Text='Date of Diary: ' />
-																		<TextBlock Text='{Binding UDDate}' />
-																</StackPanel>
-																<StackPanel Orientation='Horizontal'
-																						Grid.Column='1'>
-																		<TextBlock Text='Cycle Number: ' />
-																		<TextBlock Text='{Binding CycleNumber}' />
-																</StackPanel>
-																<StackPanel Orientation='Horizontal'
-																						Grid.Column='1'>
-																		<TextBlock Text='Accepted: ' />
-																		<TextBlock Text='{Binding Accepted}' />
-																</StackPanel>
-																<StackPanel Orientation='Horizontal'
-																						Grid.Column='1'>
-																		<TextBlock Text='Rejected: ' />
-																		<TextBlock Text='{Binding Rejected}' />
-																</StackPanel>
-																<StackPanel Orientation='Horizontal'
-																						Grid.Column='1'>
-																		<TextBlock Text='Total: ' />
-																		<TextBlock Text='{Binding Total}' />
-																</StackPanel>
-														</StackPanel>
-												</Grid>
-										</DataTemplate>
-								</DataGrid.RowDetailsTemplate>
-								<DataGrid.Columns>
-										<DataGridTextColumn Header='Diary Year'
-																				Binding='{Binding UDYear}' />
-										<DataGridTextColumn Header='Diary Number'
-																				Binding='{Binding UDNumber}' />
-										<DataGridTextColumn Header='Certifier ID'
-																				Binding='{Binding CertifierID}' />
-								</DataGrid.Columns>
-						</DataGrid>
+
+				<GroupBox Grid.Column='0'
+									Grid.Row='2'
+									Grid.RowSpan='5'
+									VerticalAlignment='Top'
+									Margin='6'>
+						<GroupBox.Header>
+								<StackPanel Orientation='Horizontal'>
+										<materialDesign:PackIcon Kind='FormatListBulleted' />
+										<TextBlock Text='Select a Diary to upload' />
 								</StackPanel>
-						</GroupBox>
-				</Viewbox>
-				<Viewbox Grid.Column='0'
-								 Grid.Row='1'
-								 Margin='6'>
+						</GroupBox.Header>
 						<StackPanel>
-								<TextBlock Text='Select a Document to Upload'
-													 Margin='2' />
-								<Button x:Name='ChooseDiary'
-												Content='Browse'
-												Click='ChooseDiary_Click' />
-								<TextBox x:Name='ChosenDiary'
-												 IsReadOnly='True'
-												 Margin='4' />
-						</StackPanel>
-				</Viewbox>
-				<Viewbox Grid.Column='1'
-								 Grid.Row='3'>
-						<StackPanel>
-						<TextBlock Text='Click Upload below to Upload this Diary' Margin='4'/>
-								<TextBox x:Name='SelectedDiary'
-												 IsReadOnly='True'
-												 Margin='6'
-												 materialDesign:HintAssist.Hint='Selected Diary'
+								<TextBox materialDesign:HintAssist.Hint='Search'
 												 materialDesign:HintAssist.IsFloating='True'
-												 TextChanged='SelectedDiary_TextChanged' />
-								<Button x:Name='UploadDiary'
-												Content='Upload'
-												Click='UploadDiary_Click'
-												IsEnabled='False' />
-								<materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
-																				 x:Name="SnackbarThree" />
+												 x:Name='SearchBox'
+												 TextChanged='SearchBox_TextChanged' />
+								<DataGrid x:Name='DiaryGroup'
+													AutoGenerateColumns='False'
+													SelectionChanged='DiaryGroup_SelectionChanged'
+													IsReadOnly='True'>
+										<DataGrid.RowDetailsTemplate>
+												<DataTemplate>
+														<Grid>
+																<Grid.ColumnDefinitions>
+																		<ColumnDefinition />
+																		<ColumnDefinition />
+																</Grid.ColumnDefinitions>
+																<StackPanel>
+																		<StackPanel Orientation='Horizontal'>
+																				<TextBlock Text='Certifier Last Name: ' />
+																				<TextBlock Text='{Binding LastName}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'>
+																				<TextBlock Text='Certifier EDIPI: ' />
+																				<TextBlock Text='{Binding CertifierEdipi}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'>
+																				<TextBlock Text='Date of Diary: ' />
+																				<TextBlock Text='{Binding UDDate}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Grid.Column='1'>
+																				<TextBlock Text='Cycle Number: ' />
+																				<TextBlock Text='{Binding CycleNumber}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Grid.Column='1'>
+																				<TextBlock Text='Accepted: ' />
+																				<TextBlock Text='{Binding Accepted}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Grid.Column='1'>
+																				<TextBlock Text='Rejected: ' />
+																				<TextBlock Text='{Binding Rejected}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal'
+																								Grid.Column='1'>
+																				<TextBlock Text='Total: ' />
+																				<TextBlock Text='{Binding Total}' />
+																		</StackPanel>
+																</StackPanel>
+														</Grid>
+												</DataTemplate>
+										</DataGrid.RowDetailsTemplate>
+										<DataGrid.Columns>
+												<DataGridTextColumn Header='Diary Year'
+																						Binding='{Binding UDYear}' />
+												<DataGridTextColumn Header='Diary Number'
+																						Binding='{Binding UDNumber}' />
+												<DataGridTextColumn Header='Certifier ID'
+																						Binding='{Binding CertifierID}' />
+										</DataGrid.Columns>
+								</DataGrid>
 						</StackPanel>
-				</Viewbox>
+				</GroupBox>
+
+				<StackPanel Grid.Column='0'
+										Grid.Row='1'
+										Margin='6'>
+						<TextBlock Text='Select a Document to Upload'
+											 Margin='2' />
+						<Button x:Name='ChooseDiary'
+										Content='Browse'
+										Click='ChooseDiary_Click' />
+						<TextBox x:Name='ChosenDiary'
+										 IsReadOnly='True'
+										 Margin='4' />
+				</StackPanel>
+
+				<StackPanel Grid.Column='1'
+										Grid.Row='3'
+										Grid.RowSpan='2'>
+						<TextBlock Text='Click Upload below to Upload this Diary'
+											 Margin='4' />
+						<TextBox x:Name='SelectedDiary'
+										 IsReadOnly='True'
+										 Margin='6'
+										 materialDesign:HintAssist.Hint='Selected Diary'
+										 materialDesign:HintAssist.IsFloating='True'
+										 TextChanged='SelectedDiary_TextChanged' />
+						<Button x:Name='UploadDiary'
+										Content='Upload'
+										Click='UploadDiary_Click'
+										IsEnabled='False' />
+						<materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
+																		 x:Name="SnackbarThree" />
+				</StackPanel>
+
 				<StackPanel Grid.Column='1'
 										Grid.Row='1'
 										Grid.RowSpan='2'
@@ -175,10 +188,5 @@
 														 Grid.RowSpan='6'
 														 Grid.ColumnSpan='3'
 														 Margin='8' />
-				<Viewbox Grid.Column='1'
-								 Grid.Row='3' Margin='6'>
-
-				</Viewbox>
-
 		</Grid>
 </Page>

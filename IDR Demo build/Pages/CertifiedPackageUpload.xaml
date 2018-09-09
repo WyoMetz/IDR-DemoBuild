@@ -74,47 +74,54 @@
 												<ColumnDefinition />
 										</Grid.ColumnDefinitions>
 										<Grid.RowDefinitions>
-												<RowDefinition Height='25*'/>
-												<RowDefinition Height='75*'/>
+												<RowDefinition Height='25*' />
+												<RowDefinition Height='75*' />
 										</Grid.RowDefinitions>
 										<Viewbox Grid.Column='1'
 														 Grid.Row='0'>
 												<TextBlock Text='Search By:' />
 										</Viewbox>
-										<Viewbox Grid.Column='0' Grid.Row='1' VerticalAlignment='Bottom'>
-										<TextBox materialDesign:HintAssist.Hint='Diary Number'
-														 materialDesign:HintAssist.IsFloating='True'
-														 x:Name='SearchBox'
-														 TextChanged='SearchBox_TextChanged'
-														 Grid.Column='0'
-														 Margin='4' />
-										</Viewbox>
-										<Viewbox Grid.Column='1'
-														 Grid.Row='1'
-														 VerticalAlignment='Bottom'
-														 Stretch='UniformToFill'>
-										<TextBox materialDesign:HintAssist.Hint='Certifier EDIPI'
-														 materialDesign:HintAssist.IsFloating='True'
-														 x:Name='EdipiSearch'
-														 Margin='4'
-														 Grid.Column='1'
-														 TextChanged='EdipiSearch_TextChanged' />
-										</Viewbox>
-										<Viewbox Grid.Column='2'
-														 Grid.Row='1'
-														 VerticalAlignment='Bottom'>
-										<TextBox materialDesign:HintAssist.Hint='Certifier Last Name'
-														 materialDesign:HintAssist.IsFloating='True'
-														 x:Name='LastNameSearch'
-														 Margin='4'
-														 Grid.Column='2'
-														 TextChanged='LastNameSearch_TextChanged' />
-										</Viewbox>
+										<StackPanel Orientation='Horizontal'
+																Grid.Column='0'
+																Grid.Row='1'
+																Grid.ColumnSpan='3'
+																VerticalAlignment='Bottom'>
+												<Viewbox>
+												<TextBox materialDesign:HintAssist.Hint='Diary Number'
+																 materialDesign:HintAssist.IsFloating='True'
+																 x:Name='SearchBox'
+																 TextChanged='SearchBox_TextChanged'
+																 Grid.Column='0'
+																 Margin='4' />
+												</Viewbox>
+												<Viewbox Grid.Column='1'
+																 Grid.Row='1'
+																 VerticalAlignment='Bottom'
+																 Stretch='UniformToFill'>
+														<TextBox materialDesign:HintAssist.Hint='Certifier EDIPI'
+																		 materialDesign:HintAssist.IsFloating='True'
+																		 x:Name='EdipiSearch'
+																		 Margin='4'
+																		 Grid.Column='1'
+																		 TextChanged='EdipiSearch_TextChanged' />
+												</Viewbox>
+												<Viewbox Grid.Column='2'
+																 Grid.Row='1'
+																 VerticalAlignment='Bottom'>
+														<TextBox materialDesign:HintAssist.Hint='Certifier Last Name'
+																		 materialDesign:HintAssist.IsFloating='True'
+																		 x:Name='LastNameSearch'
+																		 Margin='4'
+																		 Grid.Column='2'
+																		 TextChanged='LastNameSearch_TextChanged' />
+												</Viewbox>
+										</StackPanel>
 								</Grid>
+
 								<DataGrid x:Name='DiaryGroup'
 													AutoGenerateColumns='False'
 													Grid.Row='1'
-													SelectionChanged='DiaryGroup_SelectionChanged'>
+													SelectionChanged='DiaryGroup_SelectionChanged' IsReadOnly='True'>
 										<DataGrid.RowDetailsTemplate>
 												<DataTemplate>
 														<Grid>
@@ -170,10 +177,10 @@
 								</DataGrid>
 						</Grid>
 				</GroupBox>
-				<Viewbox Grid.Column='0'
-								 Grid.Row='1'
-								 Margin='6'>
-						<StackPanel>
+
+						<StackPanel Grid.Column='0'
+												Grid.Row='1'
+												Margin='6'>
 								<TextBlock Text='Select a Document to Upload'
 													 Margin='2' />
 								<Button x:Name='ChooseDiary'
@@ -183,7 +190,7 @@
 												 IsReadOnly='True'
 												 Margin='4' />
 						</StackPanel>
-				</Viewbox>
+
 				<Viewbox Grid.Column='1'
 								 Grid.Row='2'
 								 Grid.RowSpan='2'

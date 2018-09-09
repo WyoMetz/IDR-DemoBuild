@@ -17,7 +17,8 @@
 			d:DesignHeight="600"
 			d:DesignWidth="1080"
 			Title="DiaryView">
-		<Grid Margin='86,86,86,22' Background='{DynamicResource MaterialDesignPaper}'>
+		<Grid Margin='86,86,86,22'
+					Background='{DynamicResource MaterialDesignPaper}'>
 				<Grid.Effect>
 						<DropShadowEffect />
 				</Grid.Effect>
@@ -26,8 +27,8 @@
 						<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
-						<RowDefinition Height='8*'/>
-						<RowDefinition Height='92*'/>
+						<RowDefinition Height='8*' />
+						<RowDefinition Height='92*' />
 				</Grid.RowDefinitions>
 				<materialDesign:ColorZone Mode='PrimaryDark'
 																	Grid.ColumnSpan='2'
@@ -50,55 +51,56 @@
 						<GroupBox.Header>
 								<Grid>
 										<Grid.ColumnDefinitions>
-												<ColumnDefinition Width='25*'/>
-												<ColumnDefinition Width='75*'/>
+												<ColumnDefinition Width='25*' />
+												<ColumnDefinition Width='75*' />
 										</Grid.ColumnDefinitions>
-										<Viewbox VerticalAlignment='Center' Margin='0,0,4,6'>
-										<StackPanel Orientation='Horizontal'
-																VerticalAlignment='Center'>
-												<materialDesign:PackIcon Kind='FormatListBulleted'
-																								 MinHeight='22'
-																								 MinWidth='22' />
-												<TextBlock Text='Uploaded Diaries'
-																	 FontSize='16' VerticalAlignment='Center'/>
-										</StackPanel>
-										</Viewbox>
-										<Viewbox Grid.Column='1' Margin='24,0,0,0'>
+										<Viewbox VerticalAlignment='Center'
+														 Margin='0,0,4,6'>
 												<StackPanel Orientation='Horizontal'
-																		HorizontalAlignment='Right'>
-														<TextBlock Text='Number of Records Per Page:'
-																			 Margin='3'
+																		VerticalAlignment='Center'>
+														<materialDesign:PackIcon Kind='FormatListBulleted'
+																										 MinHeight='22'
+																										 MinWidth='22' />
+														<TextBlock Text='Diaries List'
+																			 FontSize='16'
 																			 VerticalAlignment='Center' />
-														<ComboBox x:Name='Records'
-																			Margin='4'
-																			SelectionChanged='Records_SelectionChanged' />
-														<Button x:Name='First'
-																		Content='&lt;&lt;'
-																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2'
-																		Click='First_Click' />
-														<Button x:Name='Previous'
-																		Content='&lt;'
-																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2'
-																		Click='Previous_Click' />
-														<TextBlock x:Name='NumberDisplay'
-																			 Text='Showing 50 of 14000'
-																			 VerticalAlignment='Center'
-																			 Margin='6' />
-														<Button x:Name='Next'
-																		Content='&gt;'
-																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2'
-																		Click='Next_Click' />
-														<Button x:Name='Last'
-																		Content='&gt;&gt;'
-																		Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
-																		Margin='2'
-																		Click='Last_Click' />
-
 												</StackPanel>
 										</Viewbox>
+										<StackPanel Orientation='Horizontal'
+																Grid.Column='1'
+																HorizontalAlignment='Right'>
+												<TextBlock Text='Number of Records Per Page:'
+																	 Margin='3'
+																	 VerticalAlignment='Center' />
+												<ComboBox x:Name='Records'
+																	Margin='4'
+																	SelectionChanged='Records_SelectionChanged' />
+												<Button x:Name='First'
+																Content='&lt;&lt;'
+																Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																Margin='2'
+																Click='First_Click' />
+												<Button x:Name='Previous'
+																Content='&lt;'
+																Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																Margin='2'
+																Click='Previous_Click' />
+												<TextBlock x:Name='NumberDisplay'
+																	 Text='Showing 50 of 14000'
+																	 VerticalAlignment='Center'
+																	 Margin='6' />
+												<Button x:Name='Next'
+																Content='&gt;'
+																Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																Margin='2'
+																Click='Next_Click' />
+												<Button x:Name='Last'
+																Content='&gt;&gt;'
+																Style='{DynamicResource MaterialDesignFloatingActionMiniAccentButton}'
+																Margin='2'
+																Click='Last_Click' />
+
+										</StackPanel>
 								</Grid>
 						</GroupBox.Header>
 						<Grid>
@@ -107,28 +109,28 @@
 										<RowDefinition Height='92*' />
 								</Grid.RowDefinitions>
 								<Viewbox Grid.Row='0'>
-								<StackPanel Orientation='Horizontal'>
-										<TextBox materialDesign:HintAssist.Hint='Search by Diary Number'
-														 x:Name='DiaryNumberSearch'
-														 materialDesign:HintAssist.IsFloating='true'
-														 Margin='4'
+										<StackPanel Orientation='Horizontal'>
+												<TextBox materialDesign:HintAssist.Hint='Search by Diary Number'
+																 x:Name='DiaryNumberSearch'
+																 materialDesign:HintAssist.IsFloating='true'
+																 Margin='4'
 																 TextChanged='DiaryNumberSearch_TextChanged' />
-										<TextBox materialDesign:HintAssist.Hint='Search by Certifier Edipi'
-														 x:Name='CertEdipiSearch'
-														 materialDesign:HintAssist.IsFloating='True'
-														 Margin='4'
+												<TextBox materialDesign:HintAssist.Hint='Search by Certifier Edipi'
+																 x:Name='CertEdipiSearch'
+																 materialDesign:HintAssist.IsFloating='True'
+																 Margin='4'
 																 TextChanged='CertEdipiSearch_TextChanged' />
-										<TextBox materialDesign:HintAssist.Hint='Search by Certifier Last Name'
-														 x:Name='CertLastNameSearch'
-														 materialDesign:HintAssist.IsFloating='True'
-														 Margin='4'
+												<TextBox materialDesign:HintAssist.Hint='Search by Certifier Last Name'
+																 x:Name='CertLastNameSearch'
+																 materialDesign:HintAssist.IsFloating='True'
+																 Margin='4'
 																 TextChanged='CertLastNameSearch_TextChanged' />
-										<TextBox materialDesign:HintAssist.Hint='Search By Uploader'
-														 x:Name='UploaderNameSearch'
-															 materialDesign:HintAssist.IsFloating='True'
-															 Margin='4'
+												<TextBox materialDesign:HintAssist.Hint='Search By Uploader'
+																 x:Name='UploaderNameSearch'
+																 materialDesign:HintAssist.IsFloating='True'
+																 Margin='4'
 																 TextChanged='UploaderNameSearch_TextChanged' />
-								</StackPanel>
+										</StackPanel>
 								</Viewbox>
 								<DataGrid x:Name='DiariesGrid'
 													AutoGenerateColumns='False'
@@ -197,7 +199,9 @@
 								</DataGrid>
 						</Grid>
 				</GroupBox>
-				<GroupBox Grid.Column='1' Grid.Row='1' Margin='8'>
+				<GroupBox Grid.Column='1'
+									Grid.Row='1'
+									Margin='8'>
 						<GroupBox.Header>
 								<Grid>
 										<StackPanel Orientation='Horizontal'>
@@ -211,14 +215,17 @@
 										<StackPanel Orientation='Horizontal'
 																HorizontalAlignment='Right'>
 												<TextBlock Text='Diaries may not appear exactly as they are stored.'
-																	 VerticalAlignment='Center' Margin='0,0,6,0'/>
+																	 VerticalAlignment='Center'
+																	 Margin='0,0,6,0' />
 												<Button Content='Download'
 																x:Name='DownloadButton'
-																Click='DownloadButton_Click' Style='{DynamicResource MaterialDesignRaisedAccentButton}' MaxHeight='26'/>
+																Click='DownloadButton_Click'
+																Style='{DynamicResource MaterialDesignRaisedAccentButton}'
+																MaxHeight='26' />
 										</StackPanel>
 								</Grid>
 						</GroupBox.Header>
 						<PDFViewer:PdfViewer x:Name='PdfView' />
 				</GroupBox>
-    </Grid>
+		</Grid>
 </Page>
