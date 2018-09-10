@@ -9,19 +9,19 @@ using System.Windows.Forms;
 
 namespace DocumentRepository.DAL
 {
-	class DiaryCsvReader
+	public class DiaryCsvReader
 	{
 		/// <summary>
 		/// Captures the Header of the Input CSV
 		/// </summary>
-		public string CsvHeader;
+		public static string CsvHeader;
 
 		/// <summary>
 		/// Creates a list of UnitDiary Objects from a given CSV file
 		/// </summary>
 		/// <param name="FullFilePath"></param>
 		/// <returns>List of UnitDiary Objects</returns>
-		public IList<UnitDiary> GetUnitDiaries(string FullFilePath)
+		public static IList<UnitDiary> GetUnitDiaries(string FullFilePath)
 		{
 			using (StreamReader reader = new StreamReader(FullFilePath))
 			{

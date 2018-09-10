@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace DocumentRepository.DAL
 {
-	class Database
+	public class Database
 	{
 		public static async Task<SQLiteConnection> Connect()
 		{

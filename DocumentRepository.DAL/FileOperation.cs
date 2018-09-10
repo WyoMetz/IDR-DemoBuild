@@ -45,7 +45,7 @@ namespace DocumentRepository.DAL
 			{
 				string fileName = Path.GetFileName(filePath);
 				finalPath = Repository + @"\" + FileType + @"\" + Year + @"\" + NewFileName;
-				FileSystem.CopyFile(filePath, finalPath, UIOption.OnlyErrorDialogs);
+				FileSystem.CopyFile(filePath, finalPath, UIOption.OnlyErrorDialogs, UICancelOption.DoNothing);
 			}
 			return finalPath;
 		}
