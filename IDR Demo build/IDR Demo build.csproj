@@ -74,6 +74,12 @@
       <HintPath>..\packages\MaterialDesignThemes.2.4.1.1101\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MoonPdfLib">
+      <HintPath>..\..\..\GitClones\Outputs\MoonPdf-0.2.3-source\moonpdf-master\src\MoonPdf\bin\Debug\MoonPdfLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MouseKeyboardActivityMonitor">
+      <HintPath>..\..\..\GitClones\Outputs\MoonPdf-0.2.3-source\moonpdf-master\src\MoonPdf\bin\Debug\MouseKeyboardActivityMonitor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />

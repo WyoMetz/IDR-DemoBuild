@@ -20,8 +20,8 @@ namespace IDR_Demo_build.Pages
 		{
 			InitializeComponent();
 
-			DiaryGroup.ItemsSource = DiaryPager.SetPaging(DiaryList.NeedUploaded(), 15).DefaultView;
-			DiarySearch.SetRecordsToShow(15);
+			DiaryGroup.ItemsSource = DiaryPager.SetPaging(DiaryList.NeedUploaded(), 55).DefaultView;
+			DiarySearch.SetRecordsToShow(55);
 		}
 
 		private void ChooseDiary_Click(object sender, RoutedEventArgs e)
@@ -31,7 +31,7 @@ namespace IDR_Demo_build.Pages
 			{
 				string fullPath = Path.GetFullPath(FilePath);
 				ChosenDiary.Text = Path.GetFileName(FilePath);
-				PdfView.PdfPath = fullPath;
+				PdfView.OpenFile(fullPath);
 			}
 		}
 
