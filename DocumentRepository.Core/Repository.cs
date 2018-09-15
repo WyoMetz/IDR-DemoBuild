@@ -76,7 +76,7 @@ namespace DocumentRepository.Core
 			Task<string> SaveFile = Task.Run(() => FileOperation.CopyFile(fileName, "Certified Package", FilePath));
 			string FileSaveLocation = await SaveFile;
 			Task UpdateDiaryTable = Task.Run(() => DiaryTable.UpdateUnitDiary(CommandModel.DiaryUpdate(UserName, InsertDate, FileSaveLocation, DiaryID)));
-			Task InsertCertifiedPackage = Task.Run(() => CertifiedPackageTable.Insert(CommandModel.InsertCertifiedPackage(DiaryID, UDNumber, MembersEdipi, MembersLastName, MembersFirstName, MembersMI)));
+			Task InsertCertifiedPackage = Task.Run(() => CertifiedPackageTable.Insert(CommandInsertModel.InsertCertifiedPackage(DiaryID, UDNumber, MembersEdipi, MembersLastName, MembersFirstName, MembersMI)));
 			await UpdateDiaryTable;
 			await InsertCertifiedPackage;
 			CertifiedPackageList.UpdateList(DiaryID, UserName, InsertDate, FileSaveLocation, MembersEdipi, MembersLastName, MembersFirstName, MembersMI);

@@ -18,9 +18,9 @@
 					Width="1080"
 					BorderThickness='0'
 					WindowStartupLocation='Manual'
-					WindowState='Normal'
+					WindowState='Maximized'
 					UseLayoutRounding='True'
-					WindowStyle='SingleBorderWindow'
+					WindowStyle='None'
 					ResizeMode='CanResizeWithGrip'>
 
 		<Grid>
@@ -167,11 +167,51 @@
 																			Style='{DynamicResource MaterialDesignHamburgerToggleButton}'
 																			IsChecked='False'></ToggleButton>
 										</StackPanel>
+										<StackPanel Orientation='Horizontal'
+																HorizontalAlignment='Right'>
+												<Button x:Name='Minimize'
+																Click='Minimize_Click'>
+														<Button.Content>
+																<materialDesign:PackIcon Kind='WindowMinimize'
+																												 MinHeight='16'
+																												 MinWidth='16' />
+														</Button.Content>
+												</Button>
+												<Button x:Name='Restore'
+																Margin='4'
+																Click='Restore_Click'>
+														<Button.Content>
+																<materialDesign:PackIcon Kind='WindowRestore'
+																												 MinHeight='16'
+																												 MinWidth='16' />
+														</Button.Content>
+												</Button>
+												<Button x:Name='Maximize'
+																Margin='4'
+																Visibility='Collapsed'
+																Click='Maximize_Click'>
+														<Button.Content>
+																<materialDesign:PackIcon Kind='WindowMaximize'
+																												 MinHeight='16'
+																												 MinWidth='16' />
+														</Button.Content>
+												</Button>
+												<Button x:Name='CloseButton'
+																Click='CloseButton_Click'>
+														<Button.Content>
+																<materialDesign:PackIcon Kind='WindowClose'
+																												 MinHeight='16'
+																												 MinWidth='16' />
+														</Button.Content>
+												</Button>
+										</StackPanel>
 								</Grid>
 						</materialDesign:ColorZone>
 				</DockPanel>
+				
 				<Frame x:Name='ContentFrame'
 							 NavigationUIVisibility='Hidden' />
+				
 
 		</Grid>
 </Window>

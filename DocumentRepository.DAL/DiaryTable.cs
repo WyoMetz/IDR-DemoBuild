@@ -23,7 +23,7 @@ namespace DocumentRepository.DAL
 			{
 				SQLiteCommand cmd = connection.CreateCommand();
 				SQLiteTransaction transaction = connection.BeginTransaction();
-				cmd.CommandText = CommandModel.InsertBulkDiary();
+				cmd.CommandText = CommandInsertModel.InsertBulkDiary();
 				cmd.Parameters.AddWithValue("@UDYear", "");
 				cmd.Parameters.AddWithValue("@UDNumber", "");
 				cmd.Parameters.AddWithValue("@UDDate", "");

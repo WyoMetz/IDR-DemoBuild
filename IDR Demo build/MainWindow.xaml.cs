@@ -5,6 +5,7 @@ using System;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Windows;
 
 namespace IDR_Demo_build
 {
@@ -79,6 +80,30 @@ namespace IDR_Demo_build
 			{
 				this.DragMove();
 			}
+		}
+
+		private void Minimize_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			this.WindowState = WindowState.Minimized;
+		}
+
+		private void Restore_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			this.WindowState = WindowState.Normal;
+			Restore.Visibility = Visibility.Collapsed;
+			Maximize.Visibility = Visibility.Visible;
+		}
+
+		private void Maximize_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			this.WindowState = WindowState.Maximized;
+			Maximize.Visibility = Visibility.Collapsed;
+			Restore.Visibility = Visibility.Visible;
+		}
+
+		private void CloseButton_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			this.Close();
 		}
 	}
 }
