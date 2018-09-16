@@ -34,7 +34,7 @@ namespace IDR_Demo_build.Pages
 			if (DiariesGrid.SelectedIndex > -1)
 			{
 				DataRowView row = (DataRowView)DiariesGrid.SelectedItems[0];
-				PdfView.PdfPath = row["UploadLocation"].ToString();
+				PdfView.OpenFile(row["UploadLocation"].ToString());
 				UploadedFile = row["UploadLocation"].ToString();
 			}
 		}

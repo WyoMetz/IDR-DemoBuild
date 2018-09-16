@@ -30,6 +30,7 @@ namespace IDR_Demo_build
 			BackgroundImage.Source = newImage;
 
 			string UserName = AppSettings.User;
+			CommandModel.SetUserContext(AppSettings.User);
 			CommandModel.SetDateContext(DateTime.Now.Year.ToString());
 			DiaryList.PrepareList();
 			CertifiedPackageList.PreparePackages();

@@ -14,8 +14,8 @@
 					xmlns:local="clr-namespace:IDR_Demo_build"
 					mc:Ignorable="d"
 					Title="Document Repository"
-					Height="600"
-					Width="1080"
+					Height="1080"
+					Width="1920"
 					BorderThickness='0'
 					WindowStartupLocation='Manual'
 					WindowState='Maximized'

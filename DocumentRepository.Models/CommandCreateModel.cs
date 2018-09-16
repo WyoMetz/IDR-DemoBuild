@@ -8,7 +8,7 @@
 		{
 			string Create = string.Format("CREATE TABLE IF NOT EXISTS DiaryTable{0} (UDYear INTEGER, UDNumber INTEGER, UDDate DATE," +
 				" CertifierID VARCHAR(10), CertifierEDIPI INTEGER, LastName VARCHAR(50), CycleDate DATE, CycleNumber INTEGER," +
-				" Accepted INTEGER, Rejected INTEGER, Total INTEGER, Uploaded BOOL, UploadedBy VARCHAR(50), UploadedOn DATE, UploadLocation TEXT)", DateContext);
+				" Accepted INTEGER, Rejected INTEGER, Total INTEGER, Section VARCHAR(50), Uploaded BOOL, UploadedBy VARCHAR(50), UploadedOn DATE, UploadLocation TEXT)", DateContext);
 			return Create;
 		}
 
@@ -27,7 +27,7 @@
 
 		public static string CreateDocumentTable()
 		{
-			string Create = string.Format("CREATE TABLE IF NOT EXISTS DocumentTable{0} (MarineEDIPI INTEGER, DocType VARCHAR(50), UploadDate DATE, UploadUser VARCHAR(80), DateOfDoc DATE, UploadLocation TEXT)", DateContext);
+			string Create = string.Format("CREATE TABLE IF NOT EXISTS DocumentTable{0} (MarineEDIPI INTEGER, DocType VARCHAR(50), Section VARCHAR(50), UploadDate DATE, UploadUser VARCHAR(80), DateOfDoc DATE, UploadLocation TEXT)", DateContext);
 			return Create;
 		}
 	}

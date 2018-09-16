@@ -16,6 +16,7 @@ namespace DocumentRepository.Models
 		public int Accepted { get; set; }
 		public int Rejected { get; set; }
 		public int Total { get; set; }
+		public string Section { get; set; }
 		public string Uploaded { get; set; }
 		public string UploadedBy { get; set; }
 		public DateTime UploadedOn { get; set; }

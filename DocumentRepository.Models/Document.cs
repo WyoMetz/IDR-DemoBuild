@@ -6,6 +6,7 @@ namespace DocumentRepository.Models
 	{
 		public int DocID { get; set; }
 		public string DocType { get; set; }
+		public string Section { get; set; }
 		public DateTime UploadDate { get; set; }
 		public string UploadUser { get; set; }
 		public DateTime DateOfDoc { get; set; }

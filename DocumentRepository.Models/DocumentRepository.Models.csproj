@@ -45,6 +45,8 @@
     <Compile Include="CommandCreateModel.cs" />
     <Compile Include="CommandInsertModel.cs" />
     <Compile Include="CommandModel.cs" />
+    <Compile Include="CommandReadModel.cs" />
+    <Compile Include="CommandUpdateModel.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="ISearchable.cs" />
     <Compile Include="Marine.cs" />

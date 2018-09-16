@@ -3,6 +3,7 @@
 	public class CommandModel
 	{
 		private static string DateContext { get; set; }
+
 		public static void SetDateContext(string Date)
 		{
 			DateContext = Date;
@@ -13,25 +14,28 @@
 			return DateContext;
 		}
 
-		public static string SelectDiaries()
+		private static string SectionContext { get; set; }
+
+		public static void SetSectionContext(string Section)
 		{
-			string Select = string.Format("SELECT RowID, * FROM DiaryTable{0}", DateContext);
-			return Select;
+			SectionContext = Section;
 		}
 
-		public static string DiaryUpdate(string User, string Date, string FilePath, int DiaryID)
+		public static string GetSectionContext()
 		{
-			string Update = string.Format("UPDATE OR ROLLBACK DiaryTable{0} SET Uploaded = 'True', " +
-				"UploadedBy = '{1}', UploadedOn = '{2}', UploadLocation = '{3}'" +
-				" WHERE RowID = {4}", DateContext, User, Date, FilePath, DiaryID);
-			return Update;
+			return SectionContext;
 		}
 
-		public static string SelectCertifiedPackages()
+		private static string UserContext { get; set; }
+
+		public static void SetUserContext(string User)
 		{
-			string Select = string.Format("SELECT * FROM DiaryTable{0} JOIN CertifiedPackages{0} ON DiaryTable{0}.RowID = CertifiedPackages{0}.DiaryKey", DateContext);
-			return Select;
+			UserContext = User;
 		}
 
+		public static string GetUserContext()
+		{
+			return UserContext;
+		}
 	}
 }

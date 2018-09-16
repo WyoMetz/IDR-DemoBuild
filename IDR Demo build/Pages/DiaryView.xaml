@@ -12,6 +12,7 @@
 			FontFamily="{DynamicResource MaterialDesignFont}"
 			xmlns:local="clr-namespace:IDR_Demo_build"
 			xmlns:PDFViewer='clr-namespace:WPF_PDFDocument.Controls'
+			xmlns:Mpp='clr-namespace:MoonPdfLib;assembly=MoonPdfLib'
 			mc:Ignorable="d"
 			d:DesignHeight="600"
 			d:DesignWidth="1080"
@@ -53,18 +54,18 @@
 												<ColumnDefinition Width='25*' />
 												<ColumnDefinition Width='75*' />
 										</Grid.ColumnDefinitions>
-										<Viewbox VerticalAlignment='Center'
-														 Margin='0,0,4,6'>
-												<StackPanel Orientation='Horizontal'
-																		VerticalAlignment='Center'>
-														<materialDesign:PackIcon Kind='FormatListBulleted'
-																										 MinHeight='22'
-																										 MinWidth='22' />
-														<TextBlock Text='Diaries List'
-																			 FontSize='16'
-																			 VerticalAlignment='Center' />
-												</StackPanel>
-										</Viewbox>
+										
+										<StackPanel Orientation='Horizontal'
+																Margin='0,0,4,6'
+																VerticalAlignment='Center'>
+												<materialDesign:PackIcon Kind='FormatListBulleted'
+																								 MinHeight='22'
+																								 MinWidth='22' />
+												<TextBlock Text='Diaries List'
+																	 FontSize='16'
+																	 VerticalAlignment='Center' />
+										</StackPanel>
+										
 										<StackPanel Orientation='Horizontal'
 																Grid.Column='1'
 																HorizontalAlignment='Right'>
@@ -224,7 +225,12 @@
 										</StackPanel>
 								</Grid>
 						</GroupBox.Header>
-						<PDFViewer:PdfViewer x:Name='PdfView' />
+						<Mpp:MoonPdfPanel x:Name='PdfView'
+															PageMargin='0,2,4,4'
+															Grid.Column='2'
+															Grid.ColumnSpan='3'
+															Grid.Row='1'
+															PageRowDisplay='SinglePageRow' />
 				</GroupBox>
 		</Grid>
 </Page>

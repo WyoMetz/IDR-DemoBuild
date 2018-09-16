@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DocumentRepository.Core
 {
+	//TODO: Strip down Repository into separate classes
 	public static class Repository
 	{
 		private static string UserName { get; set; } = AppSettings.User;
@@ -17,7 +18,7 @@ namespace DocumentRepository.Core
 		public static async Task<IList<UnitDiary>> GetDiariesAsync()
 		{
 			IList<UnitDiary> unitDiaries = new List<UnitDiary>();
-			unitDiaries = await DiaryTable.ReadDiaryTable(CommandModel.SelectDiaries());
+			unitDiaries = await DiaryTable.ReadDiaryTable(CommandReadModel.SelectDiaries());
 			return unitDiaries;
 		}
 		/// <summary>
@@ -27,7 +28,7 @@ namespace DocumentRepository.Core
 		public static async Task<IList<CertifiedPackage>> GetPackagesAsync()
 		{
 			IList<CertifiedPackage> certifiedPackages = new List<CertifiedPackage>();
-			certifiedPackages = await CertifiedPackageTable.Read(CommandModel.SelectCertifiedPackages());
+			certifiedPackages = await CertifiedPackageTable.Read(CommandReadModel.SelectCertifiedPackages());
 			return certifiedPackages;
 		}
 		/// <summary>
@@ -54,7 +55,7 @@ namespace DocumentRepository.Core
 			string fileName = UDNumber + ".pdf";
 			Task<string> SaveFile = Task.Run(() => FileOperation.CopyFile(fileName, "Diary", FilePath));
 			string FileSaveLocation = await SaveFile;
-			Task UpdateDatabase = Task.Run(() => DiaryTable.UpdateUnitDiary(CommandModel.DiaryUpdate(UserName, InsertDate, FileSaveLocation, DiaryID)));
+			Task UpdateDatabase = Task.Run(() => DiaryTable.UpdateUnitDiary(CommandUpdateModel.DiaryUpdate(FileSaveLocation, DiaryID)));
 			await UpdateDatabase;
 			DiaryList.UpdateList(DiaryID, UserName, InsertDate, FileSaveLocation);
 			return;
@@ -75,7 +76,7 @@ namespace DocumentRepository.Core
 			string fileName = UDNumber + '.' + MembersEdipi + ".pdf";
 			Task<string> SaveFile = Task.Run(() => FileOperation.CopyFile(fileName, "Certified Package", FilePath));
 			string FileSaveLocation = await SaveFile;
-			Task UpdateDiaryTable = Task.Run(() => DiaryTable.UpdateUnitDiary(CommandModel.DiaryUpdate(UserName, InsertDate, FileSaveLocation, DiaryID)));
+			Task UpdateDiaryTable = Task.Run(() => DiaryTable.UpdateUnitDiary(CommandUpdateModel.DiaryUpdate(FileSaveLocation, DiaryID)));
 			Task InsertCertifiedPackage = Task.Run(() => CertifiedPackageTable.Insert(CommandInsertModel.InsertCertifiedPackage(DiaryID, UDNumber, MembersEdipi, MembersLastName, MembersFirstName, MembersMI)));
 			await UpdateDiaryTable;
 			await InsertCertifiedPackage;
@@ -83,15 +84,53 @@ namespace DocumentRepository.Core
 			return;
 		}
 
+		/// <summary>
+		/// User Chooses a file
+		/// </summary>
+		/// <returns>File Path</returns>
 		public static string GetFile()
 		{
 			string FilePath = FileOperation.ChooseFile();
 			return FilePath;
 		}
 
+		/// <summary>
+		/// Downloads the file to the chosen location
+		/// </summary>
+		/// <param name="File"></param>
 		public static void DownloadFile(string File)
 		{
 			FileOperation.DownloadFile(File);
 		}
+
+		public static void PrepDatabase()
+		{
+			CreateDiaryTable();
+			CreateCertifiedPackageTable();
+			CreateDocumentTable();
+			CreateMarineTable();
+		}
+
+		private static async void CreateDiaryTable()
+		{
+			await Database.CreateTable(CommandCreateModel.CreateDiaryTable());
+		}
+
+		private static async void CreateCertifiedPackageTable()
+		{
+			await Database.CreateTable(CommandCreateModel.CreateCertifiedPackageTable());
+		}
+
+		private static async void CreateDocumentTable()
+		{
+			await Database.CreateTable(CommandCreateModel.CreateDocumentTable());
+		}
+
+		private static async void CreateMarineTable()
+		{
+			await Database.CreateTable(CommandCreateModel.CreateMarineTable());
+		}
+
+
 	}
 }
