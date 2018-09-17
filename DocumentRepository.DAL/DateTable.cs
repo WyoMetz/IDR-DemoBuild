@@ -23,7 +23,7 @@ namespace DocumentRepository.DAL
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("An error occured adding the date: " + ex.StackTrace.ToString() + "/n" + ex.ToString(), "Insert Statement Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+				MessageBox.Show("An error occured adding the date: " + ex.Message.ToString(), "Insert Statement Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 			}
 			return "Insert Successful";
 		}

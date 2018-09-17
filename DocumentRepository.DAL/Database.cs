@@ -17,7 +17,7 @@ namespace DocumentRepository.DAL
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("The Connection to the Database Failed: " + ex.ToString(), "Database Connection Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("The Connection to the Database Failed: " + ex.Message.ToString(), "Database Connection Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			return new SQLiteConnection(DbConnection);
 		}
@@ -39,7 +39,7 @@ namespace DocumentRepository.DAL
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("An Error ocurred while attempting to create the Table " + ex.ToString(), "Error Creating Table", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("An Error ocurred while attempting to create the Table " + ex.Message.ToString(), "Error Creating Table", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return "Table Creation Failed.";
 			}
 			return "Table Created Successfully";
