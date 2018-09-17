@@ -31,6 +31,21 @@ namespace DocumentRepository.Core
 			certifiedPackages = await CertifiedPackageTable.Read(CommandReadModel.SelectCertifiedPackages());
 			return certifiedPackages;
 		}
+
+		public static async Task<IList<string>> GetDatesAsync()
+		{
+			IList<string> Dates = new List<string>();
+			Dates = await DateTable.ReadDateTable(CommandReadModel.ReadDateTable());
+			return Dates;
+		}
+
+		public static async Task<IList<string>> GetSectionsAsync()
+		{
+			IList<string> Sections = new List<string>();
+			Sections = await SectionTable.ReadSectionTable(CommandReadModel.ReadSectionTable());
+			return Sections;
+		}
+
 		/// <summary>
 		/// Inserts all Unit Diaries from the CSV into the Database
 		/// </summary>
@@ -84,6 +99,20 @@ namespace DocumentRepository.Core
 			return;
 		}
 
+		public static async Task InsertDateAsync()
+		{
+			await DateTable.InsertDate(CommandInsertModel.InsertDate());
+			DateContextList.Add(CommandModel.GetDateContext());
+			return;
+		}
+
+		public static async Task InsertSectionAsync()
+		{
+			await SectionTable.InsertSection(CommandInsertModel.InsertSection());
+			SectionContextList.Add(CommandModel.GetSectionContext());
+			return;
+		}
+
 		/// <summary>
 		/// User Chooses a file
 		/// </summary>
@@ -109,6 +138,8 @@ namespace DocumentRepository.Core
 			CreateCertifiedPackageTable();
 			CreateDocumentTable();
 			CreateMarineTable();
+			CreateDateTable();
+			CreateSectionTable();
 		}
 
 		private static async void CreateDiaryTable()
@@ -129,6 +160,16 @@ namespace DocumentRepository.Core
 		private static async void CreateMarineTable()
 		{
 			await Database.CreateTable(CommandCreateModel.CreateMarineTable());
+		}
+
+		private static async void CreateDateTable()
+		{
+			await Database.CreateTable(CommandCreateModel.CreateDateTable());
+		}
+
+		private static async void CreateSectionTable()
+		{
+			await Database.CreateTable(CommandCreateModel.CreateSectionTable());
 		}
 
 

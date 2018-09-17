@@ -30,5 +30,17 @@
 			string Create = string.Format("CREATE TABLE IF NOT EXISTS DocumentTable{0} (MarineEDIPI INTEGER, DocType VARCHAR(50), Section VARCHAR(50), UploadDate DATE, UploadUser VARCHAR(80), DateOfDoc DATE, UploadLocation TEXT)", DateContext);
 			return Create;
 		}
+
+		public static string CreateSectionTable()
+		{
+			string Create = "CREATE TABLE IF NOT EXISTS SectionTable (Section TEXT)";
+			return Create;
+		}
+
+		public static string CreateDateTable()
+		{
+			string Create = "CREATE TABLE IF NOT EXISTS DateTable (DateContext INTEGER UNIQUE)";
+			return Create;
+		}
 	}
 }
