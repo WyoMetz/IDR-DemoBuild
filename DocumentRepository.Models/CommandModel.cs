@@ -37,5 +37,17 @@
 		{
 			return UserContext;
 		}
+
+		private static string DocTypeContext { get; set; }
+
+		public static void SetDocTypeContext(string DocType)
+		{
+			DocTypeContext = DocType;
+		}
+
+		public static string GetDocTypeContext()
+		{
+			return DocTypeContext;
+		}
 	}
 }

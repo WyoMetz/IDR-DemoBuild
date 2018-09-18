@@ -1,4 +1,4 @@
-﻿namespace DocumentRepository.Models
+﻿	namespace DocumentRepository.Models
 {
 	public class CommandCreateModel
 	{
@@ -43,6 +43,12 @@
 		public static string CreateDateTable()
 		{
 			string Create = "CREATE TABLE IF NOT EXISTS DateTable (DateContext INTEGER UNIQUE)";
+			return Create;
+		}
+
+		public static string CreateDocTypeTable()
+		{
+			string Create = "CREATE TABLE IF NOT EXISTS DocTypeTable (DocType TEXT)";
 			return Create;
 		}
 	}

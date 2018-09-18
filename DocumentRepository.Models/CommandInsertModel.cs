@@ -11,6 +11,11 @@
 		{
 			return CommandModel.GetSectionContext();
 		}
+		
+		private static string DocTypeContext()
+		{
+			return CommandModel.GetDocTypeContext();
+		}
 
 		public static string InsertBulkDiary()
 		{
@@ -37,6 +42,12 @@
 		public static string InsertSection()
 		{
 			string Insert = string.Format("INSERT INTO SectionTable VALUES ('{0}')", SectionContext());
+			return Insert;
+		}
+
+		public static string InsertDocType()
+		{
+			string Insert = string.Format("INSERT INTO DocTypeTable VALUES ('{0}')", DocTypeContext());
 			return Insert;
 		}
 	}

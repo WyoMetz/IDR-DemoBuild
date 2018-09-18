@@ -11,6 +11,7 @@ namespace DocumentRepository.Core
 	{
 		private static string UserName { get; set; } = AppSettings.User;
 		private static string InsertDate { get; set; } = DateTime.Now.ToShortDateString();
+
 		/// <summary>
 		/// Gets the Unit Diaries from the Database
 		/// </summary>
@@ -21,6 +22,7 @@ namespace DocumentRepository.Core
 			unitDiaries = await DiaryTable.ReadDiaryTable(CommandReadModel.SelectDiaries());
 			return unitDiaries;
 		}
+
 		/// <summary>
 		/// Gets all Certified Packages from the Database.
 		/// </summary>
@@ -46,6 +48,13 @@ namespace DocumentRepository.Core
 			return Sections;
 		}
 
+		public static async Task<IList<string>> GetDocTypesAsync()
+		{
+			IList<string> DocTypes = new List<string>();
+			DocTypes = await DocTypeTable.ReadDocTypeTable(CommandReadModel.ReadSectionTable());
+			return DocTypes;
+		}
+
 		/// <summary>
 		/// Inserts all Unit Diaries from the CSV into the Database
 		/// </summary>
@@ -58,6 +67,7 @@ namespace DocumentRepository.Core
 			Task TimerTask = Task.Run(() => DiaryTable.BulkInsertTimer(UnitDiariesList, progress));
 			await Task.WhenAll(InsertTask, TimerTask);
 		}
+
 		/// <summary>
 		/// Updates the Selected Diary in the Table
 		/// </summary>
@@ -75,6 +85,7 @@ namespace DocumentRepository.Core
 			DiaryList.UpdateList(DiaryID, UserName, InsertDate, FileSaveLocation);
 			return;
 		}
+
 		/// <summary>
 		/// Updates the Associated Diary and adds a Record to the Certified Package Table
 		/// </summary>
@@ -113,6 +124,13 @@ namespace DocumentRepository.Core
 			return;
 		}
 
+		public static async Task InsertDocTypesAsync()
+		{
+			await DocTypeTable.InsertDocType(CommandInsertModel.InsertDocType());
+			DocTypeContextList.Add(CommandModel.GetDocTypeContext());
+			return;
+		}
+
 		/// <summary>
 		/// User Chooses a file
 		/// </summary>
@@ -140,6 +158,7 @@ namespace DocumentRepository.Core
 			CreateMarineTable();
 			CreateDateTable();
 			CreateSectionTable();
+			CreateDocTypeTable();
 		}
 
 		private static async void CreateDiaryTable()
@@ -170,6 +189,11 @@ namespace DocumentRepository.Core
 		private static async void CreateSectionTable()
 		{
 			await Database.CreateTable(CommandCreateModel.CreateSectionTable());
+		}
+
+		private static async void CreateDocTypeTable()
+		{
+			await Database.CreateTable(CommandCreateModel.CreateDocTypeTable());
 		}
 
 
