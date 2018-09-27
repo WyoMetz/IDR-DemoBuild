@@ -48,7 +48,7 @@
 																				<RowDefinition />
 																				<RowDefinition />
 																		</Grid.RowDefinitions>
-																		<materialDesign:PackIcon Kind="Home"
+																		<materialDesign:PackIcon Kind="ServerSecurity"
 																														 x:Name='HomeNav'
 																														 MinHeight='34'
 																														 MinWidth='34'
@@ -65,81 +65,6 @@
 														</materialDesign:ColorZone>
 												</StackPanel>
 
-												<Expander>
-														<Expander.Header>
-																<StackPanel Orientation='Horizontal'>
-																		<materialDesign:PackIcon Kind="CloudUpload"
-																														 MinHeight='26'
-																														 MinWidth='26' />
-																		<TextBlock Text='Upload'
-																							 FontSize='18'
-																							 Margin='16,0,0,0' />
-																</StackPanel>
-														</Expander.Header>
-														<ListView>
-																<ListViewItem x:Name='UploadDiary'
-																							MouseLeftButtonUp='UploadDiary_MouseLeftButtonUp'>
-																		<StackPanel Orientation='Horizontal'>
-																				<materialDesign:PackIcon Kind='FileMultiple'
-																																 MinHeight='20'
-																																 MinWidth='20' />
-																				<TextBlock Text='Regular Diaries'
-																									 HorizontalAlignment='Center'
-																									 FontSize='16'
-																									 Margin='16,0,0,0' />
-																		</StackPanel>
-																</ListViewItem>
-																<ListViewItem x:Name='UploadPackage'
-																							MouseLeftButtonUp='UploadPackage_MouseLeftButtonUp'>
-																		<StackPanel Orientation='Horizontal'>
-																				<materialDesign:PackIcon Kind='FileAccount'
-																																 MinHeight='20'
-																																 MinWidth='20' />
-																				<TextBlock Text='Automatic Diaries'
-																									 HorizontalAlignment='Center'
-																									 FontSize='16'
-																									 Margin='16,0,0,0' />
-																		</StackPanel>
-																</ListViewItem>
-														</ListView>
-												</Expander>
-												<Separator Margin='0,6,0,6' />
-												<Expander>
-														<Expander.Header>
-																<StackPanel Orientation='Horizontal'>
-																		<materialDesign:PackIcon Kind='BookOpenPageVariant'
-																														 MinHeight='26'
-																														 MinWidth='26' />
-																		<TextBlock Text='View and Download'
-																							 FontSize='18'
-																							 Margin='16,0,0,0' />
-																</StackPanel>
-														</Expander.Header>
-														<ListView>
-																<ListViewItem x:Name='ViewDiary'
-																							MouseLeftButtonUp='ViewDiary_MouseLeftButtonUp'>
-																		<StackPanel Orientation='Horizontal'>
-																				<materialDesign:PackIcon Kind='FileCloud'
-																																 MinHeight='20'
-																																 MinWidth='20' />
-																				<TextBlock Text='View Regular Diaries'
-																									 FontSize='16'
-																									 Margin='16,0,0,0' />
-																		</StackPanel>
-																</ListViewItem>
-																<ListViewItem x:Name='ViewPackages'
-																							MouseLeftButtonUp='ViewPackages_MouseLeftButtonUp'>
-																		<StackPanel Orientation='Horizontal'>
-																				<materialDesign:PackIcon Kind='PackageUp'
-																																 MinHeight='20'
-																																 MinWidth='20' />
-																				<TextBlock Text='View Automatic Diaries'
-																									 FontSize='16'
-																									 Margin='16,0,0,0' />
-																		</StackPanel>
-																</ListViewItem>
-														</ListView>
-												</Expander>
 										</StackPanel>
 								</DockPanel>
 						</materialDesign:DrawerHost.LeftDrawerContent>
@@ -147,7 +72,6 @@
 				<DockPanel>
 						<materialDesign:ColorZone Mode='Dark'
 																			Padding='8'
-																			materialDesign:ShadowAssist.ShadowDepth='Depth4'
 																			DockPanel.Dock='Top'
 																			x:Name='TopBar'
 																			MouseDown='TopBar_MouseDown'>
@@ -208,10 +132,101 @@
 								</Grid>
 						</materialDesign:ColorZone>
 				</DockPanel>
-				
-				<Frame x:Name='ContentFrame'
-							 NavigationUIVisibility='Hidden' />
-				
+				<Grid Margin='0,56,0,0'>
+						<Grid.ColumnDefinitions>
+								<ColumnDefinition Width='6*' />
+								<ColumnDefinition Width='45*' />
+						</Grid.ColumnDefinitions>
+
+						<Grid  Grid.Column='0'>
+								<Grid.Background>
+										<SolidColorBrush Color='#FF303030'
+																		 Opacity='0.8' />
+								</Grid.Background>
+
+								<StackPanel Margin='8,0,0,0'>
+
+										<StackPanel Orientation='Horizontal'
+																IsEnabled='False'>
+												<materialDesign:PackIcon Kind="CloudUpload"
+																								 MinHeight='26'
+																								 MinWidth='26' />
+												<TextBlock Text='Upload'
+																	 FontSize='18'
+																	 Margin='16,0,0,0' />
+										</StackPanel>
+
+
+										<ListViewItem x:Name='UploadDiary'
+																	MouseLeftButtonUp='UploadDiary_MouseLeftButtonUp'>
+												<StackPanel Orientation='Horizontal'>
+														<materialDesign:PackIcon Kind='FileMultiple'
+																										 MinHeight='20'
+																										 MinWidth='20' />
+														<TextBlock Text='Regular Diaries'
+																			 HorizontalAlignment='Center'
+																			 FontSize='16'
+																			 Margin='16,0,0,0' />
+												</StackPanel>
+										</ListViewItem>
+
+										<ListViewItem x:Name='UploadPackage'
+																	MouseLeftButtonUp='UploadPackage_MouseLeftButtonUp'>
+												<StackPanel Orientation='Horizontal'>
+														<materialDesign:PackIcon Kind='FileAccount'
+																										 MinHeight='20'
+																										 MinWidth='20' />
+														<TextBlock Text='Automatic Diaries'
+																			 HorizontalAlignment='Center'
+																			 FontSize='16'
+																			 Margin='16,0,0,0' />
+												</StackPanel>
+										</ListViewItem>
+
+										<Separator Margin='0,6,8,6' />
+
+										<StackPanel Orientation='Horizontal'
+																IsEnabled='False'>
+												<materialDesign:PackIcon Kind='BookOpenPageVariant'
+																								 MinHeight='26'
+																								 MinWidth='26' />
+												<TextBlock Text='View and Download'
+																	 FontSize='18'
+																	 Margin='16,0,0,0' />
+										</StackPanel>
+
+										<ListViewItem x:Name='ViewDiary'
+																	MouseLeftButtonUp='ViewDiary_MouseLeftButtonUp'>
+												<StackPanel Orientation='Horizontal'>
+														<materialDesign:PackIcon Kind='FileCloud'
+																										 MinHeight='20'
+																										 MinWidth='20' />
+														<TextBlock Text='View Regular Diaries'
+																			 FontSize='16'
+																			 Margin='16,0,0,0' />
+												</StackPanel>
+										</ListViewItem>
+
+										<ListViewItem x:Name='ViewPackages'
+																	MouseLeftButtonUp='ViewPackages_MouseLeftButtonUp'>
+												<StackPanel Orientation='Horizontal'>
+														<materialDesign:PackIcon Kind='PackageUp'
+																										 MinHeight='20'
+																										 MinWidth='20' />
+														<TextBlock Text='View Automatic Diaries'
+																			 FontSize='16'
+																			 Margin='16,0,0,0' />
+												</StackPanel>
+										</ListViewItem>
+
+								</StackPanel>
+						</Grid>
+
+						<Frame x:Name='ContentFrame'
+									 Grid.Column='1'
+									 NavigationUIVisibility='Hidden' />
+
+				</Grid>
 
 		</Grid>
 </Window>

@@ -19,22 +19,6 @@
       Title="DocumentUpload">
 
     <Grid>
-				<Grid.ColumnDefinitions>
-						<ColumnDefinition Width='8*' />
-						<ColumnDefinition Width='86*' />
-						<ColumnDefinition Width='8*' />
-				</Grid.ColumnDefinitions>
-				<Grid.RowDefinitions>
-						<RowDefinition Height='8*' />
-						<RowDefinition Height='86*' />
-						<RowDefinition Height='8*' />
-				</Grid.RowDefinitions>
-
-				<Grid Grid.Column='1' Grid.Row='1'>
-						
-						
-						
-				</Grid>
-
+			
 		</Grid>
 </Page>
