@@ -20,8 +20,9 @@ namespace IDR_Demo_build.Pages
 		{
 			InitializeComponent();
 
-			CertifiedPackageList.SetRecordsToShow(15);
-			DiaryGroup.ItemsSource = DiaryPager.SetPaging(CertifiedPackageList.NotUploaded(), 15).DefaultView;
+			CertifiedPackageList.SetRecordsToShow(50);
+			PackageSearch.SetRecordsToShow(50);
+			DiaryGroup.ItemsSource = DiaryPager.SetPaging(CertifiedPackageList.NotUploaded(), 50).DefaultView;
 		}
 
 		private void ChooseDiary_Click(object sender, RoutedEventArgs e)
@@ -31,7 +32,7 @@ namespace IDR_Demo_build.Pages
 			{
 				string fullPath = Path.GetFullPath(FilePath);
 				ChosenDiary.Text = Path.GetFileName(FilePath);
-				PdfView.PdfPath = fullPath;
+				PdfView.OpenFile(fullPath);
 			}
 		}
 
@@ -49,7 +50,7 @@ namespace IDR_Demo_build.Pages
 
 		private void EdipiSearch_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (SearchBox.Text == "")
+			if (string.IsNullOrWhiteSpace(SearchBox.Text))
 			{
 				DiaryGroup.ItemsSource = PackageSearch.ByNotUploadedCert(Converter(EdipiSearch.Text)).DefaultView;
 			}

@@ -29,7 +29,7 @@ namespace DocumentRepository.Core
 		{
 			IList<UnitDiary> list = CertifiedPackageList.NotUploaded()
 				.Where(o => o.UDNumber >= DiaryNumber)
-				.Where(o => o.LastName.Contains(CertLastName))
+				.Where(o => o.LastName.Contains(CertLastName.ToUpper()))
 				.ToList();
 			return DiaryPager.First(list, Records);
 		}
@@ -48,7 +48,7 @@ namespace DocumentRepository.Core
 			IList<UnitDiary> list = CertifiedPackageList.NotUploaded()
 				.Where(o => o.UDNumber >= DiaryNumber)
 				.Where(o => o.CertifierEdipi <= CertEdipi)
-				.Where(o => o.LastName.Contains(CertLastName))
+				.Where(o => o.LastName.Contains(CertLastName.ToUpper()))
 				.ToList();
 			return DiaryPager.First(list, Records);
 		}
@@ -56,7 +56,7 @@ namespace DocumentRepository.Core
 		public static DataTable ByNotUploadedCert(string CertLastName)
 		{
 			IList<UnitDiary> list = CertifiedPackageList.NotUploaded()
-				.Where(o => o.LastName.Contains(CertLastName))
+				.Where(o => o.LastName.Contains(CertLastName.ToUpper()))
 				.ToList();
 			return DiaryPager.First(list, Records);
 		}
@@ -72,7 +72,7 @@ namespace DocumentRepository.Core
 		public static DataTable ByUploadCert(string CertLastName)
 		{
 			IList<CertifiedPackage> list = CertifiedPackageList.Uploaded()
-				.Where(o => o.LastName.Contains(CertLastName))
+				.Where(o => o.LastName.Contains(CertLastName.ToUpper()))
 				.ToList();
 			return PackagePager.First(list, Records);
 		}
@@ -97,7 +97,7 @@ namespace DocumentRepository.Core
 		{
 			IList<CertifiedPackage> list = CertifiedPackageList.Uploaded()
 				.Where(o => o.UDNumber >= DiaryNumber)
-				.Where(o => o.LastName.Contains(CertLastName))
+				.Where(o => o.LastName.Contains(CertLastName.ToUpper()))
 				.ToList();
 			return PackagePager.First(list, Records);
 		}
@@ -116,7 +116,7 @@ namespace DocumentRepository.Core
 			IList<CertifiedPackage> list = CertifiedPackageList.Uploaded()
 				.Where(o => o.UDNumber >= DiaryNumber)
 				.Where(o => o.CertifierEdipi <= CertEdipi)
-				.Where(o => o.LastName.Contains(CertLastName))
+				.Where(o => o.LastName.Contains(CertLastName.ToUpper()))
 				.ToList();
 			return PackagePager.First(list, Records);
 		}

@@ -16,7 +16,7 @@ namespace DocumentRepository.Models
 
 		private static string UploadDate()
 		{
-			return DateTime.Now.ToLongDateString();
+			return DateTime.Now.ToShortDateString();
 		}
 
 		private static string UploadUser()
