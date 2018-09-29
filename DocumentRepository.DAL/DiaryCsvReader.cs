@@ -14,7 +14,7 @@ namespace DocumentRepository.DAL
 		/// <summary>
 		/// Captures the Header of the Input CSV
 		/// </summary>
-		public static string CsvHeader;
+		private static string CsvHeader;
 
 		/// <summary>
 		/// Creates a list of UnitDiary Objects from a given CSV file

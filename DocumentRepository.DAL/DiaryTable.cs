@@ -35,6 +35,7 @@ namespace DocumentRepository.DAL
 				cmd.Parameters.AddWithValue("@Accepted", "");
 				cmd.Parameters.AddWithValue("@Rejected", "");
 				cmd.Parameters.AddWithValue("@Total", "");
+				cmd.Parameters.AddWithValue("@Section", "");
 				cmd.Parameters.AddWithValue("@Uploaded", "");
 				cmd.Parameters.AddWithValue("@UploadedBy", "");
 				cmd.Parameters.AddWithValue("@UploadedOn", "");
@@ -53,6 +54,7 @@ namespace DocumentRepository.DAL
 					cmd.Parameters["@Accepted"].Value = diary.Accepted;
 					cmd.Parameters["@Rejected"].Value = diary.Rejected;
 					cmd.Parameters["@Total"].Value = diary.Total;
+					cmd.Parameters["@Section"].Value = " ";
 					cmd.Parameters["@Uploaded"].Value = "False";
 					cmd.Parameters["@UploadedBy"].Value = " ";
 					cmd.Parameters["@UploadedOn"].Value = "11/10/1775";
@@ -135,10 +137,11 @@ namespace DocumentRepository.DAL
 								Accepted = reader.GetInt32(9),
 								Rejected = reader.GetInt32(10),
 								Total = reader.GetInt32(11),
-								Uploaded = reader.GetString(12),
-								UploadedBy = reader.GetString(13),
-								UploadedOn = reader.GetDateTime(14),
-								UploadLocation = reader.GetString(15),
+								Section = reader.GetString(12),
+								Uploaded = reader.GetString(13),
+								UploadedBy = reader.GetString(14),
+								UploadedOn = reader.GetDateTime(15),
+								UploadLocation = reader.GetString(16),
 							});
 						}
 						reader.Close();

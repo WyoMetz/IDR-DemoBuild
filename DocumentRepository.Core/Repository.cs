@@ -51,7 +51,7 @@ namespace DocumentRepository.Core
 		public static async Task<IList<string>> GetDocTypesAsync()
 		{
 			IList<string> DocTypes = new List<string>();
-			DocTypes = await DocTypeTable.ReadDocTypeTable(CommandReadModel.ReadSectionTable());
+			DocTypes = await DocTypeTable.ReadDocTypeTable(CommandReadModel.ReadDocTable());
 			return DocTypes;
 		}
 

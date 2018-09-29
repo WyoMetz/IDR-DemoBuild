@@ -27,5 +27,11 @@
 			string Select = "SELECT * FROM SectionTable";
 			return Select;
 		}
+
+		public static string ReadDocTable()
+		{
+			string Select = "SELECT * FROM DocTypeTable";
+			return Select;
+		}
 	}
 }

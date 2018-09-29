@@ -20,9 +20,9 @@
 		public static string InsertBulkDiary()
 		{
 			string Insert = string.Format("INSERT INTO DiaryTable{0}(UDYear, UDNumber, UDDate, CertifierID, CertifierEdipi, " +
-				"LastName, CycleDate, CycleNumber, Accepted, Rejected, Total, Uploaded, UploadedBy, UploadedOn, UploadLocation) " +
+				"LastName, CycleDate, CycleNumber, Accepted, Rejected, Total, Section, Uploaded, UploadedBy, UploadedOn, UploadLocation) " +
 				"VALUES(@UDYear, @UDNumber, @UDDate, @CertifierID, @CertifierEdipi, @LastName, @CycleDate, @CycleNumber, @Accepted, " +
-				"@Rejected, @Total, @Uploaded, @UploadedBy, @UploadedOn, @UploadLocation)", DateContext());
+				"@Rejected, @Total, @Section, @Uploaded, @UploadedBy, @UploadedOn, @UploadLocation)", DateContext());
 			return Insert;
 		}
 
