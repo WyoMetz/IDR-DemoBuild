@@ -19,6 +19,9 @@
 
 						</ResourceDictionary.MergedDictionaries>
 
+						<SolidColorBrush x:Key='FadedBackground'  Opacity='0.8'
+														 Color='#FF303030' />
+
 						<!-- MahApps Brushes -->
 						<SolidColorBrush x:Key="HighlightBrush"
 														 Color="{DynamicResource Primary700}" />

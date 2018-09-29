@@ -69,70 +69,7 @@
 								</DockPanel>
 						</materialDesign:DrawerHost.LeftDrawerContent>
 				</materialDesign:DrawerHost>
-				<DockPanel>
-						<materialDesign:ColorZone Mode='Dark'
-																			Padding='8'
-																			DockPanel.Dock='Top'
-																			x:Name='TopBar'
-																			MouseDown='TopBar_MouseDown'>
-								<Grid DockPanel.Dock='Top'>
-										<TextBlock HorizontalAlignment='Center'
-															 x:Name='HeaderBlock'
-															 Text='TEXT so I can See'
-															 TextAlignment='Center'
-															 Margin='5'
-															 FontSize='22'
-															 FontFamily='Palatino Linotype'
-															 FontWeight='Bold' />
-
-										<StackPanel Orientation='Horizontal'
-																HorizontalAlignment='Left'>
-												<ToggleButton x:Name='MenuOpen'
-																			Style='{DynamicResource MaterialDesignHamburgerToggleButton}'
-																			IsChecked='False'></ToggleButton>
-										</StackPanel>
-										<StackPanel Orientation='Horizontal'
-																HorizontalAlignment='Right'>
-												<Button x:Name='Minimize'
-																Click='Minimize_Click'>
-														<Button.Content>
-																<materialDesign:PackIcon Kind='WindowMinimize'
-																												 MinHeight='16'
-																												 MinWidth='16' />
-														</Button.Content>
-												</Button>
-												<Button x:Name='Restore'
-																Margin='4'
-																Click='Restore_Click'>
-														<Button.Content>
-																<materialDesign:PackIcon Kind='WindowRestore'
-																												 MinHeight='16'
-																												 MinWidth='16' />
-														</Button.Content>
-												</Button>
-												<Button x:Name='Maximize'
-																Margin='4'
-																Visibility='Collapsed'
-																Click='Maximize_Click'>
-														<Button.Content>
-																<materialDesign:PackIcon Kind='WindowMaximize'
-																												 MinHeight='16'
-																												 MinWidth='16' />
-														</Button.Content>
-												</Button>
-												<Button x:Name='CloseButton'
-																Click='CloseButton_Click'>
-														<Button.Content>
-																<materialDesign:PackIcon Kind='WindowClose'
-																												 MinHeight='16'
-																												 MinWidth='16' />
-														</Button.Content>
-												</Button>
-										</StackPanel>
-								</Grid>
-						</materialDesign:ColorZone>
-				</DockPanel>
-				<Grid Margin='0,56,0,0'>
+				<Grid Margin='0,54,0,0'>
 						<Grid.ColumnDefinitions>
 								<ColumnDefinition Width='6*' />
 								<ColumnDefinition Width='45*' />
@@ -140,11 +77,11 @@
 
 						<Grid  Grid.Column='0'>
 								<Grid.Background>
-										<SolidColorBrush Color='#FF303030'
-																		 Opacity='0.8' />
+										<SolidColorBrush Opacity='0.8'
+																		 Color='#FF5F5F5F' />
 								</Grid.Background>
 
-								<StackPanel Margin='8,0,0,0'>
+								<StackPanel Margin='8,10,0,0'>
 
 										<StackPanel Orientation='Horizontal'
 																IsEnabled='False'>
@@ -227,6 +164,70 @@
 									 NavigationUIVisibility='Hidden' />
 
 				</Grid>
+				<DockPanel>
+						<materialDesign:ColorZone Mode='Dark'
+																			Padding='8'
+																			DockPanel.Dock='Top'
+																			x:Name='TopBar'
+																			MouseDown='TopBar_MouseDown' materialDesign:ShadowAssist.ShadowDepth='Depth2'>
+								<Grid DockPanel.Dock='Top'>
+										<TextBlock HorizontalAlignment='Center'
+															 x:Name='HeaderBlock'
+															 Text='TEXT so I can See'
+															 TextAlignment='Center'
+															 Margin='5'
+															 FontSize='22'
+															 FontFamily='Palatino Linotype'
+															 FontWeight='Bold' />
+
+										<StackPanel Orientation='Horizontal'
+																HorizontalAlignment='Left'>
+												<ToggleButton x:Name='MenuOpen'
+																			Style='{DynamicResource MaterialDesignHamburgerToggleButton}'
+																			IsChecked='False'></ToggleButton>
+										</StackPanel>
+										<StackPanel Orientation='Horizontal'
+																HorizontalAlignment='Right'>
+												<Button x:Name='Minimize'
+																Click='Minimize_Click'>
+														<Button.Content>
+																<materialDesign:PackIcon Kind='WindowMinimize'
+																												 MinHeight='16'
+																												 MinWidth='16' />
+														</Button.Content>
+												</Button>
+												<Button x:Name='Restore'
+																Margin='4'
+																Click='Restore_Click'>
+														<Button.Content>
+																<materialDesign:PackIcon Kind='WindowRestore'
+																												 MinHeight='16'
+																												 MinWidth='16' />
+														</Button.Content>
+												</Button>
+												<Button x:Name='Maximize'
+																Margin='4'
+																Visibility='Collapsed'
+																Click='Maximize_Click'>
+														<Button.Content>
+																<materialDesign:PackIcon Kind='WindowMaximize'
+																												 MinHeight='16'
+																												 MinWidth='16' />
+														</Button.Content>
+												</Button>
+												<Button x:Name='CloseButton'
+																Click='CloseButton_Click'>
+														<Button.Content>
+																<materialDesign:PackIcon Kind='WindowClose'
+																												 MinHeight='16'
+																												 MinWidth='16' />
+														</Button.Content>
+												</Button>
+										</StackPanel>
+								</Grid>
+						</materialDesign:ColorZone>
+				</DockPanel>
+
 
 		</Grid>
 </Window>

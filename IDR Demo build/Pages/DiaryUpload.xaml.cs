@@ -32,12 +32,19 @@ namespace IDR_Demo_build.Pages
 				string fullPath = Path.GetFullPath(FilePath);
 				ChosenDiary.Text = Path.GetFileName(FilePath);
 				PdfView.OpenFile(fullPath);
+				if (!string.IsNullOrWhiteSpace(SelectedDiary.Text))
+				{
+					UploadDiary.IsEnabled = true;
+				}
 			}
 		}
 
 		private void ChosenDiary_TextChanged(object sender, TextChangedEventArgs e)
 		{
-		
+			if(FilePath != null && !String.IsNullOrEmpty(SelectedDiary.Text))
+			{
+				UploadDiary.IsEnabled = true;
+			}
 		}
 
 		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
