@@ -17,6 +17,11 @@
 			return CommandModel.GetDocTypeContext();
 		}
 
+		private static string UserContext()
+		{
+			return CommandModel.GetUserContext();
+		}
+
 		public static string InsertBulkDiary()
 		{
 			string Insert = string.Format("INSERT INTO DiaryTable{0}(UDYear, UDNumber, UDDate, CertifierID, CertifierEdipi, " +
@@ -30,6 +35,18 @@
 		{
 			string Insert = string.Format("INSERT INTO CertifiedPackages{0}(DiaryKey, UDNumber, MembersEdipi, MembersLastName," +
 				" MembersFirstName, MembersMI) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}', '{6}')", DateContext(), DiaryID, UDNumber, MembersEdipi, MembersLastName, MembersFirstName, MembersMI);
+			return Insert;
+		}
+
+		public static string InsertDocument(string MarineEdipi, string UploadDate, string DateOfDoc, string UploadLocation)
+		{
+			string Insert = string.Format("INSERT INTO DocumentTable{0} VALUES ('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')", DateContext(), MarineEdipi, DocTypeContext(), SectionContext(), UploadDate, UserContext(), DateOfDoc, UploadLocation);
+			return Insert;
+		}
+
+		public static string InsertMarine(string MarineEdipi, string MarineLastName, string MarineFirstName, string MI = " ")
+		{
+			string Insert = string.Format("INSERT INTO MarineInfo{0} VALUES ('{1}', '{2}', '{3}', '{4}')", DateContext(), MarineEdipi, MarineLastName, MarineFirstName, MI);
 			return Insert;
 		}
 

@@ -49,6 +49,7 @@
     <Compile Include="DiaryPager.cs" />
     <Compile Include="DiarySearch.cs" />
     <Compile Include="DocTypeContextList.cs" />
+    <Compile Include="DocumentList.cs" />
     <Compile Include="PackagePager.cs" />
     <Compile Include="PackageSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

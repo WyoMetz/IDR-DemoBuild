@@ -2,7 +2,7 @@
 
 namespace DocumentRepository.Models
 {
-	class Document : Marine
+	public class Document : Marine
 	{
 		public int DocID { get; set; }
 		public string DocType { get; set; }

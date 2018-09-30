@@ -34,6 +34,13 @@ namespace DocumentRepository.Core
 			return certifiedPackages;
 		}
 
+		public static async Task<IList<Document>> GetDocumentsAsync()
+		{
+			IList<Document> documents = new List<Document>();
+			documents = await DocumentTable.ReadDocumentTable(CommandReadModel.SelectDocument());
+			return documents;
+		}
+
 		public static async Task<IList<string>> GetDatesAsync()
 		{
 			IList<string> Dates = new List<string>();

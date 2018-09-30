@@ -16,6 +16,12 @@
 			return Select;
 		}
 
+		public static string SelectDocument()
+		{
+			string Select = string.Format("SELECT * FROM DocumentTable{0} JOIN MarineInfo{0} ON DocumentTable{0}.MarineEDIPI = MarineInfo{0}.EDIPI", DateContext);
+			return Select;
+		}
+
 		public static string ReadDateTable()
 		{
 			string Select = "SELECT * FROM DateTable";

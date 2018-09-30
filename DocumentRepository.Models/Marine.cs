@@ -1,6 +1,6 @@
 ﻿namespace DocumentRepository.Models
 {
-	class Marine
+	public class Marine
 	{
 		public int EDIPI { get; set; }
 		public string LastName { get; set; }
