@@ -51,5 +51,11 @@
 			string Create = "CREATE TABLE IF NOT EXISTS DocTypeTable (DocType TEXT)";
 			return Create;
 		}
+
+		public static string CreateVersionTable()
+		{
+			string Create = "CREATE TABLE IF NOT EXISTS VersionTable (Version TEXT)";
+			return Create;
+		}
 	}
 }

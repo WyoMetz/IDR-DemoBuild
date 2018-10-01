@@ -22,6 +22,12 @@
 			return Select;
 		}
 
+		public static string SelectMarine()
+		{
+			string Select = string.Format("SELECT * FROM MarineInfo{0}", DateContext);
+			return Select;
+		}
+
 		public static string ReadDateTable()
 		{
 			string Select = "SELECT * FROM DateTable";
@@ -37,6 +43,12 @@
 		public static string ReadDocTable()
 		{
 			string Select = "SELECT * FROM DocTypeTable";
+			return Select;
+		}
+
+		public static string ReadVersionTable()
+		{
+			string Select = "SELECT * FROM VersionTable";
 			return Select;
 		}
 	}

@@ -18,5 +18,19 @@ namespace DocumentRepository.Core
 				Documents = await Repository.GetDocumentsAsync();
 			}
 		}
+
+		public static void Add(int EDIPI, string DocType, string Section, DateTime UploadDate, string UploadUser, DateTime DateOfDoc, string UploadLocation)
+		{
+			Documents.Add(new Document
+			{
+				DocID = EDIPI,
+				DocType = DocType,
+				Section = Section,
+				UploadDate = UploadDate,
+				UploadUser = UploadUser,
+				DateOfDoc = DateOfDoc,
+				UploadLocation = UploadLocation
+			});
+		}
 	}
 }

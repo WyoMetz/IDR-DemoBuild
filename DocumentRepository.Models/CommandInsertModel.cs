@@ -1,4 +1,6 @@
-﻿namespace DocumentRepository.Models
+﻿using System;
+
+namespace DocumentRepository.Models
 {
 	public class CommandInsertModel
 	{
@@ -22,6 +24,11 @@
 			return CommandModel.GetUserContext();
 		}
 
+		private static string UploadDate()
+		{
+			return DateTime.Now.ToShortDateString();
+		}
+
 		public static string InsertBulkDiary()
 		{
 			string Insert = string.Format("INSERT INTO DiaryTable{0}(UDYear, UDNumber, UDDate, CertifierID, CertifierEdipi, " +
@@ -38,9 +45,9 @@
 			return Insert;
 		}
 
-		public static string InsertDocument(string MarineEdipi, string UploadDate, string DateOfDoc, string UploadLocation)
+		public static string InsertDocument(string MarineEdipi, string DateOfDoc, string UploadLocation)
 		{
-			string Insert = string.Format("INSERT INTO DocumentTable{0} VALUES ('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')", DateContext(), MarineEdipi, DocTypeContext(), SectionContext(), UploadDate, UserContext(), DateOfDoc, UploadLocation);
+			string Insert = string.Format("INSERT INTO DocumentTable{0} VALUES ('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')", DateContext(), MarineEdipi, DocTypeContext(), SectionContext(), UploadDate(), UserContext(), DateOfDoc, UploadLocation);
 			return Insert;
 		}
 

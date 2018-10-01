@@ -62,6 +62,13 @@ namespace DocumentRepository.Core
 			return DocTypes;
 		}
 
+		public static async Task<IList<Marine>> GetMarinesAsync()
+		{
+			IList<Marine> Marines = new List<Marine>();
+			Marines = await MarineTable.ReadMarine(CommandReadModel.SelectMarine());
+			return Marines;
+		}
+
 		/// <summary>
 		/// Inserts all Unit Diaries from the CSV into the Database
 		/// </summary>
@@ -115,6 +122,21 @@ namespace DocumentRepository.Core
 			await InsertCertifiedPackage;
 			CertifiedPackageList.UpdateList(DiaryID, UserName, InsertDate, FileSaveLocation, MembersEdipi, MembersLastName, MembersFirstName, MembersMI);
 			return;
+		}
+
+		public static async Task InsertMarineInfoAsync(string MembersEdipi, string MembersLastName, string MembersFirstName, string MembersMI)
+		{
+			Task InsertMarineInfo = Task.Run(() => MarineTable.InsertMarine(CommandInsertModel.InsertMarine(MembersEdipi, MembersLastName, MembersFirstName, MembersMI)));
+			await InsertMarineInfo;
+		}
+
+		public static async Task InsertDocumentAsync(string DocType, string DateOfDoc, string MembersEdipi, string FilePath)
+		{
+			string fileName = DocType + "." + MembersEdipi + "." + CommandModel.GetSectionContext() + "." + DateOfDoc + ".pdf";
+			Task<string> SaveFile = Task.Run(() => FileOperation.CopyFile(fileName, "Member Documents"+ @"\" + MembersEdipi, FilePath));
+			string FileSaveLocation = await SaveFile;
+			Task InsertDocument = Task.Run(() => DocumentTable.InsertDocument(CommandInsertModel.InsertDocument(MembersEdipi, DateOfDoc, FileSaveLocation)));
+			await InsertDocument;
 		}
 
 		public static async Task InsertDateAsync()
