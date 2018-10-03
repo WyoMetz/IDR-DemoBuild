@@ -44,7 +44,7 @@ namespace DocumentRepository.DAL
 						{
 							marines.Add(new Marine
 							{
-								EDIPI = reader.GetInt32(0),
+								EDIPI = int.Parse(reader.GetString(0)),
 								LastName = reader.GetString(1),
 								FirstName = reader.GetString(2),
 								MI = reader.GetString(3)

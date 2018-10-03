@@ -1,24 +1,212 @@
 ﻿<Page x:Class="IDR_Demo_build.Pages.DocumentUpload"
-			xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-			xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-			TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-			TextElement.FontWeight="Regular"
-			TextElement.FontSize="13"
-			TextOptions.TextFormattingMode="Ideal"
-			TextOptions.TextRenderingMode="Auto"
-			FontFamily="{DynamicResource MaterialDesignFont}"
-			xmlns:local="clr-namespace:IDR_Demo_build"
-			xmlns:Mpp='clr-namespace:MoonPdfLib;assembly=MoonPdfLib'
-			mc:Ignorable="d"
-			d:DesignWidth='1920'
-			d:DesignHeight='1080'
-			UseLayoutRounding='True'
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      xmlns:local="clr-namespace:IDR_Demo_build"
+      xmlns:Mpp='clr-namespace:MoonPdfLib;assembly=MoonPdfLib'
+      mc:Ignorable="d"
+      d:DesignWidth='1920'
+      d:DesignHeight='1080'
+      UseLayoutRounding='True'
       Title="DocumentUpload">
-
-    <Grid>
-			
-		</Grid>
+    <Grid Background='{DynamicResource FadedBackground}'>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width='5*' />
+            <ColumnDefinition Width='5*' />
+            <ColumnDefinition Width='8*' />
+            <ColumnDefinition Width='10*' />
+            <ColumnDefinition Width='10*' />
+            <ColumnDefinition Width='10*' />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height='2*' />
+            <RowDefinition Height='8*' />
+            <RowDefinition Height='4*' />
+            <RowDefinition Height='10*' />
+            <RowDefinition Height='10*' />
+            <RowDefinition Height='10*' />
+            <RowDefinition Height='10*' />
+        </Grid.RowDefinitions>
+        <TextBlock Text='Select a Marine Below or add a new Marine. Then select your document and add all information about your document.'
+                   TextWrapping='Wrap'
+                   FontSize='26'
+                   Grid.Row='1'
+                   Grid.ColumnSpan='2'
+                   Margin='4,0,0,0' />
+        <TextBlock Text='Select Marine'
+                   FontSize='24'
+                   Grid.Row='2'
+                   HorizontalAlignment='Center'
+                   VerticalAlignment='Bottom' />
+        <ListBox Grid.Row='3'
+                 Grid.RowSpan='4'
+                 x:Name='MarineListBox'
+                 Background='{DynamicResource ListBackground}'
+                 SelectionChanged='MarineListBox_SelectionChanged'>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel HorizontalAlignment='Center'>
+                        <TextBlock Text='Marine; ' />
+                        <StackPanel Orientation='Horizontal'>
+                            <TextBlock Text='EDIPI: ' />
+                            <TextBlock Text='{Binding EDIPI}' />
+                        </StackPanel>
+                        <StackPanel Orientation='Horizontal'>
+                            <TextBlock Text='Last Name: ' />
+                            <TextBlock Text='{Binding LastName}' />
+                        </StackPanel>
+                        <StackPanel Orientation='Horizontal'>
+                            <TextBlock Text='First Name: ' />
+                            <TextBlock Text='{Binding FirstName}' />
+                        </StackPanel>
+                        <StackPanel Orientation='Horizontal'>
+                            <TextBlock Text='Middle Initial: ' />
+                            <TextBlock Text='{Binding MI}' />
+                        </StackPanel>
+                        <Separator Margin='4' />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column='1'
+                    Grid.Row='3'
+                    HorizontalAlignment='Center'>
+            <TextBlock Text='Click to Add a new Marine'
+                       FontSize='22'
+                       HorizontalAlignment='Center'
+                       VerticalAlignment='Bottom'
+                       TextWrapping='Wrap' />
+            <materialDesign:DialogHost DialogClosing='DialogHost_DialogClosing'
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Grid.Column='1'
+                                       Grid.Row='3'>
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin='16'>
+                        <TextBlock Text='Include all Marine Info' />
+                        <TextBox x:Name='InputEDIPI'
+                                 materialDesign:HintAssist.Hint='EDIPI'
+                                 materialDesign:HintAssist.IsFloating='True' />
+                        <TextBox x:Name='InputLastName'
+                                 materialDesign:HintAssist.Hint='Last Name'
+                                 materialDesign:HintAssist.IsFloating='True' />
+                        <TextBox x:Name='InputFirstName'
+                                 materialDesign:HintAssist.Hint='First Name'
+                                 materialDesign:HintAssist.IsFloating='True' />
+                        <TextBox x:Name='InputMI'
+                                 materialDesign:HintAssist.Hint='Middle Initial'
+                                 materialDesign:HintAssist.IsFloating='True' />
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    IsDefault="True"
+                                    Margin="0 8 8 0"
+                                    Command="materialDesign:DialogHost.CloseDialogCommand">
+                                <Button.CommandParameter>
+                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">True</system:Boolean>
+                                </Button.CommandParameter> ACCEPT
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    IsCancel="True"
+                                    Margin="0 8 8 0"
+                                    Command="materialDesign:DialogHost.CloseDialogCommand">
+                                <Button.CommandParameter>
+                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">False</system:Boolean>
+                                </Button.CommandParameter> CANCEL
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right"
+                        Grid.Row="0">
+                    <materialDesign:PackIcon Kind="Plus"
+                                             Height="22"
+                                             Width="22" />
+                </Button>
+            </materialDesign:DialogHost>
+        </StackPanel>
+        <StackPanel Grid.Column='2'
+                    Grid.Row='1'
+                    HorizontalAlignment='Center'>
+            <TextBlock Text='Selected Marine'
+                       FontSize='20' />
+            <Separator />
+            <StackPanel Orientation='Horizontal'>
+                <TextBlock Text='EDIPI: '
+                           FontSize='20' />
+                <TextBlock x:Name='MarineEDIPIText'
+                           FontSize='20' />
+            </StackPanel>
+            <StackPanel Orientation='Horizontal'>
+                <TextBlock Text='Last Name: '
+                           FontSize='20' />
+                <TextBlock x:Name='MarineLastNameText'
+                           FontSize='20' />
+            </StackPanel>
+            <StackPanel Orientation='Horizontal'>
+                <TextBlock Text='First Name: '
+                           FontSize='20' />
+                <TextBlock x:Name='MarineFirstNameText'
+                           FontSize='20' />
+            </StackPanel>
+            <StackPanel Orientation='Horizontal'>
+                <TextBlock Text='Middle Initial: '
+                           FontSize='20' />
+                <TextBlock x:Name='MarineMIText'
+                           FontSize='20' />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column='2'
+                    Grid.Row='3'
+                    HorizontalAlignment='Center'
+                    VerticalAlignment='Center'>
+            <TextBlock Text='Select a Document'
+                       FontSize='20' />
+            <Button x:Name='Browse'
+                    Content='Browse'
+                    Click='Browse_Click' />
+            <TextBox x:Name='SelectedDocument' IsReadOnly='True'/>
+        </StackPanel>
+        <StackPanel Grid.Column='2'
+                    Grid.Row='4'
+                    HorizontalAlignment='Center'>
+            <TextBlock Text='Document Information'
+                       FontSize='20' />
+            <Separator />
+            <DatePicker VerticalAlignment='Bottom'
+                        x:Name='DocDate'
+                        Grid.Column='1'
+                        materialDesign:HintAssist.Hint='Date of Document'
+                        materialDesign:HintAssist.IsFloating='True'
+                        CalendarClosed='DocDate_CalendarClosed' />
+            <ComboBox x:Name='DocType'
+                      materialDesign:HintAssist.Hint='Choose a Document Type'
+                      SelectionChanged='DocType_SelectionChanged' />
+            <ComboBox x:Name='Section'
+                      materialDesign:HintAssist.Hint='Choose your Section'
+                      SelectionChanged='Section_SelectionChanged' />
+        </StackPanel>
+        <Mpp:MoonPdfPanel x:Name='PdfView'
+                          Grid.Column='3'
+                          Grid.ColumnSpan='3'
+                          Grid.Row='1'
+                          Grid.RowSpan='5' />
+        <StackPanel Grid.Column='4' Grid.Row='6' HorizontalAlignment='Center' VerticalAlignment='Center'>
+            <TextBlock Text='Upload Document' FontSize='22'/>
+            <Button Content='Upload' x:Name='Upload' Click='Upload_Click'/>
+            <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
+                                     x:Name="SnackbarThree" />
+        </StackPanel>
+    </Grid>
 </Page>

@@ -69,6 +69,12 @@ namespace DocumentRepository.Core
 			return Marines;
 		}
 
+		public static async Task<string> GetVersionAsync()
+		{
+			string version = await VersionTable.ReadVersion(CommandReadModel.ReadVersionTable());
+			return version;
+		}
+
 		/// <summary>
 		/// Inserts all Unit Diaries from the CSV into the Database
 		/// </summary>
@@ -130,9 +136,9 @@ namespace DocumentRepository.Core
 			await InsertMarineInfo;
 		}
 
-		public static async Task InsertDocumentAsync(string DocType, string DateOfDoc, string MembersEdipi, string FilePath)
+		public static async Task InsertDocumentAsync(string DateOfDoc, string MembersEdipi, string FilePath)
 		{
-			string fileName = DocType + "." + MembersEdipi + "." + CommandModel.GetSectionContext() + "." + DateOfDoc + ".pdf";
+			string fileName = CommandModel.GetDocTypeContext() + "." + MembersEdipi + "." + CommandModel.GetSectionContext() + "." + DateOfDoc + ".pdf";
 			Task<string> SaveFile = Task.Run(() => FileOperation.CopyFile(fileName, "Member Documents"+ @"\" + MembersEdipi, FilePath));
 			string FileSaveLocation = await SaveFile;
 			Task InsertDocument = Task.Run(() => DocumentTable.InsertDocument(CommandInsertModel.InsertDocument(MembersEdipi, DateOfDoc, FileSaveLocation)));

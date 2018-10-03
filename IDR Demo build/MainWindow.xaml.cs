@@ -14,6 +14,7 @@ namespace IDR_Demo_build
 	/// </summary>
 	public partial class MainWindow
 	{
+		static string CurrentVersion = "1.0.1";
 		/// <summary>
 		/// Loads the Background image and Stores the Left Menu Navigation Items
 		/// </summary>
@@ -34,10 +35,24 @@ namespace IDR_Demo_build
 			CommandModel.SetDateContext(DateTime.Now.Year.ToString());
 			DiaryList.PrepareList();
 			CertifiedPackageList.PreparePackages();
+			CheckVersion();
 
 			//Navigates to the Welcome Page
 			ContentFrame.Navigate(new Uri("Pages/WelcomePage.xaml", UriKind.Relative));
 			HeaderBlock.Text = "Welcome " + UserName;
+		}
+
+		private async void CheckVersion()
+		{
+			string version = await Repository.GetVersionAsync();
+			if (CurrentVersion != version)
+			{
+				MessageBox.Show("An Updated Version has been released. \n Please download the newest version using the Document Repository Downloader provided by Quality Control. \n If you experience any issues or believe you are seeing this message in error, Please contact the Quality Control Branch.",
+					"New Version Available",
+					MessageBoxButton.OK,
+					MessageBoxImage.Stop);
+				this.Close();
+			}
 		}
 
 		private void HomeNav_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -75,6 +90,12 @@ namespace IDR_Demo_build
 			LeftMenu.IsLeftDrawerOpen = false;
 		}
 
+		private void DocumentUpload_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			ContentFrame.Navigate(new Uri("Pages/DocumentUpload.xaml", UriKind.Relative));
+			HeaderBlock.Text = "Upload Member Documents";
+			LeftMenu.IsLeftDrawerOpen = false;
+		}
 		private void TopBar_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 			if(e.ChangedButton == MouseButton.Left)
@@ -106,5 +127,6 @@ namespace IDR_Demo_build
 		{
 			this.Close();
 		}
+
 	}
 }

@@ -22,6 +22,10 @@
 						<SolidColorBrush x:Key='FadedBackground'  Opacity='0.8'
 														 Color='#FF303030' />
 
+						<SolidColorBrush x:Key='ListBackground'
+														 Opacity='0.8'
+                             Color='#FF535353' />
+
 						<!-- MahApps Brushes -->
 						<SolidColorBrush x:Key="HighlightBrush"
 														 Color="{DynamicResource Primary700}" />

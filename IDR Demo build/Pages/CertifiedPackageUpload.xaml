@@ -36,9 +36,10 @@
 				<TextBlock Grid.Row='1'
 									 Text='Select an Automatic Diary below then Browse for the matching document'
 									 TextWrapping='Wrap'
-									 FontSize='26' />
+									 FontSize='26' 
+									 Margin='4,0,0,0'/>
 
-				<StackPanel Grid.Row='2'>
+				<StackPanel Grid.Row='2' Margin='4,0,0,0'>
 						<TextBlock Text='Search the list By:'/>
 						<TextBox materialDesign:HintAssist.Hint='Diary Number'
 										 materialDesign:HintAssist.IsFloating='True'

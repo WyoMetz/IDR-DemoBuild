@@ -138,6 +138,19 @@
 												</StackPanel>
 										</ListViewItem>
 
+												<ListViewItem x:Name='DocumentUpload'
+																			MouseLeftButtonUp='DocumentUpload_MouseLeftButtonUp'>
+														<StackPanel Orientation='Horizontal'>
+																<materialDesign:PackIcon Kind='FileAccount'
+																												 MinHeight='20'
+																												 MinWidth='20' />
+																<TextBlock Text='Member Documents'
+																					 HorizontalAlignment='Center'
+																					 FontSize='16'
+																					 Margin='16,0,0,0' />
+														</StackPanel>
+												</ListViewItem>
+
 										<Separator Margin='0,6,8,6' />
 
 										<StackPanel Orientation='Horizontal'
