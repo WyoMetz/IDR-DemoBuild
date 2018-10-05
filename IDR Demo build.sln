@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentRepository.Commands
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionTest", "FunctionTest\FunctionTest.csproj", "{C0288A85-47AF-44AE-9C31-372C706CABCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualTests", "VisualTests\VisualTests.csproj", "{D5003AF0-5439-4021-8A1F-69D43848CF3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,14 @@ Global
 		{C0288A85-47AF-44AE-9C31-372C706CABCA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C0288A85-47AF-44AE-9C31-372C706CABCA}.Release|x86.ActiveCfg = Release|Any CPU
 		{C0288A85-47AF-44AE-9C31-372C706CABCA}.Release|x86.Build.0 = Release|Any CPU
+		{D5003AF0-5439-4021-8A1F-69D43848CF3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5003AF0-5439-4021-8A1F-69D43848CF3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5003AF0-5439-4021-8A1F-69D43848CF3A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D5003AF0-5439-4021-8A1F-69D43848CF3A}.Debug|x86.Build.0 = Debug|Any CPU
+		{D5003AF0-5439-4021-8A1F-69D43848CF3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5003AF0-5439-4021-8A1F-69D43848CF3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5003AF0-5439-4021-8A1F-69D43848CF3A}.Release|x86.ActiveCfg = Release|Any CPU
+		{D5003AF0-5439-4021-8A1F-69D43848CF3A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

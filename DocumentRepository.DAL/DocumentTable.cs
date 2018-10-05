@@ -44,7 +44,7 @@ namespace DocumentRepository.DAL
 						{
 							documents.Add(new Document
 							{
-								EDIPI = reader.GetInt32(0),
+								DocID = reader.GetInt32(0),
 								DocType = reader.GetString(1),
 								Section = reader.GetString(2),
 								UploadDate = reader.GetDateTime(3),

@@ -1,12 +1,8 @@
-﻿using System;
+﻿using DocumentRepository.Core;
+using DocumentRepository.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DocumentRepository.Core;
-using DocumentRepository.Models;
-using DocumentRepository.DAL;
-using System.Globalization;
 
 namespace FunctionTest
 {
@@ -14,19 +10,43 @@ namespace FunctionTest
 	{
 		static void Main(string[] args)
 		{
-            Console.WriteLine(DateTime.Now.ToLongDateString());
-            Console.WriteLine(DateTime.Now.ToShortDateString());
+			CommandModel.SetDateContext("2018");
+			DocumentList.PrepareList();
+			MarineList.PrepareList();
+			Console.WriteLine("Should be prepped");
+			Console.ReadLine();
+			MarineDocumentList.PrepareList();
 
-            Console.WriteLine("Done \n Press any key to exit...");
-            Console.ReadLine();
-        }
-    }
+			//foreach (var Marine in MarineList.Marines)
+			//{
+			//	MarineList.Marines.Add(new Document
+			//	{
+			//		Documents = DocumentList.Documents.Where(o => o.DocID == Marine.EDIPI).ToList()
+			//	});
+			//}
+
+			foreach (var Marine in MarineDocumentList.MarineDocuments)
+			{
+				Console.WriteLine(
+					Marine.EDIPI + " " +
+					Marine.LastName + " "
+					);
+				foreach (var Doc in Marine.Documents)
+				{
+					Console.WriteLine(Doc.DocType + " " + Doc.Section);
+				}
+			}
+
+			Console.WriteLine("Done \n Press any key to exit...");
+			Console.ReadLine();
+		}
+	}
 }
-            //CommandModel.SetDateContext("2018");
-            //Console.WriteLine("Dropping Table");
-            //DocumentTable.InsertDocument("DROP TABLE DocumentTable2018");
-            //Console.WriteLine("Done");
-            //Console.WriteLine("Creating Table");
-            //Database.CreateTable(CommandCreateModel.CreateDocumentTable());
-            //Console.WriteLine("Done \n Press any key to exit...");
-            //Console.ReadLine();
+//CommandModel.SetDateContext("2018");
+//Console.WriteLine("Dropping Table");
+//DocumentTable.InsertDocument("DROP TABLE DocumentTable2018");
+//Console.WriteLine("Done");
+//Console.WriteLine("Creating Table");
+//Database.CreateTable(CommandCreateModel.CreateDocumentTable());
+//Console.WriteLine("Done \n Press any key to exit...");
+//Console.ReadLine();
