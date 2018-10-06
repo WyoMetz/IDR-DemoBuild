@@ -10,6 +10,7 @@
 				Title="MainWindow"
 				Height="450"
 				Width="800">
+		
 		<Grid>
 				<TreeView x:Name='TestTree'
 									HorizontalAlignment='Center'
@@ -58,4 +59,5 @@
 						</TreeView.Resources>
 				</TreeView>
 		</Grid>
+
 </Window>

@@ -51,6 +51,7 @@
     <Compile Include="DocTypeContextList.cs" />
     <Compile Include="DocumentList.cs" />
     <Compile Include="MarineDocumentList.cs" />
+    <Compile Include="MarineDocumentSearch.cs" />
     <Compile Include="MarineList.cs" />
     <Compile Include="PackagePager.cs" />
     <Compile Include="PackageSearch.cs" />

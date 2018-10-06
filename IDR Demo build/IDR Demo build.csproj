@@ -137,6 +137,9 @@
     <Compile Include="Pages\DocumentUpload.xaml.cs">
       <DependentUpon>DocumentUpload.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DocumentView.xaml.cs">
+      <DependentUpon>DocumentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValidationRules\DataValidation.cs" />
     <Page Include="Controls\PdfViewer.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -173,6 +176,10 @@
     <Page Include="Pages\DocumentUpload.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DocumentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\WelcomePage.xaml">
       <SubType>Designer</SubType>

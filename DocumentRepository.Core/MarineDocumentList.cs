@@ -6,20 +6,25 @@ namespace DocumentRepository.Core
 {
 	public class MarineDocumentList
 	{
-		public static IList<Marine> MarineDocuments = new List<Marine>();
+		private static IList<Marine> listSetup = new List<Marine>();
+		public static IList<Marine> MarineDocuments { get; set; }
 
 		public static void PrepareList()
 		{
-			foreach (var Marine in MarineList.Marines)
+			if (MarineDocuments == null)
 			{
-				MarineDocuments.Add(new Marine
+				foreach (var Marine in MarineList.Marines)
 				{
-					EDIPI = Marine.EDIPI,
-					LastName = Marine.LastName,
-					FirstName = Marine.FirstName,
-					MI = Marine.MI,
-					Documents = DocumentList.Documents.Where(o => o.DocID == Marine.EDIPI).ToList()
-				});
+					listSetup.Add(new Marine
+					{
+						EDIPI = Marine.EDIPI,
+						LastName = Marine.LastName,
+						FirstName = Marine.FirstName,
+						MI = Marine.MI,
+						Documents = DocumentList.Documents.Where(o => o.DocID == Marine.EDIPI).ToList()
+					});
+				}
+				MarineDocuments = listSetup;
 			}
 		}
 	}

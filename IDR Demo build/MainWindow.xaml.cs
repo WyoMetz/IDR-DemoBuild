@@ -96,6 +96,14 @@ namespace IDR_Demo_build
 			HeaderBlock.Text = "Upload Member Documents";
 			LeftMenu.IsLeftDrawerOpen = false;
 		}
+
+		private void ViewDocuments_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			ContentFrame.Navigate(new Uri("Pages/DocumentView.xaml", UriKind.RelativeOrAbsolute));
+			HeaderBlock.Text = "View Member Documents";
+			LeftMenu.IsLeftDrawerOpen = false;
+		}
+
 		private void TopBar_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 			if(e.ChangedButton == MouseButton.Left)
