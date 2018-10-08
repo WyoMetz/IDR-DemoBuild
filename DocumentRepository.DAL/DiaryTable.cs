@@ -45,12 +45,12 @@ namespace DocumentRepository.DAL
 				{
 					cmd.Parameters["@UDYear"].Value = diary.UDYear;
 					cmd.Parameters["@UDNumber"].Value = diary.UDNumber;
-					cmd.Parameters["@UDDate"].Value = diary.UDDate;
+					cmd.Parameters["@UDDate"].Value = diary.UDDate.ToShortDateString();
 					cmd.Parameters["@CertifierID"].Value = diary.CertifierID;
 					cmd.Parameters["@CertifierEdipi"].Value = diary.CertifierEdipi;
 					cmd.Parameters["@LastName"].Value = diary.LastName;
 					cmd.Parameters["@CycleNumber"].Value = diary.CycleNumber;
-					cmd.Parameters["@CycleDate"].Value = diary.CycleDate;
+					cmd.Parameters["@CycleDate"].Value = diary.CycleDate.ToShortDateString();
 					cmd.Parameters["@Accepted"].Value = diary.Accepted;
 					cmd.Parameters["@Rejected"].Value = diary.Rejected;
 					cmd.Parameters["@Total"].Value = diary.Total;

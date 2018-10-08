@@ -20,6 +20,20 @@ namespace DocumentRepository.Models
 		public string Uploaded { get; set; }
 		public string UploadedBy { get; set; }
 		public DateTime UploadedOn { get; set; }
+		public string CycleDateShort
+		{
+			get
+			{
+				return CycleDate.ToShortDateString();
+			}
+		}
+		public string UDDateShort
+		{
+			get
+			{
+				return UDDate.ToShortDateString();
+			}
+		}
 
 		/// <summary>
 		/// This should never be shown to the user

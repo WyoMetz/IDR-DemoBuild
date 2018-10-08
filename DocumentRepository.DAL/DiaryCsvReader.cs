@@ -53,11 +53,11 @@ namespace DocumentRepository.DAL
 						{
 							UDYear = Int32.Parse(values[0]),
 							UDNumber = Int32.Parse(values[1]),
-							UDDate = DateTime.Parse(values[2]),
+							UDDate = DateTime.Parse(values[2]).Date,
 							CertifierID = CertIdParse,
 							CertifierEdipi = EdipiParse,
 							LastName = LastNameParse,
-							CycleDate = DateTime.Parse(values[6]),
+							CycleDate = DateTime.Parse(values[6]).Date,
 							CycleNumber = Int32.Parse(values[7]),
 							Accepted = Int32.Parse(values[8]),
 							Rejected = Int32.Parse(values[9]),

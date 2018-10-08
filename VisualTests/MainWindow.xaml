@@ -12,6 +12,7 @@
 				Width="800">
 		
 		<Grid>
+				<TextBlock x:Name='DateTest' />
 				<TreeView x:Name='TestTree'
 									HorizontalAlignment='Center'
 									VerticalAlignment='Center'>

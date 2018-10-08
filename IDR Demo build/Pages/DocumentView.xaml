@@ -59,7 +59,7 @@
 																		</StackPanel>
 																		<StackPanel Orientation='Horizontal'>
 																				<TextBlock Text='Date of Document: ' />
-																				<TextBlock Text='{Binding DateOfDoc}' />
+																				<TextBlock Text='{Binding DateOfDocShort}' />
 																		</StackPanel>
 																		<StackPanel Orientation='Horizontal'>
 																				<TextBlock Text='Upload Date: ' />

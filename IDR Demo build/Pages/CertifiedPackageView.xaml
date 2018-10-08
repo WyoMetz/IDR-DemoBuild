@@ -143,12 +143,12 @@
 																		<StackPanel Orientation='Horizontal'
 																								Margin='2'>
 																				<TextBlock Text='Dairy Date: ' />
-																				<TextBlock Text='{Binding UDDate}' />
+																				<TextBlock Text='{Binding UDDateShort}' />
 																		</StackPanel>
 																		<StackPanel Orientation='Horizontal'
 																								Margin='2'>
 																				<TextBlock Text='Cycle Date: ' />
-																				<TextBlock Text='{Binding CycleDate}' />
+																				<TextBlock Text='{Binding CycleDateShort}' />
 																		</StackPanel>
 																		<StackPanel Orientation='Horizontal'
 																								Margin='2'>
@@ -169,6 +169,10 @@
 																								Margin='2'>
 																				<TextBlock Text='Uploaded By: ' />
 																				<TextBlock Text='{Binding UploadedBy}' />
+																		</StackPanel>
+																		<StackPanel Orientation='Horizontal' Margin='2'>
+																				<TextBlock Text='Upload Date: ' />
+																				<TextBlock Text='{Binding UploadedOn}' />
 																		</StackPanel>
 																</StackPanel>
 																<StackPanel Grid.Column='1'>

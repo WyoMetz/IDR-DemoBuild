@@ -42,7 +42,11 @@
 																</StackPanel>
 																<StackPanel Orientation='Horizontal'>
 																		<TextBlock Text='Date of Diary: ' />
-																		<TextBlock Text='{Binding UDDate}' />
+																		<TextBlock Text='{Binding UDDateShort}' />
+																</StackPanel>
+																<StackPanel Orientation='Horizontal'>
+																		<TextBlock Text='Cycle Date: ' />
+																		<TextBlock Text='{Binding CycleDateShort}' />
 																</StackPanel>
 																<StackPanel Orientation='Horizontal' Grid.Column='1'>
 																		<TextBlock Text='Cycle Number: ' />

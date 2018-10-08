@@ -56,15 +56,16 @@ namespace DocumentRepository.DAL
 								Accepted = reader.GetInt32(8),
 								Rejected = reader.GetInt32(9),
 								Total = reader.GetInt32(10),
-								Uploaded = reader.GetString(11),
-								UploadedBy = reader.GetString(12),
-								UploadedOn = reader.GetDateTime(13),
-								UploadLocation = reader.GetString(14),
-								PackageID = reader.GetInt32(15),
-								MembersEdipi = reader.GetInt32(17),
-								MembersLastName = reader.GetString(18),
-								MembersFirstName = reader.GetString(19),
-								MembersMI = reader.GetString(20)
+								Section = reader.GetString(11),
+								Uploaded = reader.GetString(12),
+								UploadedBy = reader.GetString(13),
+								UploadedOn = reader.GetDateTime(14),
+								UploadLocation = reader.GetString(15),
+								PackageID = reader.GetInt32(16),
+								MembersEdipi = reader.GetInt32(18),
+								MembersLastName = reader.GetString(19),
+								MembersFirstName = reader.GetString(20),
+								MembersMI = reader.GetString(21)
 							});
 						}
 						reader.Close();

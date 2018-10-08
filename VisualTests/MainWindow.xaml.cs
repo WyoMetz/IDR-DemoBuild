@@ -30,6 +30,7 @@ namespace VisualTests
 			DocumentList.PrepareList();
 			MarineDocumentList.PrepareList();
 			TestTree.ItemsSource = MarineDocumentList.MarineDocuments;
+			DateTest.Text = DateTime.Now.ToString();
 		}
 	}
 }
