@@ -6,6 +6,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows;
+using MaterialDesignThemes.Wpf;
+using System.Linq;
 
 namespace IDR_Demo_build
 {
@@ -36,6 +38,7 @@ namespace IDR_Demo_build
 			DiaryList.PrepareList();
 			CertifiedPackageList.PreparePackages();
 			CheckVersion();
+			GetColors();
 
 			//Navigates to the Welcome Page
 			ContentFrame.Navigate(new Uri("Pages/WelcomePage.xaml", UriKind.Relative));
@@ -52,6 +55,20 @@ namespace IDR_Demo_build
 					MessageBoxButton.OK,
 					MessageBoxImage.Stop);
 				this.Close();
+			}
+		}
+
+		private void CheckWindowState()
+		{
+			if(this.WindowState == WindowState.Maximized)
+			{
+				Maximize.Visibility = Visibility.Collapsed;
+				Restore.Visibility = Visibility.Visible;
+			}
+			if(this.WindowState == WindowState.Normal)
+			{
+				Maximize.Visibility = Visibility.Visible;
+				Restore.Visibility = Visibility.Collapsed;
 			}
 		}
 
@@ -110,6 +127,7 @@ namespace IDR_Demo_build
 			{
 				this.DragMove();
 			}
+			CheckWindowState();
 		}
 
 		private void Minimize_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -136,5 +154,33 @@ namespace IDR_Demo_build
 			this.Close();
 		}
 
+		private void LightDarkSwitch_Click(object sender, RoutedEventArgs e)
+		{
+			if(LightDarkSwitch.IsChecked == false)
+			{
+				new PaletteHelper().SetLightDark(false);
+			}
+			if(LightDarkSwitch.IsChecked == true)
+			{
+				new PaletteHelper().SetLightDark(true);
+			}
+		}
+
+		private void GetColors()
+		{
+			var swatches = new MaterialDesignColors.SwatchesProvider().Swatches;
+			var palette = new PaletteHelper().QueryPalette();
+			var hue = palette.AccentSwatch.AccentHues.ToArray()[palette.AccentHueIndex];
+			foreach (var swatch in swatches)
+			{
+				ColorListBox.Items.Add(swatch);
+			}
+		}
+
+		private void ColorListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			var swatches = new MaterialDesignColors.SwatchesProvider().Swatches.Single(o => o.Name == ColorListBox.SelectedItem.ToString());
+			new PaletteHelper().ReplacePrimaryColor(swatches);
+		}
 	}
 }

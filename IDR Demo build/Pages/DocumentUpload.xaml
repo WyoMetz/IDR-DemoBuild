@@ -17,8 +17,8 @@
       d:DesignHeight='1080'
       UseLayoutRounding='True'
       Title="DocumentUpload">
-    <Grid Background='{DynamicResource FadedBackground}'>
-        <Grid.ColumnDefinitions>
+		<Grid>
+				<Grid.ColumnDefinitions>
             <ColumnDefinition Width='5*' />
             <ColumnDefinition Width='5*' />
             <ColumnDefinition Width='8*' />
@@ -27,7 +27,7 @@
             <ColumnDefinition Width='10*' />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height='2*' />
+            <RowDefinition Height='1*' />
             <RowDefinition Height='8*' />
             <RowDefinition Height='4*' />
             <RowDefinition Height='10*' />
@@ -35,7 +35,8 @@
             <RowDefinition Height='10*' />
             <RowDefinition Height='10*' />
         </Grid.RowDefinitions>
-        <TextBlock Text='Select a Marine Below or add a new Marine. Then select your document and add all information about your document.'
+				<Rectangle Grid.RowSpan='7' Grid.ColumnSpan='7' Fill='{DynamicResource MaterialDesignPaper}' Opacity='0.6' />
+				<TextBlock Text='Select a Marine Below or add a new Marine. Then select your document and add all information about your document.'
                    TextWrapping='Wrap'
                    FontSize='26'
                    Grid.Row='1'
@@ -46,37 +47,33 @@
                    Grid.Row='2'
                    HorizontalAlignment='Center'
                    VerticalAlignment='Bottom' />
-        <ListBox Grid.Row='3'
-                 Grid.RowSpan='4'
-                 x:Name='MarineListBox'
-                 Background='{DynamicResource ListBackground}'
-                 SelectionChanged='MarineListBox_SelectionChanged'>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel HorizontalAlignment='Center'>
-                        <TextBlock Text='Marine; ' />
-                        <StackPanel Orientation='Horizontal'>
-                            <TextBlock Text='EDIPI: ' />
-                            <TextBlock Text='{Binding EDIPI}' />
-                        </StackPanel>
-                        <StackPanel Orientation='Horizontal'>
-                            <TextBlock Text='Last Name: ' />
-                            <TextBlock Text='{Binding LastName}' />
-                        </StackPanel>
-                        <StackPanel Orientation='Horizontal'>
-                            <TextBlock Text='First Name: ' />
-                            <TextBlock Text='{Binding FirstName}' />
-                        </StackPanel>
-                        <StackPanel Orientation='Horizontal'>
-                            <TextBlock Text='Middle Initial: ' />
-                            <TextBlock Text='{Binding MI}' />
-                        </StackPanel>
-                        <Separator Margin='4' />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <StackPanel Grid.Column='1'
+				<ListBox Grid.Row='3' Grid.RowSpan='4' x:Name='MarineListBox' Background='{DynamicResource MaterialDesignPaper}' SelectionChanged='MarineListBox_SelectionChanged' MaxHeight='800'>
+						<ListBox.ItemTemplate>
+								<DataTemplate>
+										<StackPanel HorizontalAlignment='Center'>
+												<TextBlock Text='Marine; ' />
+												<StackPanel Orientation='Horizontal'>
+														<TextBlock Text='EDIPI: ' />
+														<TextBlock Text='{Binding EDIPI}' />
+												</StackPanel>
+												<StackPanel Orientation='Horizontal'>
+														<TextBlock Text='Last Name: ' />
+														<TextBlock Text='{Binding LastName}' />
+												</StackPanel>
+												<StackPanel Orientation='Horizontal'>
+														<TextBlock Text='First Name: ' />
+														<TextBlock Text='{Binding FirstName}' />
+												</StackPanel>
+												<StackPanel Orientation='Horizontal'>
+														<TextBlock Text='Middle Initial: ' />
+														<TextBlock Text='{Binding MI}' />
+												</StackPanel>
+												<Separator Margin='4' />
+										</StackPanel>
+								</DataTemplate>
+						</ListBox.ItemTemplate>
+				</ListBox>
+				<StackPanel Grid.Column='1'
                     Grid.Row='3'
                     HorizontalAlignment='Center'>
             <TextBlock Text='Click to Add a new Marine'

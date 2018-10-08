@@ -1,4 +1,27 @@
-﻿<Window x:Class="IDR_Demo_build.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" xmlns:local="clr-namespace:IDR_Demo_build" mc:Ignorable="d" Title="Document Repository" Height="1080" Width="1920" BorderThickness='0' WindowStartupLocation='Manual' WindowState='Maximized' UseLayoutRounding='True' WindowStyle='None' ResizeMode='CanResizeWithGrip'>
+﻿<Window x:Class="IDR_Demo_build.MainWindow" 
+				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+				xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+				xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+				xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+				TextElement.Foreground="{DynamicResource MaterialDesignBody}" 
+				TextElement.FontWeight="Regular" 
+				TextElement.FontSize="13" 
+				TextOptions.TextFormattingMode="Ideal" 
+				TextOptions.TextRenderingMode="Auto" 
+				Background="{DynamicResource MaterialDesignPaper}" 
+				FontFamily="{DynamicResource MaterialDesignFont}" 
+				xmlns:local="clr-namespace:IDR_Demo_build" 
+				mc:Ignorable="d" 
+				Title="Document Repository" 
+				Height="1080" 
+				Width="1920" 
+				BorderThickness='0' 
+				WindowStartupLocation='Manual' 
+				WindowState='Maximized' 
+				UseLayoutRounding='True' 
+				WindowStyle='None' 
+				ResizeMode='CanResizeWithGrip'>
 		<Grid>
 				<Image x:Name='BackgroundImage' Stretch='UniformToFill'></Image>
 				<materialDesign:DrawerHost x:Name='LeftMenu' IsLeftDrawerOpen='{Binding ElementName=MenuOpen, Path=IsChecked}' BorderBrush="{DynamicResource MaterialDesignDivider}" Panel.ZIndex='5'>
@@ -23,6 +46,11 @@
 																</Grid>
 														</materialDesign:ColorZone>
 												</StackPanel>
+												<TextBlock Text='Toggle Light Dark' />
+												<ToggleButton x:Name='LightDarkSwitch' IsChecked='True' Click='LightDarkSwitch_Click' />
+												<ListBox x:Name='ColorListBox' SelectionChanged='ColorListBox_SelectionChanged'>
+														
+												</ListBox>
 										</StackPanel>
 								</DockPanel>
 						</materialDesign:DrawerHost.LeftDrawerContent>
@@ -32,10 +60,8 @@
 								<ColumnDefinition Width='6*' />
 								<ColumnDefinition Width='45*' />
 						</Grid.ColumnDefinitions>
+						<Rectangle Grid.Column='0' Fill='{DynamicResource MaterialDesignPaper}' Opacity='0.8' />
 						<Grid Grid.Column='0'>
-								<Grid.Background>
-										<SolidColorBrush Opacity='0.8' Color='#FF5F5F5F' />
-								</Grid.Background>
 								<StackPanel>
 										<StackPanel>
 												<materialDesign:ColorZone Mode='PrimaryDark'>
@@ -97,7 +123,9 @@
 										</StackPanel>
 								</StackPanel>
 						</Grid>
-						<Frame x:Name='ContentFrame' Grid.Column='1' NavigationUIVisibility='Hidden' Margin='0,56,0,0' />
+						<ScrollViewer Grid.Column='1'>
+						<Frame x:Name='ContentFrame' Grid.Column='1' ScrollViewer.CanContentScroll='True' NavigationUIVisibility='Hidden' Margin='0,56,0,0' />
+						</ScrollViewer>
 						<DockPanel Grid.Column='1'>
 								<materialDesign:ColorZone Mode='Dark' Padding='8' DockPanel.Dock='Top' x:Name='TopBar' MouseDown='TopBar_MouseDown' materialDesign:ShadowAssist.ShadowDepth='Depth2'>
 										<Grid DockPanel.Dock='Top'>
