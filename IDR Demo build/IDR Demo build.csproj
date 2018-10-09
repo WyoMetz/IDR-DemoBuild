@@ -122,6 +122,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\NewUserSetup.xaml.cs">
+      <DependentUpon>NewUserSetup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PdfViewer.xaml.cs">
       <DependentUpon>PdfViewer.xaml</DependentUpon>
     </Compile>
@@ -140,7 +143,14 @@
     <Compile Include="Pages\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValidationRules\DataValidation.cs" />
+    <Page Include="Controls\NewUserSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\PdfViewer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -182,6 +192,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -15,7 +15,7 @@
 			mc:Ignorable="d"
 			Title="Document Repository Version Alpha 0.1"
 			d:DesignWidth='1920'
-			d:DesignHeight='1080' UseLayoutRounding='True'>
+			d:DesignHeight='1080' MaxHeight='1080' MaxWidth='1920' UseLayoutRounding='True'>
 		<Grid>
 				<Grid.ColumnDefinitions>
 						<ColumnDefinition Width='8*'/>

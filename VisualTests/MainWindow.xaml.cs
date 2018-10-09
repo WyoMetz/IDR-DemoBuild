@@ -32,5 +32,12 @@ namespace VisualTests
 			TestTree.ItemsSource = MarineDocumentList.MarineDocuments;
 			DateTest.Text = DateTime.Now.ToString();
 		}
+
+		private void ThisThat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			string Item = ThisThat.SelectedItem.ToString();
+			var pieces = Item.Split(':');
+			MessageBox.Show(pieces[1]);
+		}
 	}
 }

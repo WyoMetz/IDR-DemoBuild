@@ -16,6 +16,8 @@
 			mc:Ignorable="d"
 			d:DesignHeight="600"
 			d:DesignWidth="1080"
+			MaxHeight='1920'
+			MaxWidth='1080'
 			Title="CertifiedPackages">
 		<Grid>
 				<Grid.Effect>

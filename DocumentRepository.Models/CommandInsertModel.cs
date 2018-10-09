@@ -74,5 +74,11 @@ namespace DocumentRepository.Models
 			string Insert = string.Format("INSERT INTO DocTypeTable VALUES ('{0}')", DocTypeContext());
 			return Insert;
 		}
+
+		public static string InsertUser()
+		{
+			string Insert = string.Format("INSERT INTO UserTable (UserName, DateJoined) VALUES ('{0}', '{1}')", UserContext(), UploadDate());
+			return Insert;
+		}
 	}
 }

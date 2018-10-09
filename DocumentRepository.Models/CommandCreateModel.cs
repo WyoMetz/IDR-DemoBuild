@@ -57,5 +57,11 @@
 			string Create = "CREATE TABLE IF NOT EXISTS VersionTable (Version TEXT)";
 			return Create;
 		}
+
+		public static string CreateUserTable()
+		{
+			string Create = "CREATE TABLE IF NOT EXISTS UserTable (UserName VARCHAR(80) UNIQUE, Section VARCHAR(50), Background TEXT, DateJoined DATE, PrimaryColor VARCHAR(30), SecondaryColor VARCHAR(30), UsesLightTheme VARCHAR(10))";
+			return Create;
+		}
 	}
 }

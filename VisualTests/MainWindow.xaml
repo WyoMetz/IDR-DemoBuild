@@ -13,6 +13,14 @@
 		
 		<Grid>
 				<TextBlock x:Name='DateTest' />
+				<ListBox x:Name='ThisThat' SelectionChanged='ThisThat_SelectionChanged'>
+						<ListBoxItem>
+								<TextBlock Text='This' />
+						</ListBoxItem>
+						<ListBoxItem>
+								<TextBlock Text='That' />
+						</ListBoxItem>
+				</ListBox>
 				<TreeView x:Name='TestTree'
 									HorizontalAlignment='Center'
 									VerticalAlignment='Center'>

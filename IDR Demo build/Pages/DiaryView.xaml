@@ -16,6 +16,8 @@
 			mc:Ignorable="d"
 			d:DesignHeight="600"
 			d:DesignWidth="1080"
+			MaxHeight='1080'
+			MaxWidth='1920'
 			Title="DiaryView">
 		<Grid>
 				<Grid.Effect>

@@ -3,6 +3,7 @@
 	public class CommandReadModel
 	{
 		private static readonly string DateContext = CommandModel.GetDateContext();
+		private static readonly string User = CommandModel.GetUserContext();
 
 		public static string SelectDiaries()
 		{
@@ -25,6 +26,12 @@
 		public static string SelectMarine()
 		{
 			string Select = string.Format("SELECT * FROM MarineInfo{0}", DateContext);
+			return Select;
+		}
+
+		public static string ReadUserSettings()
+		{
+			string Select = string.Format("SELECT * FROM UserTable WHERE UserName = '{0}'", User);
 			return Select;
 		}
 

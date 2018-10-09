@@ -28,13 +28,7 @@
 												<StackPanel>
 														<TextBlock Text='Welcome to the IPAC Document Repository'
 																			 FontSize='24' />
-														<materialDesign:PackIcon Kind='ServerSecurity'
-																										 HorizontalAlignment='Center'
-																										 MinHeight='98'
-																										 MinWidth='250' />
-														<TextBlock Text='To get started open the menu and choose a page.'
-																			 FontSize='16'
-																			 HorizontalAlignment='Center' />
+														<materialDesign:PackIcon Kind='ServerSecurity' HorizontalAlignment='Center' MinHeight='98' MinWidth='250' />
 												</StackPanel>
 										</StackPanel>
 								</materialDesign:Card>

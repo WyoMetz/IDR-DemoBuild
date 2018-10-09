@@ -22,27 +22,30 @@ namespace IDR_Demo_build
 		/// </summary>
 		public MainWindow()
 		{
+			CommandModel.SetDateContext(DateTime.Now.Year.ToString());
+			UserSettings.SetUp();
+			CheckUser();
+			UserThemeSettings();
 			InitializeComponent();
 
-			//Defines and sets the Image block with the Tag BackgroundImage
-			BitmapImage newImage = new BitmapImage(AppSettings.ImageUri);
-			Image outputImage = new Image
-			{
-				Source = newImage
-			};
-			BackgroundImage.Source = newImage;
-
-			string UserName = AppSettings.User;
-			CommandModel.SetUserContext(AppSettings.User);
-			CommandModel.SetDateContext(DateTime.Now.Year.ToString());
+			string UserName = CommandModel.GetUserContext();
 			DiaryList.PrepareList();
 			CertifiedPackageList.PreparePackages();
 			CheckVersion();
-			GetColors();
 
 			//Navigates to the Welcome Page
 			ContentFrame.Navigate(new Uri("Pages/WelcomePage.xaml", UriKind.Relative));
 			HeaderBlock.Text = "Welcome " + UserName;
+		}
+
+		private async void CheckUser()
+		{
+			UserSettings.SetUp();
+			if (UserSettings.NewUser())
+			{
+				await Repository.InsertUserAsync();
+				new SettingsWindow().Show();
+			}
 		}
 
 		private async void CheckVersion()
@@ -56,6 +59,15 @@ namespace IDR_Demo_build
 					MessageBoxImage.Stop);
 				this.Close();
 			}
+		}
+
+		public static void UserThemeSettings()
+		{
+			var PrimarySwatch = new MaterialDesignColors.SwatchesProvider().Swatches.Single(o => o.Name == UserSettings.PrimaryColor);
+			new PaletteHelper().ReplacePrimaryColor(PrimarySwatch);
+			var SecondarySwatch = new MaterialDesignColors.SwatchesProvider().Swatches.Single(o => o.Name == UserSettings.SecondaryColor);
+			new PaletteHelper().ReplaceAccentColor(SecondarySwatch);
+			new PaletteHelper().SetLightDark(UserSettings.UseDarkTheme);
 		}
 
 		private void CheckWindowState()
@@ -154,33 +166,15 @@ namespace IDR_Demo_build
 			this.Close();
 		}
 
-		private void LightDarkSwitch_Click(object sender, RoutedEventArgs e)
+		private void Try_Click(object sender, RoutedEventArgs e)
 		{
-			if(LightDarkSwitch.IsChecked == false)
-			{
-				new PaletteHelper().SetLightDark(false);
-			}
-			if(LightDarkSwitch.IsChecked == true)
-			{
-				new PaletteHelper().SetLightDark(true);
-			}
+			UserSettings.SetUp();
+			new SettingsWindow().Show();
 		}
 
-		private void GetColors()
+		private void Refresh_Click(object sender, RoutedEventArgs e)
 		{
-			var swatches = new MaterialDesignColors.SwatchesProvider().Swatches;
-			var palette = new PaletteHelper().QueryPalette();
-			var hue = palette.AccentSwatch.AccentHues.ToArray()[palette.AccentHueIndex];
-			foreach (var swatch in swatches)
-			{
-				ColorListBox.Items.Add(swatch);
-			}
-		}
-
-		private void ColorListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			var swatches = new MaterialDesignColors.SwatchesProvider().Swatches.Single(o => o.Name == ColorListBox.SelectedItem.ToString());
-			new PaletteHelper().ReplacePrimaryColor(swatches);
+			BackgroundImage.Source = UserSettings.BackgroundBitmap;
 		}
 	}
 }

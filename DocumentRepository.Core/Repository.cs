@@ -48,6 +48,13 @@ namespace DocumentRepository.Core
 			return Dates;
 		}
 
+		public static async Task<User> GetUserSettings()
+		{
+			User Settings = new User();
+			Settings = await UserTable.ReadUserTable(CommandReadModel.ReadUserSettings());
+			return Settings;
+		}
+
 		public static async Task<IList<string>> GetSectionsAsync()
 		{
 			IList<string> Sections = new List<string>();
@@ -130,6 +137,12 @@ namespace DocumentRepository.Core
 			return;
 		}
 
+		public static async Task UpdateUserAsync()
+		{
+			Task UserUpdate = Task.Run (() => UserTable.UpdateUser(CommandUpdateModel.UserUpdate(UserSettings.BackgroundString, UserSettings.PrimaryColor, UserSettings.SecondaryColor, UserSettings.UseDarkTheme.ToString())));
+			await UserUpdate;
+		}
+
 		public static async Task InsertMarineInfoAsync(string MembersEdipi, string MembersLastName, string MembersFirstName, string MembersMI)
 		{
 			Task InsertMarineInfo = Task.Run(() => MarineTable.InsertMarine(CommandInsertModel.InsertMarine(MembersEdipi, MembersLastName, MembersFirstName, MembersMI)));
@@ -166,6 +179,12 @@ namespace DocumentRepository.Core
 			return;
 		}
 
+		public static async Task InsertUserAsync()
+		{
+			await UserTable.UpdateUser(CommandInsertModel.InsertUser());
+			return;
+		}
+
 		/// <summary>
 		/// User Chooses a file
 		/// </summary>
@@ -194,6 +213,7 @@ namespace DocumentRepository.Core
 			CreateDateTable();
 			CreateSectionTable();
 			CreateDocTypeTable();
+			CreateUserTable();
 		}
 
 		private static async void CreateDiaryTable()
@@ -231,6 +251,10 @@ namespace DocumentRepository.Core
 			await Database.CreateTable(CommandCreateModel.CreateDocTypeTable());
 		}
 
+		private static async void CreateUserTable()
+		{
+			await Database.CreateTable(CommandCreateModel.CreateUserTable());
+		}
 
 	}
 }

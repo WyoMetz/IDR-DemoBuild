@@ -1,0 +1,203 @@
+﻿<UserControl x:Class="IDR_Demo_build.Controls.NewUserSetup" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local="clr-namespace:IDR_Demo_build.Controls" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" FontFamily="{DynamicResource MaterialDesignFont}" mc:Ignorable="d" d:DesignHeight="700" d:DesignWidth="800">
+		<materialDesign:Card Height='700'>
+				<Grid>
+						<Grid.ColumnDefinitions>
+								<ColumnDefinition Width='10*' />
+								<ColumnDefinition Width='10*' />
+								<ColumnDefinition Width='5*' />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+								<RowDefinition Height='4*' />
+								<RowDefinition Height='8*' />
+								<RowDefinition Height='15*' />
+								<RowDefinition Height='10*' />
+								<RowDefinition Height='3*' />
+						</Grid.RowDefinitions>
+						<StackPanel Grid.ColumnSpan='3'>
+								<TextBlock x:Name='HeaderBlock' Margin='4' Text='Welcome to the Document Repository' Style='{StaticResource MaterialDesignDisplay1TextBlock}' />
+								<TextBlock x:Name='SubheaderBlock' Margin='4' Text='To get started we will need to do some setup.' Style='{StaticResource MaterialDesignSubheadingTextBlock}' />
+						</StackPanel>
+						<StackPanel Grid.Column='0' Grid.Row='1' HorizontalAlignment='Center' VerticalAlignment='Center'>
+								<Grid>
+										<Grid.RowDefinitions>
+												<RowDefinition />
+												<RowDefinition />
+										</Grid.RowDefinitions>
+										<TextBlock Text='Choose your section from the dropdown below.' TextWrapping='Wrap' />
+										<ComboBox x:Name='SectionBox' Grid.Row='1' Margin='4' materialDesign:HintAssist.Hint='Choose a Section' SelectionChanged='SectionBox_SelectionChanged' />
+								</Grid>
+								<Separator Margin='0,15,0,8' />
+								<TextBlock Text='Select a Light or Dark Theme' HorizontalAlignment='Center' />
+								<StackPanel Orientation='Horizontal' HorizontalAlignment='Center'>
+										<TextBlock Text='Dark' Margin='0,0,4,0' />
+										<ToggleButton x:Name='ThemeSwitch' Click='ThemeSwitch_Click' />
+										<TextBlock Text='Light' Margin='4,0,0,0' />
+								</StackPanel>
+						</StackPanel>
+						<Grid Grid.Row='2' VerticalAlignment='Stretch'>
+								<Grid.RowDefinitions>
+										<RowDefinition Height='10*' />
+										<RowDefinition Height='1.5*' />
+										<RowDefinition Height='3*' />
+								</Grid.RowDefinitions>
+								<Image x:Name='BackgroundImage' Stretch='UniformToFill' Margin='4'></Image>
+								<TextBlock Grid.Row='1' Text='Select a Background or use the Default Background' TextWrapping='Wrap' HorizontalAlignment='Center' />
+								<Button Grid.Row='2' x:Name='ImageSelect' Click='ImageSelect_Click' Content='Select an Image' HorizontalAlignment='Center' />
+						</Grid>
+						<StackPanel Grid.Column='1' Grid.Row='1' Grid.RowSpan='3'>
+								<Grid>
+										<Grid.ColumnDefinitions>
+												<ColumnDefinition />
+												<ColumnDefinition />
+										</Grid.ColumnDefinitions>
+										<Grid.RowDefinitions>
+												<RowDefinition />
+												<RowDefinition />
+												<RowDefinition />
+												<RowDefinition />
+										</Grid.RowDefinitions>
+										<TextBlock Text='Choose a Color scheme you like below' Grid.Row='0' Grid.ColumnSpan='2' HorizontalAlignment='Center' VerticalAlignment='Center' />
+										<materialDesign:Card Grid.Row='1' Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}">
+												<TextBlock HorizontalAlignment='Center' VerticalAlignment='Center' Text='Primary' />
+										</materialDesign:Card>
+										<materialDesign:Card Grid.Column='1' Grid.Row='1' Background="{DynamicResource SecondaryAccentBrush}" Foreground="{DynamicResource SecondaryAccentForegroundBrush}">
+												<TextBlock HorizontalAlignment='Center' VerticalAlignment='Center' Text='Secondary' />
+										</materialDesign:Card>
+										<ListBox Grid.Row='2' FontSize='10' x:Name='PrimaryList' SelectionChanged='PrimaryList_SelectionChanged'>
+												<ListBoxItem>
+														<TextBlock Text='blue' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='yellow' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='amber' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='deeporange' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='lightblue' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='teal' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='cyan' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='pink' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='green' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='deeppurple' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='indigo' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='lightgreen' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='lime' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='red' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='orange' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='purple' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='bluegrey' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='grey' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='brown' />
+												</ListBoxItem>
+										</ListBox>
+										<ListBox Grid.Row='2' Grid.Column='1' FontSize='10' x:Name='SecondaryList' SelectionChanged='SecondaryList_SelectionChanged'>
+												<ListBoxItem>
+														<TextBlock Text='blue' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='yellow' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='amber' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='deeporange' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='lightblue' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='teal' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='cyan' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='pink' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='green' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='deeppurple' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='indigo' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='lightgreen' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='lime' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='red' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='orange' />
+												</ListBoxItem>
+												<ListBoxItem>
+														<TextBlock Text='purple' />
+												</ListBoxItem>
+										</ListBox>
+								</Grid>
+						</StackPanel>
+						<StackPanel Grid.Column='2' Grid.Row='3'>
+								<TextBlock Text='My Settings' />
+								<Separator />
+								<StackPanel Orientation='Horizontal'>
+										<TextBlock Text='Section: ' />
+										<TextBlock x:Name='SectionText' />
+								</StackPanel>
+								<StackPanel Orientation='Horizontal'>
+										<TextBlock Text='Primary Color: ' />
+										<TextBlock x:Name='PrimaryColorText' />
+								</StackPanel>
+								<StackPanel Orientation='Horizontal'>
+										<TextBlock Text='Secondary Color: ' />
+										<TextBlock x:Name='SecondaryColorText' />
+								</StackPanel> 
+						</StackPanel>
+						<StackPanel Grid.Row='3'>
+								<TextBlock Text='To see your Background Changes on the Repository you will need to click the Refresh button' TextWrapping='Wrap'/>
+								<StackPanel Orientation='Horizontal'>
+										<TextBlock Text='(Click on the Menu button [' />
+										<materialDesign:PackIcon Kind='Menu' MinHeight='16' MinWidth='16' />
+										<TextBlock Text='] on the top left.)' />
+								</StackPanel>
+						</StackPanel>
+				</Grid>
+		</materialDesign:Card>
+</UserControl>

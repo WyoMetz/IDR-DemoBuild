@@ -11,7 +11,8 @@
 				TextOptions.TextRenderingMode="Auto" 
 				Background="{DynamicResource MaterialDesignPaper}" 
 				FontFamily="{DynamicResource MaterialDesignFont}" 
-				xmlns:local="clr-namespace:IDR_Demo_build" 
+				xmlns:local="clr-namespace:IDR_Demo_build.Controls"
+				xmlns:Core='clr-namespace:DocumentRepository.Core;assembly=DocumentRepository.Core'
 				mc:Ignorable="d" 
 				Title="Document Repository" 
 				Height="1080" 
@@ -23,7 +24,10 @@
 				WindowStyle='None' 
 				ResizeMode='CanResizeWithGrip'>
 		<Grid>
-				<Image x:Name='BackgroundImage' Stretch='UniformToFill'></Image>
+				<Grid.Resources>
+						<Core:UserSettings x:Key='UserSettings'/>
+				</Grid.Resources>
+				<Image x:Name='BackgroundImage' Stretch='UniformToFill' Source='{Binding Source={StaticResource UserSettings}, Path=BackgroundBitmap}'></Image>
 				<materialDesign:DrawerHost x:Name='LeftMenu' IsLeftDrawerOpen='{Binding ElementName=MenuOpen, Path=IsChecked}' BorderBrush="{DynamicResource MaterialDesignDivider}" Panel.ZIndex='5'>
 						<materialDesign:DrawerHost.LeftDrawerContent>
 								<DockPanel MinWidth="212">
@@ -42,15 +46,15 @@
 																		</Grid.RowDefinitions>
 																		<materialDesign:PackIcon Kind="ServerSecurity" x:Name='HomeNav' MinHeight='34' MinWidth='34' Margin='6' MouseLeftButtonUp='HomeNav_MouseLeftButtonUp' />
 																		<TextBlock Grid.Column='1' Grid.ColumnSpan='2' Text='Main Menu' FontSize='16' />
-																		<TextBlock Grid.Column='1' Grid.Row='1' Text='User Settings coming soon' />
+																		<TextBlock Grid.Column='1' Grid.Row='1' Text='Settings' />
 																</Grid>
 														</materialDesign:ColorZone>
 												</StackPanel>
-												<TextBlock Text='Toggle Light Dark' />
-												<ToggleButton x:Name='LightDarkSwitch' IsChecked='True' Click='LightDarkSwitch_Click' />
-												<ListBox x:Name='ColorListBox' SelectionChanged='ColorListBox_SelectionChanged'>
-														
-												</ListBox>
+												<TextBlock Text='My Section' Margin='4' />
+												<TextBlock Text='{Binding Source={StaticResource UserSettings}, Path=Section}' Margin='4'/>
+												<Separator />
+												<Button x:Name='OpenSettings' Content='Settings Menu' Margin='10' Click='Try_Click' />
+												<Button x:Name='Refresh' Content='Refresh' Click='Refresh_Click' Margin='10' />
 										</StackPanel>
 								</DockPanel>
 						</materialDesign:DrawerHost.LeftDrawerContent>
@@ -123,8 +127,8 @@
 										</StackPanel>
 								</StackPanel>
 						</Grid>
-						<ScrollViewer Grid.Column='1'>
-						<Frame x:Name='ContentFrame' Grid.Column='1' ScrollViewer.CanContentScroll='True' NavigationUIVisibility='Hidden' Margin='0,56,0,0' />
+						<ScrollViewer Grid.Column='1' VerticalScrollBarVisibility='Auto' HorizontalScrollBarVisibility='Auto'>
+								<Frame x:Name='ContentFrame' Grid.Column='1' ScrollViewer.CanContentScroll='True' NavigationUIVisibility='Hidden' Margin='0,56,0,0' />
 						</ScrollViewer>
 						<DockPanel Grid.Column='1'>
 								<materialDesign:ColorZone Mode='Dark' Padding='8' DockPanel.Dock='Top' x:Name='TopBar' MouseDown='TopBar_MouseDown' materialDesign:ShadowAssist.ShadowDepth='Depth2'>

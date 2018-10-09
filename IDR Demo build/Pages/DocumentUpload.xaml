@@ -15,6 +15,8 @@
       mc:Ignorable="d"
       d:DesignWidth='1920'
       d:DesignHeight='1080'
+			MaxWidth='1920'
+			MaxHeight='1080'
       UseLayoutRounding='True'
       Title="DocumentUpload">
 		<Grid>

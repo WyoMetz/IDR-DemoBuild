@@ -75,6 +75,7 @@
     <Compile Include="MarineTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SectionTable.cs" />
+    <Compile Include="UserTable.cs" />
     <Compile Include="VersionTable.cs" />
   </ItemGroup>
   <ItemGroup>
