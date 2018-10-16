@@ -89,12 +89,12 @@ namespace IDR_Demo_build.Controls
 			if (ThemeSwitch.IsChecked == true)
 			{
 				new PaletteHelper().SetLightDark(false);
-				UserSettings.UseDarkTheme = true;
+				UserSettings.UseDarkTheme = false;
 			}
 			if (ThemeSwitch.IsChecked == false)
 			{
 				new PaletteHelper().SetLightDark(true);
-				UserSettings.UseDarkTheme = false;
+				UserSettings.UseDarkTheme = true;
 			}
 		}
 

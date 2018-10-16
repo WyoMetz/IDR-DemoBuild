@@ -32,6 +32,12 @@ namespace DocumentRepository.Core
 			}
 		}
 
+		public static void SettingsRefresh()
+		{
+			Settings = null;
+			PrepareList();
+		}
+
 		public static void SetUp()
 		{
 			PrepareList();
@@ -44,7 +50,7 @@ namespace DocumentRepository.Core
 				BackgroundUpdate();
 				PrimaryColor = Settings.PrimaryColor;
 				SecondaryColor = Settings.SecondaryColor;
-				if(Settings.UsesLightTheme == "True")
+				if(Settings.UsesLightTheme == "False")
 				{
 					UseDarkTheme = false;
 				}

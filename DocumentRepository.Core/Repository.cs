@@ -141,6 +141,7 @@ namespace DocumentRepository.Core
 		{
 			Task UserUpdate = Task.Run (() => UserTable.UpdateUser(CommandUpdateModel.UserUpdate(UserSettings.BackgroundString, UserSettings.PrimaryColor, UserSettings.SecondaryColor, UserSettings.UseDarkTheme.ToString())));
 			await UserUpdate;
+			UserSettings.SettingsRefresh();
 		}
 
 		public static async Task InsertMarineInfoAsync(string MembersEdipi, string MembersLastName, string MembersFirstName, string MembersMI)
