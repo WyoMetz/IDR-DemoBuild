@@ -75,6 +75,7 @@
     <Compile Include="MarineTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SectionTable.cs" />
+    <Compile Include="ShortcutBuilder.cs" />
     <Compile Include="UserTable.cs" />
     <Compile Include="VersionTable.cs" />
   </ItemGroup>
@@ -87,6 +88,17 @@
       <Project>{2288bf2d-dfa3-4225-b5ff-032039619756}</Project>
       <Name>DocumentRepository.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets')" />

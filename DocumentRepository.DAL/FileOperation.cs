@@ -68,6 +68,20 @@ namespace DocumentRepository.DAL
 				string finalPath = savePath + "\\" + fileName;
 				FileSystem.CopyFile(filePath, finalPath);
 			}
-		}	
+		}
+
+		public static Task DownloadRepository()
+		{
+			string AppDataLocal = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+			string RepositoryDownLoad = Path.GetFullPath(AppDataLocal + @"\IDR");
+			if (!Directory.Exists(RepositoryDownLoad))
+			{
+				Directory.CreateDirectory(RepositoryDownLoad);
+			}
+			string RepositoryLocation = Path.GetFullPath(@"\\mcuscljnfs44.mcdsus.mcds.usmc.mil\IPAC\IDR\Application");
+
+			FileSystem.CopyDirectory(RepositoryLocation, RepositoryDownLoad, true);
+			return Task.CompletedTask;
+		}
 	}
 }
