@@ -17,6 +17,11 @@ namespace DocumentRepository.Core
 			{
 				Documents = await Repository.GetDocumentsAsync();
 			}
+			if (Documents != null)
+			{
+				Documents.Clear();
+				Documents = await Repository.GetDocumentsAsync();
+			}
 		}
 
 		public static void Add(int EDIPI, string DocType, string Section, DateTime UploadDate, string UploadUser, DateTime DateOfDoc, string UploadLocation)

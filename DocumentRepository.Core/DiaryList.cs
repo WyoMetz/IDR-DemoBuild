@@ -16,6 +16,11 @@ namespace DocumentRepository.Core
 			{
 				Diaries = await Repository.GetDiariesAsync();
 			}
+			if (Diaries != null)
+			{
+				Diaries.Clear();
+				Diaries = await Repository.GetDiariesAsync();
+			}
 		}
 
 		public static IList<UnitDiary> NeedUploaded()

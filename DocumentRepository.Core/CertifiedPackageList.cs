@@ -17,6 +17,11 @@ namespace DocumentRepository.Core
 			{
 				Packages = await Repository.GetPackagesAsync();
 			}
+			if (Packages != null)
+			{
+				Packages.Clear();
+				Packages = await Repository.GetPackagesAsync();
+			}
 		}
 
 		public static void SetRecordsToShow(int Amount)

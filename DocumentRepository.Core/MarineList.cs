@@ -14,6 +14,11 @@ namespace DocumentRepository.Core
 			{
 				Marines = await Repository.GetMarinesAsync();
 			}
+			if (Marines != null)
+			{
+				Marines.Clear();
+				Marines = await Repository.GetMarinesAsync();
+			}
 		}
 
 		public static void Add(int EDIPI, string LastName, string FirstName, string MI = " ")

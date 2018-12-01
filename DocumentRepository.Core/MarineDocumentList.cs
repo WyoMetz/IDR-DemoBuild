@@ -13,19 +13,29 @@ namespace DocumentRepository.Core
 		{
 			if (MarineDocuments == null)
 			{
-				foreach (var Marine in MarineList.Marines)
-				{
-					listSetup.Add(new Marine
-					{
-						EDIPI = Marine.EDIPI,
-						LastName = Marine.LastName,
-						FirstName = Marine.FirstName,
-						MI = Marine.MI,
-						Documents = DocumentList.Documents.Where(o => o.DocID == Marine.EDIPI).ToList()
-					});
-				}
-				MarineDocuments = listSetup;
+				SetUpList();
 			}
+			if (MarineDocuments != null)
+			{
+				MarineDocuments.Clear();
+				listSetup.Clear();
+				SetUpList();
+			}
+		}
+		private static void SetUpList()
+		{
+			foreach (var Marine in MarineList.Marines)
+			{
+				listSetup.Add(new Marine
+				{
+					EDIPI = Marine.EDIPI,
+					LastName = Marine.LastName,
+					FirstName = Marine.FirstName,
+					MI = Marine.MI,
+					Documents = DocumentList.Documents.Where(o => o.DocID == Marine.EDIPI).ToList()
+				});
+			}
+			MarineDocuments = listSetup;
 		}
 	}
 }
