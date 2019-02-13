@@ -78,7 +78,7 @@ namespace DocumentRepository.DAL
 			{
 				Directory.CreateDirectory(RepositoryDownLoad);
 			}
-			string RepositoryLocation = Path.GetFullPath(@"\\mcuscljnfs44.mcdsus.mcds.usmc.mil\IPAC\IDR\Application");
+			string RepositoryLocation = Path.GetFullPath(@"<ApplicationLocation>");
 
 			FileSystem.CopyDirectory(RepositoryLocation, RepositoryDownLoad, true);
 			return Task.CompletedTask;
